@@ -15,6 +15,7 @@ Here is a standard block of meta code:
 	section: "SECTION",
 	gameType: 'GAME TYPE',
 	
+	mod: 'MOD',
 	team: 'RANDBAT TEAM',
 	ruleset: ['RULESET'],
 	banlist: ['BANLIST']
@@ -24,6 +25,9 @@ Where:
 * ```GAME NAME``` is the metagame's name which will be displayed on the challenge menu.
 * ```SECTION``` is the category it is listed under
 * ```GAME TYPE``` is the game mode of the metagame (doubles, triples)
-* ```RANDBAT TEAM``` is a random team *idk how to explain this* (say if you type in ```random``` is an automatically generated singles team, ```randomDoubles``` is an automatically generated doubles team, ```randomCC``` is a Challenge Cup team.
+* ```MOD``` is the mod used by the format
+* ```RANDBAT TEAM``` is a random team *idk how to explain this* (say if you type in ```random``` you will battle with an automatically generated singles team, ```randomDoubles``` is an automatically generated doubles team, ```randomCC``` is a Challenge Cup team.
 * ```RULESET``` is the ruleset where the format follows (usually ```Pokemon, Standard, Team Preview```)
 * ```BANLIST``` is the banlist from the formats (usually a combination ```Simple + Shell Smash```, a Pokémon ```Xerneas```, or an item ```Soul Dew```)
+
+**NOTE**: If you have a mod, you'll need to create a folder with the name of `MOD` (where mod is your mod name) in your Pokémon Showdown Server's ```mod``` folder. Next, copy all the `js` files in the folder.
