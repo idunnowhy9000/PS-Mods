@@ -55,11 +55,11 @@ exports.BattleItems = {
 			return this.chain(speMod, 1.2);
 		},
 		onBeforeMove: function (pokemon, target, move) {
-			if (pokemon.removeVolatile('safariball')) {
+			if (pokemon.removeVolatile('truant')) {
 				this.add('cant', pokemon, 'item: Safari Ball', move);
 				return false;
 			}
-			pokemon.addVolatile('safariball');
+			pokemon.addVolatile('truant');
 		},
 	},
 	"levelball":{
