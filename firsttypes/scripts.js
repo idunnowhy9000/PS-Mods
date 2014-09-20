@@ -2,11 +2,11 @@ exports.BattleScripts = {
 	init: function () {
 		// moves
 		for (var i in this.data.Moves) {
-			var type;
+			var type = this.data.Moves.type;
 			if (this.data.Moves[i].type = "Dark") type = "Ghost";
 			if (this.data.Moves[i].type = "Steel") type = "Rock";
 			if (this.data.Moves[i].type = "Fairy") type = "Normal";
-			this.modData('Moves',i).types = type;
+			this.modData('Moves',i).type = type;
 		}
 		//fairy
 		this.modData('Pokedex','ralts').types = ["Psychic"];
