@@ -118,7 +118,7 @@ exports.BattleItems = {
 			pokemon.happiness += 50;
 		}
 	},
-	"friendball":{
+	"loveball":{
 		inherit: true,
 		desc: "If the opposing pokemon is infatuated, moves do x1.5 more power.",
 		onBasePowerPriority: 8,
@@ -141,32 +141,26 @@ exports.BattleItems = {
 		effect: {
 			duration: 1,
 			onModifyPriority: function (priority, pokemon, target, move) {
-				if (move) return 8;
+				if (move) return 7;
 			},
 		}
 	},
 	"sportball":{
 		inherit:true,
 		desc: "All Physical Attacks get x1.5 but has Special Attacks x0.5",
-		onModifyAtkPriority: 1,
-		onModifyAtk: function (atk, pokemon) {
-			return this.chainModify(1.5);
-		},
-		onModifySpAPriority: 1,
-		onModifySpA: function (spa, pokemon) {
-			return this.chainModify(0.5);
-		},
+		onBasePowerPriority: 8,
+		onBasePower: function (basePower, attacker, defender, move) {
+			if (move.category === 'Physical') return this.chainModify(1.5);
+			else if (move.category === 'Special') return this.chainModify(0.5);
+		}, 
 	},
 	"premierball":{
 		inherit:true,
-		desc: "When switched in, the pokemon's first move will always go first.",
-		onModifyAtkPriority: 1,
-		onModifyAtk: function (atk, pokemon) {
-			return this.chainModify(0.5);
-		},
-		onModifySpAPriority: 1,
-		onModifySpA: function (spa, pokemon) {
-			return this.chainModify(1.5);
+		desc: "All Special Attacks get x1.5 but has Physical Attacks x0.5",
+		onBasePowerPriority: 8,
+		onBasePower: function (basePower, attacker, defender, move) {
+			if (move.category === 'Special') return this.chainModify(1.5);
+			else if (move.category === 'Physical') return this.chainModify(0.5);
 		},
 	},
 	"repeatball":{
