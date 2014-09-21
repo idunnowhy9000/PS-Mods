@@ -22,7 +22,24 @@ function createTypeChanger(id, name, type) {
         gen: 6
     };
 }
-
+function createAbsorber(id, name, type){
+	return {
+		desc: "This Pokemon is immune to " + type + " moves. If hit by an " + type + " move, it recovers 25% of its max HP.",
+		shortDesc: "This Pokemon heals 1/4 of its max HP when hit by " + type + " moves; " + type + " immunity.",
+		onTryHit: function (target, source, move) {
+			if (target !== source && move.type === type) {
+				if (!this.heal(target.maxhp / 4)) {
+					this.add('-immune', target, '[msg]');
+				}
+				return null;
+			}
+		},
+		id: id,
+		name: name,
+		rating: 3.5,
+		num: -7
+	};
+}
 exports.BattleAbilities = {
     // Adaptability: Powers up STAB moves by 1.8x
     adaptability: {
@@ -317,10 +334,215 @@ exports.BattleAbilities = {
 	// This also includes recoil damage.
 	wonderguard: {
 		inherit: true,
+		onSwitchIn: function (pokemon) {
+			this.add('-message', pokemon.name + ' is cloaked in a mystical veil!');
+		},
 		onDamage: function (damage, target, source, effect) {
 			if (effect.effectType !== 'Move') {
 				return false;
 			}
+		},
+	},
+	// White Smoke: Prevents stat drops, including stat drops inflicted by the user.
+	whitesmoke: {
+		inherit: true,
+		onBoost: function (boost, target, source, effect) {
+			var showMsg = false;
+			for (var i in boost) {
+				if (boost[i] < 0) {
+					delete boost[i];
+					showMsg = true;
+				}
+			}
+			if (showMsg && !effect.secondaries) this.add("-fail", target, "unboost", "[from] ability: Clear Body", "[of] " + target);
+		},
+	},
+	// Warped Mind: Summons Trick Room for 5 turns upon switch-in. Affected by Strange Relic
+	warpedmind: {
+		id: "warpedmind",
+        name: "Warped Mind",
+        gen: 6,
+        onStart: function(source) {
+            this.useMove('trickroom');
+        }
+	},
+	// Water Veil: The user is immune to the burn status. If the user is a Water type, heals 1/16th health each turn.
+	waterveil: {
+		inherit: true,
+		onResidualOrder: 5,
+		onResidualSubOrder: 2,
+		onResidual: function (pokemon) {
+			if (pokemon.hasType('Water')) {
+				this.heal(pokemon.maxhp / 16);
+			}
+		},
+	},
+	// Wonderer: Summons Wonder Room for 5 turns upon switch-in. Affected by Wonderful Stone
+	wonderer: {
+		id: "wonderer",
+        name: "Wonderer",
+        gen: 6,
+        onStart: function(source) {
+            this.useMove('wonderroom');
+        }
+	},
+	// Wonder Skin: Lowers damage of contact attacks by 0.75x and the damage of non-contact attacks by 0.9x
+	wonderskin: {
+		inherit: true,
+		onAccuracyPriority: false,
+		onAccuracy: false,
+		onModifyAtkPriority: 6,
+		onSourceModifyAtk: function (atk, attacker, defender, move) {
+			if (move.isContact) return this.chainModify(0.75);
+			if (!move.isContact) return this.chainModify(0.9);
+		},
+		onModifySpAPriority: 5,
+		onSourceModifySpA: function (atk, attacker, defender, move) {
+			if (move.isContact) return this.chainModify(0.75);
+			if (!move.isContact) return this.chainModify(0.9);
+		},
+	},
+	// Unnerve: Upon entering battle, the opponent’s Special Attack lowers one stage.
+	unnerve: {
+		inherit: true,
+		onFoeEatItem: true,
+		onStart: function (pokemon) {
+			var foeactive = pokemon.side.foe.active;
+			for (var i = 0; i < foeactive.length; i++) {
+				if (!foeactive[i] || !this.isAdjacent(foeactive[i], pokemon)) continue;
+				if (foeactive[i].volatiles['substitute']) {
+					// does it give a message?
+					this.add('-activate', foeactive[i], 'Substitute', 'ability: Unnerve', '[of] ' + pokemon);
+				} else {
+					this.add('-ability', pokemon, 'Unnerve', '[of] ' + foeactive[i]);
+					this.boost({spa: -1}, foeactive[i], pokemon);
+				}
+			}
+		}
+	},
+	// Tough Claws: Boosts the power of contact moves by 1.3x
+	toughclaws: {
+		inherit: true,
+		onBasePower: function (basePower, attacker, defender, move) {
+			if (move.isContact) {
+				return this.chainModify(1.3);
+			}
+		}
+	},
+	// Turboblaze: Fire type moves used by the user are boosted by 1.3x, and can bypass immunities
+	turboblaze: {
+		inherit: true,
+		onBasePower: function (basePower, attacker, defender, move) {
+			if (move.type === 'Fire') {
+				return this.chainModify(1.3);
+			}
+		}
+	},
+	// Teravolt: Electric type moves used by the user are boosted by 1.3x, and can bypass immunities
+	teravolt: {
+		inherit: true,
+		onBasePower: function (basePower, attacker, defender, move) {
+			if (move.type === 'Electric') {
+				return this.chainModify(1.3);
+			}
+		}
+	},
+	// Telepathy: Raises user's Special Attack by one stage every time it gets a KO
+	telepathy: {
+		inherit: true,
+		onSourceFaint: function (target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				this.boost({spa:1}, source);
+			}
+		}
+	},
+	// Symbiosis: The user heals up to 25% of it’s maximum HP when hit with Grass-type moves
+	symbiosis: createAbsorber('symbiosis','Symbiosis','Grass'),
+	// Steadfast: User's Speed is raised by one stage every time it flinches, and in addition, whenever it flinches, the damage from the attack is negated
+	steadfast: {
+		inherit: true,
+		onTryHit: function (target, source, move) {
+			if (target === source || move.category === 'Status' || move.type === '???') return;
+			this.debug('Steadfast ' + move.id);
+			if (move.secondaries) {
+				for (var i = 0; i < move.secondaries) {
+					source.boost({spe: 1});
+					source.addVolatile('flinch');
+					return null;
+				}
+			}
+		},
+	},
+	// Solar Power: User's Special Attack is raised by 1.5x in heavy sunlight
+	solarpower: {
+		inherit: true,
+		onWeather: false
+	},
+	// Solar Panel: User's HP is restored by 12.5% at the end of each turn in heavy sunlight
+	solarpanel: {
+		onWeather: function (target, source, effect) {
+			if (effect.id === 'sunnyday') {
+				this.heal(target.maxhp / 8);
+			}
+		},
+		id: "solarpanel",
+		name: "Solar Panel"
+	},
+	// Snow Rush: User's Speed is raised by 1.5x in hail, and Pokemon with this ability are immune to damage from hail
+	snowrush: {
+		onModifySpe: function (speMod, pokemon) {
+			if (this.isWeather('hail')) {
+				return this.chain(speMod, 1.5);
+			}
+		},
+		onImmunity: function (type, pokemon) {
+			if (type === 'hail') return false;
+		},
+		id: "snowrush",
+		name: "Snow Rush",
+	},
+	// Snow Cloak: User's Defense is raised by 1.5x in hail, and Pokemon with this ability are immune to damage from hail
+	snowcloak: {
+		onModifyDef: function (def, pokemon) {
+			if (this.isWeather('hail')) {
+				return this.chain(def, 1.5);
+			}
+		},
+		onImmunity: function (type, pokemon) {
+			if (type === 'hail') return false;
+		},
+		id: "snowcloak",
+		name: "Snow Cloak",
+	},
+	// Shield Dust: User is immune to the negative effects of being burned, poisoned, and paralyzed
+	shielddust: {
+		inherit: true,
+		onTrySecondaryHit: false,
+		onDamage: function (damage, target, source, effect) {
+			var ignores = {'brn':1,'tox':1,'psn':1};
+			if (effect.effectType !== 'Move' && effect.id in ignores) {
+				return false;
+			}
+		},
+	},
+	// Shed Skin: Has a 50% chance of curing any major status ailment after each turn.
+	shedskin: {
+		inherit: true,
+		onResidual: function (pokemon) {
+			if (pokemon.hp && pokemon.status && this.random(2) === 0) {
+				this.debug('shed skin');
+				this.add('-activate', pokemon, 'ability: Shed Skin');
+				pokemon.cureStatus();
+			}
+		}
+	},
+	// Shell Armor: Prevents critical hits and reduces all taken damage to 11/12ths of its original damage,
+	// and Pokemon with this ability are immune to damage from hail
+	shellarmor: {
+		inherit: true,
+		// todo add reduce damage
+		onImmunity: function (type, pokemon) {
+			if (type === 'hail') return false;
 		},
 	}
 }

@@ -21,6 +21,7 @@ exports.BattleStatuses = {
 		inherit: true,
 		onModifySpe: null,
 		onModifyMove: function (move) {
+			// shield dust todo
 			move.priority = -8;
 		},
 	},
