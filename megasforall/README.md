@@ -10,10 +10,12 @@ This is one of the mods that this repo has to offer.
 DEVELOPMENT STAGE: **ALPHA** (implemented a bit)
 
 ###Implemented:
-* Several Pokémon (Aegislash-Blissey order A-Z)
+* Pokémon
 * Abilities
 
   [1]: http://www.smogon.com/forums/threads/3507391/
+**NOTE**: There are 2 versions, a version by based on acestriker13's thread and one by nightsitter's.
+acestriker13's version will not be finished and probably never will be.
     
 Installing
 --------------------------------
