@@ -83,24 +83,26 @@ exports.BattleFormats = {
 			}
 			set.moves = moves;
 			
-			if (template.isMega && template.tier === 'M4A') {
-				// tba
+			if (template.isMega) {
+				if (template.tier === 'M4A') {
+					if (template.forme === 'Mega' && item.id !== 'abomasite') problems.push((set.name || set.species) + ' needs to hold Abomasite.');
+					if (template.forme === 'Mega-X' && item.id !== 'charizarditex') problems.push((set.name || set.species) + ' needs to hold Charizardite-X.');
+					if (template.forme === 'Mega-Y' && item.id !== 'charizarditex') problems.push((set.name || set.species) + ' needs to hold Charizardite-Y.');
+				}
+				// Mega evolutions evolve in-battle
+				set.species = template.baseSpecies;
+				var baseAbilities = Tools.getTemplate(set.species).abilities;
+				var niceAbility = false;
+				for (var i in baseAbilities) {
+					if (baseAbilities[i] === set.ability) {
+						niceAbility = true;
+						break;
+					}
+				}
+				if (!niceAbility) set.ability = baseAbilities['0'];
 			}
 			
 			if (template.requiredItem) {
-				if (template.isMega) {
-					// Mega evolutions evolve in-battle
-					set.species = template.baseSpecies;
-					var baseAbilities = Tools.getTemplate(set.species).abilities;
-					var niceAbility = false;
-					for (var i in baseAbilities) {
-						if (baseAbilities[i] === set.ability) {
-							niceAbility = true;
-							break;
-						}
-					}
-					if (!niceAbility) set.ability = baseAbilities['0'];
-				}
 				if (item.name !== template.requiredItem) {
 					problems.push((set.name || set.species) + ' needs to hold ' + template.requiredItem + '.');
 				}
