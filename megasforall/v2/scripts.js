@@ -7,7 +7,8 @@ exports.BattleScripts = {
 		var template = this.getTemplate(item.megaStone);
 		if (!template.isMega) return false;
 		if (pokemon.baseTemplate.baseSpecies !== template.baseSpecies) {
-			if (template.baseSpecies === 'Abomasnow' && pokemon.baseTemplate.tier !== 'M4A') return false;
+			// tba
+			return false;
 		}
 
 		// okay, mega evolution is possible
