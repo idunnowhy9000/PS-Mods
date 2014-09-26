@@ -9,14 +9,11 @@ This is one of the mods that this repo has to offer.
 
 DEVELOPMENT STAGE: **ALPHA** (implemented a bit)
 
-###Implemented:
-* Pokémon
-* Abilities
+**Most of the code used in V2 is cloned from [FireArrow5's repo][https://github.com/FireArrow5/Megas-For-All] with his permission.**
 
   [1]: http://www.smogon.com/forums/threads/3507391/
 **NOTE**: There are 2 versions, a version by based on acestriker13's thread and one by nightsitter's.
 acestriker13's version will not be finished and probably never will be.
-    
 Installing
 --------------------------------
 Megas For All installs like most mods in this repo (consult repo's README). However, it requires you to have a custom client and modified server files so, clone Pokémon Showdown's client or download as ZIP file.
