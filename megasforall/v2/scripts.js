@@ -7,12 +7,12 @@ exports.BattleScripts = {
 		var template = this.getTemplate(item.megaStone);
 		if (!template.isMega) return false;
 		if (pokemon.baseTemplate.baseSpecies !== template.baseSpecies) {
-			// todo: fix
 			for (var i in pokemon.baseTemplate.otherFormes) {
 				var formTemp = this.getTemplate(pokemon.baseTemplate.otherFormes[i]);
 				if (formTemp.isMega) {
 					if ((formTemp.forme === 'Mega-X' && item.id === 'charizarditex') || (formTemp.forme === 'Mega-Y' && item.id === 'charizarditey') || (formTemp.forme === 'Mega' && item.id === 'abomasite')) {
 						template = formTemp;
+						break;
 					}
 				}
 			}
