@@ -379,7 +379,7 @@ exports.BattleAbilities = {
         name: "Grounded",
         rating: 3,
         num: -29
-    },
+	},
 	// todo: fix spacing
       	"heatseek": {
                 desc: "This Pokemon's Fire moves cannot miss.",
@@ -660,4 +660,4 @@ exports.BattleAbilities = {
                 rating: 3,
                 num: -43
         },
-}
+},
