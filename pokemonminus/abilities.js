@@ -14,6 +14,8 @@ exports.BattleAbilities = {
 	},
 	"unnerve": {
 		inherit: true,
+		desc: "When this Pokemon enters the field, the Sp. Attack stat of each of its opponents lowers by one stage.",
+		shortDesc: "On switch-in, this Pokemon lowers adjacent foes' Sp. Attack by 1.",
 		onStart: function (pokemon) {
 			var foeactive = pokemon.side.foe.active;
 			for (var i = 0; i < foeactive.length; i++) {
