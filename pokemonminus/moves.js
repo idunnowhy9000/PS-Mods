@@ -19,7 +19,7 @@ function weakToType(weakness) {
         }
         return totalTypeMod;
     }
-
+}
 exports.BattleMovedex = {
 	"regenerativebeam": {
 		num: -100,
