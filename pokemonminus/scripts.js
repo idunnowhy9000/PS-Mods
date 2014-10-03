@@ -22,5 +22,9 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'xerneas').types = ['Fairy', 'Grass'];
 		this.modData('Learnsets', 'kyogre').learnset.regenerativebeam = ['6L1'];
 		this.modData('Learnsets', 'kyogre').learnset.psychic = ['6L1'];
+		// Every hidden ability becomes released
+		for (var i in this.data.FormatsData) {
+			this.modData('FormatsData', i).unreleasedHidden = false;
+		}
 	}
 }
