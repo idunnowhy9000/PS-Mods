@@ -9,7 +9,7 @@ exports.BattleScripts = {
 		// kyogre
 		this.modData('Pokedex', 'kyogre').baseStats = {hp:130,atk:100,def:100,spa:150,spd:130,spe:90};
 		this.modData('Pokedex', 'kyogre').types = ['Water', 'Ice'];
-		//this.modData('Learnsets', 'kyogre').learnset.originpulse = ['6L1'];
+		this.modData('Learnsets', 'kyogre').learnset.originpulse = ['6L1'];
 		// mewtwo
 		this.modData('Pokedex', 'mewtwo').baseStats = {hp:116,atk:120,def:90,spa:164,spd:90,spe:140};
 		// mewtwo-mega-x
@@ -20,5 +20,7 @@ exports.BattleScripts = {
 		// xerneas
 		this.modData('Pokedex', 'xerneas').baseStats = {hp:136,atk:131,def:95,spa:151,spd:108,spe:99};
 		this.modData('Pokedex', 'xerneas').types = ['Fairy', 'Grass'];
+		this.modData('Learnsets', 'kyogre').learnset.regenerativebeam = ['6L1'];
+		this.modData('Learnsets', 'kyogre').learnset.psychic = ['6L1'];
 	}
 }
