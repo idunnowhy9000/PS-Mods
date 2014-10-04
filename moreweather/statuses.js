@@ -1,444 +1,116 @@
-exports.BattleStatuses = {
-    raindance: {
-        effectType: 'Weather',
-        duration: 5,
-        durationCallback: function(source, effect) {
-            if (source && source.item === 'damprock') {
-                return 8;
-            }
-            return 5;
-        },
-        onBasePower: function(basePower, attacker, defender, move) {
-            if (move.type === 'Water') {
-                this.debug('rain water boost');
-                return this.chainModify(1.5);
-            }
-            if (move.type === 'Fire') {
-                this.debug('rain fire suppress');
-                return this.chainModify(0.5);
-            }
-        },
-        onStart: function(battle, source, effect) {
-            if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
-                this.effectData.duration = 0;
-                this.add('-weather', 'RainDance', '[from] ability: ' + effect, '[of] ' + source);
-            } else {
-                this.add('-weather', 'RainDance');
-            }
-        },
-        onResidualOrder: 1,
-        onResidual: function() {
-            this.add('-weather', 'RainDance', '[upkeep]');
-            this.eachEvent('Weather');
-        },
-        onEnd: function() {
-            this.add('-weather', 'none');
-        }
-    },
-    sunnyday: {
-        effectType: 'Weather',
-        duration: 5,
-        durationCallback: function(source, effect) {
-            if (source && source.item === 'heatrock') {
-                return 8;
-            }
-            return 5;
-        },
-        onBasePower: function(basePower, attacker, defender, move) {
-            if (move.type === 'Fire') {
-                this.debug('Sunny Day fire boost');
-                return this.chainModify(1.5);
-            }
-            if (move.type === 'Water') {
-                this.debug('Sunny Day water suppress');
-                return this.chainModify(0.5);
-            }
-        },
-        onStart: function(battle, source, effect) {
-            if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
-                this.effectData.duration = 0;
-                this.add('-weather', 'SunnyDay', '[from] ability: ' + effect, '[of] ' + source);
-            } else {
-                this.add('-weather', 'SunnyDay');
-            }
-        },
-        onImmunity: function(type) {
-            if (type === 'frz') return false;
-        },
-        onResidualOrder: 1,
-        onResidual: function() {
-            this.add('-weather', 'SunnyDay', '[upkeep]');
-            this.eachEvent('Weather');
-        },
-        onEnd: function() {
-            this.add('-weather', 'none');
-        }
-    },
-    sandstorm: {
-        effectType: 'Weather',
-        duration: 5,
-        durationCallback: function(source, effect) {
-            if (source && source.item === 'smoothrock') {
-                return 8;
-            }
-            return 5;
-        },
-        // This should be applied directly to the stat before any of the other modifiers are chained
-        // So we give it increased priority.
-        onModifySpDPriority: 10,
-        onModifySpD: function(spd, pokemon) {
-            if (pokemon.hasType('Rock') && this.isWeather('sandstorm')) {
-                return this.modify(spd, 1.5);
-            }
-        },
-        onStart: function(battle, source, effect) {
-            if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
-                this.effectData.duration = 0;
-                this.add('-weather', 'Sandstorm', '[from] ability: ' + effect, '[of] ' + source);
-            } else {
-                this.add('-weather', 'Sandstorm');
-            }
-        },
-        onResidualOrder: 1,
-        onResidual: function() {
-            this.add('-weather', 'Sandstorm', '[upkeep]');
-            if (this.isWeather('sandstorm')) this.eachEvent('Weather');
-        },
-        onWeather: function(target) {
-            this.damage(target.maxhp / 16);
-        },
-        onEnd: function() {
-            this.add('-weather', 'none');
-        }
-    },
-    hail: {
-        effectType: 'Weather',
-        duration: 5,
-        durationCallback: function(source, effect) {
-            if (source && source.item === 'icyrock') {
-                return 8;
-            }
-            return 5;
-        },
-        onStart: function(battle, source, effect) {
-            if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
-                this.effectData.duration = 0;
-                this.add('-weather', 'Hail', '[from] ability: ' + effect, '[of] ' + source);
-            } else {
-                this.add('-weather', 'Hail');
-            }
-        },
-        onResidualOrder: 1,
-        onResidual: function() {
-            this.add('-weather', 'Hail', '[upkeep]');
-            if (this.isWeather('hail')) this.eachEvent('Weather');
-        },
-        onWeather: function(target) {
-            this.damage(target.maxhp / 16);
-        },
-        onEnd: function() {
-            this.add('-weather', 'none');
-        }
-    },
-    clearskies: {
-        effectType: 'Weather',
-        duration: 5,
-        durationCallback: function(source, effect) {
-            if (source && source.item === 'regularrock') {
-                return 8;
-            }
-            return 5;
-        },
-        onBasePower: function(basePower, attacker, defender, move) {
-            if (move.id === 'weatherball') {
-                this.debug('Clear Skies weatherball boost');
-                return this.chainModify(3);
-            }
-        },
-        onStart: function(battle, source, effect) {
-            if (effect && effect.effectType === 'Ability') {
-                this.effectData.duration = 0;
-                this.add('-weather', 'ClearSkies', '[from] ability: ' + effect, '[of] ' + source);
-            } else {
-                this.add('-weather', 'ClearSkies');
-            }
-        },
-        onResidualOrder: 1,
-        onResidual: function() {
-            this.add('-weather', 'ClearSkies', '[upkeep]');
-            this.eachEvent('Weather');
-        },
-        onEnd: function() {
-            this.add('-weather', 'none');
-        }
-    },
-    warzone: {
-        effectType: 'Weather',
-        duration: 5,
-        durationCallback: function(source, effect) {
-            if (source && source.item === 'fightingrock') {
-                return 8;
-            }
-            return 5;
-        },
-        onModifyAtkPriority: 10;
-        onModifyAtk: function(atk, pokemon) {
-            if (pokemon.hasType('Fighting') && this.isWeather('warzone')) {
-                return this.modify(atk, 1.2);
-            }
-        },
-        onModifySpAPriority: 10;
-        onModifySpA: function(spa, pokemon) {
-            if (pokemon.hasType('Fighting') && this.isWeather('warzone')) {
-                return this.modify(spa, 1.2);
-            }
-        },
-        onStart: function(battle, source, effect) {
-            if (effect && effect.effectType === 'Ability') {
-                this.effectData.duration = 0;
-                this.add('-weather', 'Warzone', '[from] ability: ' + effect, '[of] ' + source);
-            } else {
-                this.add('-weather', 'Warzone');
-            }
-        },
-        onResidualOrder: 1,
-        onResidual: function() {
-            this.add('-weather', 'Warzone', '[upkeep]');
-            this.eachEvent('Weather');
-        },
-        onEnd: function() {
-            this.add('-weather', 'none');
-        }
-    },
-    deltastream: {
-        effectType: 'Weather',
-        duration: 5,
-        durationCallback: function(source, effect) {
-            if (source && source.item === 'galerock') {
-                return 8;
-            }
-            return 5;
-        },
-        onStart: function(battle, source, effect) {
-            if (effect && effect.effectType === 'Ability') {
-                this.effectData.duration = 0;
-                this.add('-weather', 'DeltaStream', '[from] ability: ' + effect, '[of] ' + source);
-            } else {
-                this.add('-weather', 'DeltaStream');
-            }
-        },
-        onResidualOrder: 1,
-        onResidual: function() {
-            this.add('-weather', 'DeltaStream', '[upkeep]');
-            this.eachEvent('Weather');
-        },
-        onEnd: function() {
-            this.add('-weather', 'none');
-        }
-    },
-    acidrain: {
-        effectType: 'Weather',
-        duration: 5,
-        durationCallback: function(source, effect) {
-            if (source && source.item === 'toxicrock') {
-                return 8;
-            }
-            return 5;
-        },
-        onStart: function(battle, source, effect) {
-            if (effect && effect.effectType === 'Ability') {
-                this.effectData.duration = 0;
-                this.add('-weather', 'AcidRain', '[from] ability: ' + effect, '[of] ' + source);
-            } else {
-                this.add('-weather', 'AcidRain');
-            }
-        },
-        onResidualOrder: 1,
-        onResidual: function() {
-            this.add('-weather', 'AcidRain', '[upkeep]');
-            this.eachEvent('Weather');
-        },
-        onEnd: function() {
-            this.add('-weather', 'none');
-        }
-    },
-    sinisterfog: {
-        effectType: 'Weather',
-        duration: 5,
-        durationCallback: function(source, effect) {
-            if (source && source.item === 'cursedrock') {
-                return 8;
-            }
-            return 5;
-        },
-        onStart: function(battle, source, effect) {
-            if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
-                this.effectData.duration = 0;
-                this.add('-weather', 'SinisterFog', '[from] ability: ' + effect, '[of] ' + source);
-            } else {
-                this.add('-weather', 'SinisterFog');
-            }
-        },
-        onResidualOrder: 1,
-        onResidual: function() {
-            this.add('-weather', 'SinisterFog', '[upkeep]');
-            this.eachEvent('Weather');
-        },
-        onEnd: function() {
-            this.add('-weather', 'none');
-        }
-    },
-	metalmeteor: {
-		effectType: 'Weather',
-		duration: 5,
-		durationCallback: function (source, effect) {
-			if (source && source.item === 'icyrock') {
-				return 8;
-			}
-			return 5;
-		},
-		onStart: function (battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
-				this.effectData.duration = 0;
-				this.add('-weather', 'Metal Meteor', '[from] ability: ' + effect, '[of] ' + source);
-			} else {
-				this.add('-weather', 'Metal Meteor');
+exports.BattleMovedex = {
+	"dracometeor": {
+		num: 434,
+		accuracy: 90,
+		basePower: (this.isWeather('meteorstorm') ? 130 : 140),
+		category: "Special",
+		desc: "Deals damage to one adjacent target and lowers the user's Special Attack by 2 stages.",
+		shortDesc: "Lowers the user's Sp. Atk by 2.",
+		id: "dracometeor",
+		isViable: true,
+		name: "Draco Meteor",
+		pp: 5,
+		priority: 0,
+		self: {
+			if (this.isWeather('meteorstorm')) boosts: {
+				spa: -1
+			} else if (!this.isWeather('meteorstorm')) boosts: {
+				spa: -2
 			}
 		},
-		onResidualOrder: 1,
-		onResidual: function () {
-			this.add('-weather', 'Metal Meteor', '[upkeep]');
-			if (this.isWeather('Metal Meteor')) this.eachEvent('Weather');
-		},
-		onWeather: function (target) {
-			this.damage(target.maxhp / 16);
-		},
-		onEnd: function () {
-			this.add('-weather', 'none');
-		}
+		secondary: false,
+		target: "normal",
+		type: "Dragon"
 	},
-	thunderstorm: {
-		effectType: 'Weather',
-		duration: 5,
-		durationCallback: function (source, effect) {
-			if (source && source.item === 'icyrock') {
-				return 8;
-			}
-			return 5;
+	"gigaimpact": {
+		num: 416,
+		accuracy: 90,
+		basePower: 150,
+		category: "Physical",
+		desc: "Deals damage to one adjacent target. If this move is successful, the user must recharge on the following turn and cannot make a move. Makes contact.",
+		shortDesc: "User cannot move next turn.",
+		id: "gigaimpact",
+		name: "Giga Impact",
+		pp: 5,
+		priority: 0,
+		isContact: true,
+		onModifyMove: function(move) {
+			if (this.isWeather('clearskies')) move.accuracy = 75;
+			else if (this.isWeather('ominousfog')) move.accuracy = 50;
 		},
-		onStart: function (battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
-				this.effectData.duration = 0;
-				this.add('-weather', 'Thunderstorm', '[from] ability: ' + effect, '[of] ' + source);
-			} else {
-				this.add('-weather', 'Thunderstorm');
-			}
+		self: {
+			if (!this.isWeather('clearskies')) volatileStatus: 'mustrecharge'
 		},
-		onResidualOrder: 1,
-		onResidual: function () {
-			this.add('-weather', 'Thunderstorm', '[upkeep]');
-			if (this.isWeather('Thunderstorm')) this.eachEvent('Weather');
-		},
-		onWeather: function (target) {
-			this.damage(target.maxhp / 16);
-		},
-		onEnd: function () {
-			this.add('-weather', 'none');
-		},
-		onModifyAccuracyPriority: 10,
-		onModifyAccuracy: function (accuracy, move) {
-			if (move.id === 'thunder') {
-				return this.modify(accuracy, 1);
-			}
-		}
+		secondary: false,
+		target: "normal",
+		type: "Normal"
 	},
-	pollenstorm: {
-		effectType: 'Weather',
-		duration: 5,
-		durationCallback: function (source, effect) {
-			if (source && source.item === 'icyrock') {
-				return 8;
-			}
-			return 5;
+	"hurricane": {
+		num: 542,
+		accuracy: 70,
+		basePower: 110,
+		category: "Special",
+		desc: "Deals damage to one adjacent or non-adjacent target with a 30% chance to confuse it. This move can hit a target using Bounce, Fly, or Sky Drop. If the weather is Rain Dance, this move cannot miss. If the weather is Sunny Day, this move's accuracy is 50%.",
+		shortDesc: "30% chance to confuse target. Can't miss in rain.",
+		id: "hurricane",
+		isViable: true,
+		name: "Hurricane",
+		pp: 10,
+		priority: 0,
+		onModifyMove: function(move) {
+			if (this.isWeather('raindance') || this.isWeather('deltastream')) move.accuracy = true;
+			else if (this.isWeather('sunnyday') || this.isWeather('sandstorm')) move.accuracy = 50;
 		},
-		onStart: function (battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
-				this.effectData.duration = 0;
-				this.add('-weather', 'Pollen Storm', '[from] ability: ' + effect, '[of] ' + source);
-			} else {
-				this.add('-weather', 'Pollen Storm');
-			}
+		secondary: {
+			chance: 30,
+			volatileStatus: 'confusion'
 		},
-		onResidualOrder: 1,
-		onResidual: function () {
-			this.add('-weather', 'Pollen Storm', '[upkeep]');
-			if (this.isWeather('Pollen Storm')) this.eachEvent('Weather');
-		},
-		onWeather: function (target) {
-			if (target.hasType('Grass')) this.heal(target.maxhp / 16);
-			else this.damage(target.maxhp / 16);
-		},
-		onEnd: function () {
-			this.add('-weather', 'none');
-		},
+		target: "any",
+		type: "Flying"
 	},
-	blackhole: {
-		effectType: 'Weather',
-		duration: 5,
-		durationCallback: function (source, effect) {
-			if (source && source.item === 'icyrock') {
-				return 8;
-			}
-			return 5;
+	"hyperbeam": {
+		num: 63,
+		accuracy: 90,
+		basePower: 150,
+		category: "Special",
+		desc: "Deals damage to one adjacent target. If this move is successful, the user must recharge on the following turn and cannot make a move.",
+		shortDesc: "User cannot move next turn.",
+		id: "hyperbeam",
+		name: "Hyper Beam",
+		pp: 5,
+		priority: 0,
+		onModifyMove: function(move) {
+			if (this.isWeather('clearskies')) move.accuracy = 75;
+			else if (this.isWeather('ominousfog')) move.accuracy = 50;
 		},
-		onStart: function (battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
-				this.effectData.duration = 0;
-				this.add('-weather', 'Black Hole', '[from] ability: ' + effect, '[of] ' + source);
-			} else {
-				this.add('-weather', 'Black Hole');
-			}
+		self: {
+			if (!this.isWeather('clearskies')) volatileStatus: 'mustrecharge'
 		},
-		onResidualOrder: 1,
-		onResidual: function () {
-			this.add('-weather', 'Black Hole', '[upkeep]');
-			if (this.isWeather('Black Hole')) this.eachEvent('Weather');
-		},
-		onWeather: function (target) {
-			this.damage(target.maxhp / 16);
-		},
-		onEnd: function () {
-			this.add('-weather', 'none');
-		},
+		secondary: false,
+		target: "normal",
+		type: "Normal"
 	},
-	pixiefog: {
-		effectType: 'Weather',
-		duration: 5,
-		durationCallback: function (source, effect) {
-			if (source && source.item === 'icyrock') {
-				return 8;
-			}
-			return 5;
+	"thunder": {
+		num: 87,
+		accuracy: 70,
+		basePower: 110,
+		category: "Special",
+		desc: "Deals damage to one adjacent target with a 30% chance to paralyze it. This move can hit a target using Bounce, Fly, or Sky Drop. If the weather is Rain Dance, this move cannot miss. If the weather is Sunny Day, this move's accuracy is 50%.",
+		shortDesc: "30% chance to paralyze target. Can't miss in rain.",
+		id: "thunder",
+		isViable: true,
+		name: "Thunder",
+		pp: 10,
+		priority: 0,
+		onModifyMove: function(move) {
+			if (this.isWeather('raindance') || this.isWeather('thunderstorm')) move.accuracy = true;
+			else if (this.isWeather('sunnyday') || this.isWeather('sandstorm')) move.accuracy = 50;
 		},
-		onStart: function (battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
-				this.effectData.duration = 0;
-				this.add('-weather', 'Pixie Fog', '[from] ability: ' + effect, '[of] ' + source);
-			} else {
-				this.add('-weather', 'Pixie Fog');
-			}
+		secondary: {
+			chance: 30,
+			status: 'par'
 		},
-		onResidualOrder: 1,
-		onResidual: function () {
-			this.add('-weather', 'Pixie Fog', '[upkeep]');
-			if (this.isWeather('Pixie Fog')) this.eachEvent('Weather');
-		},
-		onWeather: function (target) {
-			if (target.hasType('Psychic')) return;
-			this.damage(target.maxhp / 16);
-		},
-		onEnd: function () {
-			this.add('-weather', 'none');
-		},
-	},
+		target: "normal",
+		type: "Electric"
+	}
 };
