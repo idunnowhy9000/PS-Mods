@@ -298,6 +298,12 @@ exports.BattleStatuses = {
 		},
 		onEnd: function() {
 			this.add('-weather', 'none');
+		},
+		onModifyMove: function (move) {
+			if (move.id === 'phantomforce' || move.id === 'shadowforce') {
+				move.accuracy = true;
+				move.alwaysHit = true;
+			}
 		}
 	},
 	metalmeteor: {
