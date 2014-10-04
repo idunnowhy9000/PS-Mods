@@ -386,6 +386,12 @@ exports.BattleStatuses = {
 		},
 		onEnd: function() {
 			this.add('-weather', 'none');
+		},
+		onModifyMove: function (move) {
+			if (move.isPowder === true) {
+				move.accuracy = true;
+				move.alwaysHit = true;
+			}
 		}
 	},
 	blackhole: {
