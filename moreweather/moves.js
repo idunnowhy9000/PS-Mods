@@ -1,3 +1,22 @@
+function createWeatherSetter(id, name, weather, type){
+	return {
+		num: -100,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "For 5 turns, the weather becomes "+weather+". Lasts for 8 turns if the user is holding Damp Rock. Fails if the current weather is "+weather+".",
+		shortDesc: "For 5 turns, "+weather+" powers "+type+" moves.",
+		id: id,
+		isViable: true,
+		name: name,
+		pp: 5,
+		priority: 0,
+		weather: weather,
+		secondary: false,
+		target: "all",
+		type: type
+	},
+}
 exports.BattleMovedex = {
 	"dracometeor": {
 		num: 434,
@@ -150,5 +169,18 @@ exports.BattleMovedex = {
 		secondary: false,
 		target: "normal",
 		type: "Normal"
-	}
+	},
+	clearsky: createWeatherSetter('clearsky','Clear Sky','ClearSkies','Normal'),
+	warzone: createWeatherSetter('warzone','Warzone','Warzone','Fighting'),
+	strongwinds: createWeatherSetter('strongwinds','Strong Winds','DeltaStream','Flying'),
+	aciddance: createWeatherSetter('aciddance','Acid Dance','AcidRain','Poison'),
+	plague: createWeatherSetter('plague','Plague','Plague','Bug'),
+	sinisterfog: createWeatherSetter('sinisterfog','Sinister Fog','SinisterFog','Ghost'),
+	metalmeteor: createWeatherSetter('metalmeteor','Metal Meteor','MetalMeteor','Steel'),
+	pollenstorm: createWeatherSetter('pollenstorm','Pollen Storm','PollenStorm','Grass'),
+	thunderstorm: createWeatherSetter('thunderstorm','Thunderstorm','Thunderstorm','Electric'),
+	mindstorm: createWeatherSetter('mindstorm','Mindstorm','Mindstorm','Psychic'),
+	meteorstorm: createWeatherSetter('meteorstorm','Meteor Storm','DragonMeteor','Dragon'),
+	blackhole: createWeatherSetter('blackhole','Black Hole','BlackHole','Dark'),
+	pixiedust: createWeatherSetter('pixiedust','Pixie Dust','PixieFog','Fairy'),
 };

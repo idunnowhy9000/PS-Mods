@@ -428,11 +428,41 @@ exports.BattleStatuses = {
 			if (this.isWeather('pixiefog')) this.eachEvent('Weather');
 		},
 		onWeather: function (target) {
-			if (target.hasType('Psychic')) return;
+			//if (target.hasType('Psychic')) return;
 			this.damage(target.maxhp / 16);
 		},
 		onEnd: function() {
 			this.add('-weather', 'none');
 		}
-	}
+	},
+	dragonmeteor: {
+		effectType: 'Weather',
+		duration: 5,
+		durationCallback: function(source, effect) {
+			if (source && source.item === 'dracorock') {
+				return 8;
+			}
+			return 5;
+		},
+		onStart: function(battle, source, effect) {
+			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
+				this.effectData.duration = 0;
+				this.add('-weather', 'DragonMeteor', '[from] ability: ' + effect, '[of] ' + source);
+			} else {
+				this.add('-weather', 'DragonMeteor');
+			}
+		},
+		onResidualOrder: 1,
+		onResidual: function() {
+			this.add('-weather', 'DragonMeteor', '[upkeep]');
+			if (this.isWeather('DragonMeteor')) this.eachEvent('Weather');
+		},
+		onWeather: function (target) {
+			//if (target.hasType('Psychic')) return;
+			this.damage(target.maxhp / 16);
+		},
+		onEnd: function() {
+			this.add('-weather', 'none');
+		}
+	},
 };
