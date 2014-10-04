@@ -68,5 +68,16 @@ exports.BattleAbilities = {
 		name: "Forecast",
 		rating: 4,
 		num: 59
-	}
+	},
+	"overcoat": {
+		desc: "In battle, the Pokemon does not take damage from weather conditions like Sandstorm or Hail. It is also immune to powder moves.",
+		shortDesc: "This Pokemon is immune to residual weather damage, and powder moves.",
+		onImmunity: function (type, pokemon) {
+			if (type === 'sandstorm' || type === 'hail' || (type === 'powder' && !this.effectiveWeather() === 'pollenstorm')) return false;
+		},
+		id: "overcoat",
+		name: "Overcoat",
+		rating: 2,
+		num: 142
+	},
 };

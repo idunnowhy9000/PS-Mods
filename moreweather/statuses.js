@@ -270,6 +270,9 @@ exports.BattleStatuses = {
 			this.add('-weather', 'AcidRain', '[upkeep]');
 			this.eachEvent('Weather');
 		},
+		onWeather: function(target) {
+			this.damage(target.maxhp / 16);
+		},
 		onEnd: function() {
 			this.add('-weather', 'none');
 		}
@@ -511,10 +514,25 @@ exports.BattleStatuses = {
 			if (this.isWeather('plague')) this.eachEvent('Weather');
 		},
 		onWeather: function (target) {
-			this.trySetStatus('plaguedamage');
+			//this.trySetStatus('plaguedamage');
 		},
 		onEnd: function() {
 			this.add('-weather', 'none');
+		},
+		onBasePower: function (basePower, attacker, defender, move) {
+			if (move.type === 'Poison' || move.type === 'Bug'){
+				return this.chainModify(1.33);
+			}
+		},
+		onModifyMove: function (move) {
+			if (move.category !== "Status") {
+				if (!move.secondaries) return;
+				for (var i = 0; i < move.secondaries.length; i++) {
+					if (move.secondaries[i].status === 'psn') {
+						move.secondaries[i].chance *= 2;
+					}
+				}
+			}
 		}
 	},
 
