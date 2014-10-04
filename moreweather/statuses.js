@@ -468,7 +468,7 @@ exports.BattleStatuses = {
 		effectType: 'Weather',
 		duration: 5,
 		durationCallback: function(source, effect) {
-			if (source && source.item === 'dracorock') {
+			if (source && source.item === 'stickyrock') {
 				return 8;
 			}
 			return 5;
@@ -493,7 +493,9 @@ exports.BattleStatuses = {
 			this.add('-weather', 'none');
 		}
 	},
+
 	// other
+
 	plaguedamage: {
 		effectType: 'Status',
 		onResidualOrder: 1,
