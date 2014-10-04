@@ -184,13 +184,13 @@ exports.BattleStatuses = {
 		onModifyAtkPriority: 10;
 		onModifyAtk: function(atk, pokemon) {
 			if (pokemon.hasType('Fighting') && this.isWeather('warzone')) {
-				return this.modify(atk, 1.2);
+				return this.modify(atk, 1.3);
 			}
 		},
 		onModifySpAPriority: 10;
 		onModifySpA: function(spa, pokemon) {
 			if (pokemon.hasType('Fighting') && this.isWeather('warzone')) {
-				return this.modify(spa, 1.2);
+				return this.modify(spa, 1.3);
 			}
 		},
 		onStart: function(battle, source, effect) {
@@ -218,6 +218,18 @@ exports.BattleStatuses = {
 				return 8;
 			}
 			return 5;
+		},
+		onModifyDefPriority: 10;
+		onModifyDef: function(def, pokemon) {
+			if (pokemon.hasType('Flying') && this.isWeather('deltastream')) {
+				return this.modify(def, 1.3);
+			}
+		},
+		onModifySpDPriority: 10;
+		onModifySpD: function(spd, pokemon) {
+			if (pokemon.hasType('Flying') && this.isWeather('deltastream')) {
+				return this.modify(spd, 1.3);
+			}
 		},
 		onStart: function(battle, source, effect) {
 			if (effect && effect.effectType === 'Ability') {
