@@ -48,6 +48,12 @@ exports.BattleAbilities = {
 			case 'dragonmeteor':
 				if (pokemon.template.speciesid !== 'castformdraco') forme = 'Castform-Draco';
 				break;
+			case 'plague':
+				if (pokemon.template.speciesid !== 'castformpest') forme = 'Castform-Pest';
+				break;
+			case 'mindstorm':
+				if (pokemon.template.speciesid !== 'castformpsycho') forme = 'Castform-Psycho';
+				break;
 			default:
 				if (pokemon.template.speciesid !== 'castform') forme = 'Castform';
 				break;
