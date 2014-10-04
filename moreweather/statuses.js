@@ -487,14 +487,19 @@ exports.BattleStatuses = {
 			if (this.isWeather('plague')) this.eachEvent('Weather');
 		},
 		onWeather: function (target) {
-			if (!target.status) this.addVolatile('plaguedamage');
+			this.trySetStatus('plaguedamage');
 		},
 		onEnd: function() {
 			this.add('-weather', 'none');
 		}
 	},
-	// volatiles
+	// other
 	plaguedamage: {
-		
+		effectType: 'Status',
+		onResidualOrder: 1,
+		onResidual: function(pokemon) {
+			if (pokemon.hasType('Bug') || pokemon.hasType('Poison')) return;
+			this.damage(pokemon.maxhp / 16);
+		}
 	}
 };
