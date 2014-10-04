@@ -152,7 +152,7 @@ exports.BattleStatuses = {
 		onBasePower: function(basePower, attacker, defender, move) {
 			if (move.id === 'weatherball') {
 				this.debug('Clear Skies weatherball boost');
-				return this.chainModify(3);
+				return this.chainModify(1.5);
 			}
 		},
 		onStart: function(battle, source, effect) {
