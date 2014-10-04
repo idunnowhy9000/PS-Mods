@@ -23,7 +23,7 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Dragon"
 	},
-"gigaimpact": {
+	"gigaimpact": {
 		num: 416,
 		accuracy: 90,
 		basePower: 150,
@@ -46,7 +46,7 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Normal"
 	},
-"hurricane": {
+	"hurricane": {
 		num: 542,
 		accuracy: 70,
 		basePower: 110,
@@ -69,7 +69,7 @@ exports.BattleMovedex = {
 		target: "any",
 		type: "Flying"
 	},
-"hyperbeam": {
+	"hyperbeam": {
 		num: 63,
 		accuracy: 90,
 		basePower: 150,
@@ -91,7 +91,7 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Normal"
 	},
-"thunder": {
+	"thunder": {
 		num: 87,
 		accuracy: 70,
 		basePower: 110,
@@ -113,5 +113,42 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Electric"
+	},
+	"weatherball": {
+		num: 311,
+		accuracy: 100,
+		basePower: 50,
+		basePowerCallback: function () {
+			if (this.weather) return 100;
+			return 50;
+		},
+		category: "Special",
+		desc: "Deals damage to one adjacent target. Power doubles during weather effects and this move's type changes to match; Ice-type during Hail, Water-type during Rain Dance, Rock-type during Sandstorm, and Fire-type during Sunny Day.",
+		shortDesc: "Power doubles and type varies in each weather.",
+		id: "weatherball",
+		isViable: true,
+		name: "Weather Ball",
+		pp: 10,
+		priority: 0,
+		isBullet: true,
+		onModifyMove: function (move) {
+			switch (this.effectiveWeather()) {
+			case 'sunnyday':
+				move.type = 'Fire';
+				break;
+			case 'raindance':
+				move.type = 'Water';
+				break;
+			case 'sandstorm':
+				move.type = 'Rock';
+				break;
+			case 'hail':
+				move.type = 'Ice';
+				break;
+			}
+		},
+		secondary: false,
+		target: "normal",
+		type: "Normal"
 	}
 };
