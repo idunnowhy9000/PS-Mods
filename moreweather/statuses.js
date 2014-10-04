@@ -455,14 +455,13 @@ exports.BattleStatuses = {
 		onResidualOrder: 1,
 		onResidual: function() {
 			this.add('-weather', 'DragonMeteor', '[upkeep]');
-			if (this.isWeather('DragonMeteor')) this.eachEvent('Weather');
+			if (this.isWeather('dragonmeteor')) this.eachEvent('Weather');
 		},
 		onWeather: function (target) {
-			//if (target.hasType('Psychic')) return;
 			this.damage(target.maxhp / 16);
 		},
 		onEnd: function() {
 			this.add('-weather', 'none');
 		}
-	},
+	}
 };
