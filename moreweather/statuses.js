@@ -292,7 +292,7 @@ exports.BattleStatuses = {
 		effectType: 'Weather',
 		duration: 5,
 		durationCallback: function(source, effect) {
-			if (source && source.item === 'icyrock') {
+			if (source && source.item === 'dracorock') {
 				return 8;
 			}
 			return 5;
@@ -300,15 +300,15 @@ exports.BattleStatuses = {
 		onStart: function(battle, source, effect) {
 			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
 				this.effectData.duration = 0;
-				this.add('-weather', 'Metal Meteor', '[from] ability: ' + effect, '[of] ' + source);
+				this.add('-weather', 'MetalMeteor', '[from] ability: ' + effect, '[of] ' + source);
 			} else {
-				this.add('-weather', 'Metal Meteor');
+				this.add('-weather', 'MetalMeteor');
 			}
 		},
 		onResidualOrder: 1,
 		onResidual: function() {
-			this.add('-weather', 'Metal Meteor', '[upkeep]');
-			if (this.isWeather('Metal Meteor')) this.eachEvent('Weather');
+			this.add('-weather', 'MetalMeteor', '[upkeep]');
+			if (this.isWeather('metalmeteor')) this.eachEvent('Weather');
 		},
 		onWeather: function(target) {
 			this.damage(target.maxhp / 16);
@@ -321,7 +321,7 @@ exports.BattleStatuses = {
 		effectType: 'Weather',
 		duration: 5,
 		durationCallback: function(source, effect) {
-			if (source && source.item === 'icyrock') {
+			if (source && source.item === 'voltrock') {
 				return 8;
 			}
 			return 5;
@@ -337,26 +337,20 @@ exports.BattleStatuses = {
 		onResidualOrder: 1,
 		onResidual: function() {
 			this.add('-weather', 'Thunderstorm', '[upkeep]');
-			if (this.isWeather('Thunderstorm')) this.eachEvent('Weather');
+			if (this.isWeather('thunderstorm')) this.eachEvent('Weather');
 		},
 		onWeather: function(target) {
 			this.damage(target.maxhp / 16);
 		},
 		onEnd: function() {
 			this.add('-weather', 'none');
-		},
-		onModifyAccuracyPriority: 10,
-		onModifyAccuracy: function(accuracy, move) {
-			if (move.id === 'thunder') {
-				return this.modify(accuracy, 1);
-			}
 		}
 	},
 	pollenstorm: {
 		effectType: 'Weather',
 		duration: 5,
 		durationCallback: function(source, effect) {
-			if (source && source.item === 'icyrock') {
+			if (source && source.item === 'mossyrock') {
 				return 8;
 			}
 			return 5;
@@ -364,15 +358,15 @@ exports.BattleStatuses = {
 		onStart: function(battle, source, effect) {
 			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
 				this.effectData.duration = 0;
-				this.add('-weather', 'Pollen Storm', '[from] ability: ' + effect, '[of] ' + source);
+				this.add('-weather', 'PollenStorm', '[from] ability: ' + effect, '[of] ' + source);
 			} else {
-				this.add('-weather', 'Pollen Storm');
+				this.add('-weather', 'PollenStorm');
 			}
 		},
 		onResidualOrder: 1,
 		onResidual: function() {
-			this.add('-weather', 'Pollen Storm', '[upkeep]');
-			if (this.isWeather('Pollen Storm')) this.eachEvent('Weather');
+			this.add('-weather', 'PollenStorm', '[upkeep]');
+			if (this.isWeather('pollenstorm')) this.eachEvent('Weather');
 		},
 		onWeather: function(target) {
 			if (target.hasType('Grass')) this.heal(target.maxhp / 16);
@@ -380,13 +374,13 @@ exports.BattleStatuses = {
 		},
 		onEnd: function() {
 			this.add('-weather', 'none');
-		},
+		}
 	},
 	blackhole: {
 		effectType: 'Weather',
 		duration: 5,
 		durationCallback: function(source, effect) {
-			if (source && source.item === 'icyrock') {
+			if (source && source.item === 'darkrock') {
 				return 8;
 			}
 			return 5;
@@ -394,28 +388,28 @@ exports.BattleStatuses = {
 		onStart: function(battle, source, effect) {
 			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
 				this.effectData.duration = 0;
-				this.add('-weather', 'Black Hole', '[from] ability: ' + effect, '[of] ' + source);
+				this.add('-weather', 'BlackHole', '[from] ability: ' + effect, '[of] ' + source);
 			} else {
-				this.add('-weather', 'Black Hole');
+				this.add('-weather', 'BlackHole');
 			}
 		},
 		onResidualOrder: 1,
 		onResidual: function() {
-			this.add('-weather', 'Black Hole', '[upkeep]');
-			if (this.isWeather('Black Hole')) this.eachEvent('Weather');
+			this.add('-weather', 'BlackHole', '[upkeep]');
+			if (this.isWeather('blackhole')) this.eachEvent('Weather');
 		},
 		onWeather: function(target) {
 			this.damage(target.maxhp / 16);
 		},
 		onEnd: function() {
 			this.add('-weather', 'none');
-		},
+		}
 	},
 	pixiefog: {
 		effectType: 'Weather',
 		duration: 5,
 		durationCallback: function(source, effect) {
-			if (source && source.item === 'icyrock') {
+			if (source && source.item === 'pixierock') {
 				return 8;
 			}
 			return 5;
@@ -423,15 +417,15 @@ exports.BattleStatuses = {
 		onStart: function(battle, source, effect) {
 			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
 				this.effectData.duration = 0;
-				this.add('-weather', 'Pixie Fog', '[from] ability: ' + effect, '[of] ' + source);
+				this.add('-weather', 'PixieFog', '[from] ability: ' + effect, '[of] ' + source);
 			} else {
-				this.add('-weather', 'Pixie Fog');
+				this.add('-weather', 'PixieFog');
 			}
 		},
 		onResidualOrder: 1,
 		onResidual: function() {
-			this.add('-weather', 'Pixie Fog', '[upkeep]');
-			if (this.isWeather('Pixie Fog')) this.eachEvent('Weather');
+			this.add('-weather', 'PixieFog', '[upkeep]');
+			if (this.isWeather('pixiefog')) this.eachEvent('Weather');
 		},
 		onWeather: function(target) {
 			if (target.hasType('Psychic')) return;
@@ -439,6 +433,6 @@ exports.BattleStatuses = {
 		},
 		onEnd: function() {
 			this.add('-weather', 'none');
-		},
-	},
+		}
+	}
 };
