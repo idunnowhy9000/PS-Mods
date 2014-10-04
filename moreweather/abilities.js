@@ -22,7 +22,7 @@ exports.BattleAbilities = {
 				if (pokemon.template.speciesid !== 'castformgladiator') forme = 'Castform-Gladiator';
 				break;
 			case 'deltastream':
-				if (pokemon.template.speciesid !== 'castformhover') forme = 'Castform-Hover';
+				if (pokemon.template.speciesid !== 'castformaero') forme = 'Castform-Aero';
 				break;
 			case 'acidrain':
 				if (pokemon.template.speciesid !== 'castformfilthy') forme = 'Castform-Filthy';
