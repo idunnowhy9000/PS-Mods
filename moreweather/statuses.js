@@ -463,5 +463,38 @@ exports.BattleStatuses = {
 		onEnd: function() {
 			this.add('-weather', 'none');
 		}
+	},
+	plague: {
+		effectType: 'Weather',
+		duration: 5,
+		durationCallback: function(source, effect) {
+			if (source && source.item === 'dracorock') {
+				return 8;
+			}
+			return 5;
+		},
+		onStart: function(battle, source, effect) {
+			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
+				this.effectData.duration = 0;
+				this.add('-weather', 'Plague', '[from] ability: ' + effect, '[of] ' + source);
+			} else {
+				this.add('-weather', 'Plague');
+			}
+		},
+		onResidualOrder: 1,
+		onResidual: function() {
+			this.add('-weather', 'Plague', '[upkeep]');
+			if (this.isWeather('plague')) this.eachEvent('Weather');
+		},
+		onWeather: function (target) {
+			if (!target.status) this.addVolatile('plaguedamage');
+		},
+		onEnd: function() {
+			this.add('-weather', 'none');
+		}
+	},
+	// volatiles
+	plaguedamage: {
+		
 	}
 };
