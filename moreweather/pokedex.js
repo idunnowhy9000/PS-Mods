@@ -16,5 +16,5 @@ castformelectric:{num:351,species:"Castform-Electric",baseSpecies:"Castform",for
 castformpsychic:{num:351,species:"Castform-Psychic",baseSpecies:"Castform",forme:"Psychic",formeLetter:"P",types:["Psychic"],baseStats:{hp:100,atk:100,def:100,spa:100,spd:100,spe:100},abilities:{0:"Forecast"},heightm:0.3,weightkg:0.8,color:"White",eggGroups:["Fairy","Amorphous"]},
 castformdragon:{num:351,species:"Castform-Dragon",baseSpecies:"Castform",forme:"Dragon",formeLetter:"D",types:["Dragon"],baseStats:{hp:100,atk:100,def:100,spa:100,spd:100,spe:100},abilities:{0:"Forecast"},heightm:0.3,weightkg:0.8,color:"White",eggGroups:["Fairy","Amorphous"]},
 castformdark:{num:351,species:"Castform-Dark",baseSpecies:"Castform",forme:"Dark",formeLetter:"D",types:["Dark"],baseStats:{hp:100,atk:100,def:100,spa:100,spd:100,spe:100},abilities:{0:"Forecast"},heightm:0.3,weightkg:0.8,color:"White",eggGroups:["Fairy","Amorphous"]},
-castformfairy:{num:351,species:"Castform-Fairy",baseSpecies:"Castform",forme:"Fairy",formeLetter:"F",types:["Fairy"],baseStats:{hp:100,atk:100,def:100,spa:100,spd:100,spe:100},abilities:{0:"Forecast"},heightm:0.3,weightkg:0.8,color:"White",eggGroups:["Fairy","Amorphous"]},
-}
+castformfairy:{num:351,species:"Castform-Fairy",baseSpecies:"Castform",forme:"Fairy",formeLetter:"F",types:["Fairy"],baseStats:{hp:100,atk:100,def:100,spa:100,spd:100,spe:100},abilities:{0:"Forecast"},heightm:0.3,weightkg:0.8,color:"White",eggGroups:["Fairy","Amorphous"]}
+};
