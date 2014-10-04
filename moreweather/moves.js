@@ -11,11 +11,11 @@ exports.BattleMovedex = {
 		name: "Draco Meteor",
 		pp: 5,
 		priority: 0,
+		onBoost: function (boost) {
+			if (this.isWeather('meteorstorm')) boost = {spa:-1}
+		},
 		self: {
-			if (this.isWeather('meteorstorm')) boosts: {
-				spa: -1
-			}
-			else if (!this.isWeather('meteorstorm')) boosts: {
+			boosts: {
 				spa: -2
 			}
 		},
@@ -40,7 +40,7 @@ exports.BattleMovedex = {
 			else if (this.isWeather('ominousfog')) move.accuracy = 50;
 		},
 		self: {
-			if (!this.isWeather('clearskies')) volatileStatus: 'mustrecharge'
+			volatileStatus: 'mustrecharge'
 		},
 		secondary: false,
 		target: "normal",
@@ -85,7 +85,7 @@ exports.BattleMovedex = {
 			else if (this.isWeather('ominousfog')) move.accuracy = 50;
 		},
 		self: {
-			if (!this.isWeather('clearskies')) volatileStatus: 'mustrecharge'
+			volatileStatus: 'mustrecharge'
 		},
 		secondary: false,
 		target: "normal",
