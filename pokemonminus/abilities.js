@@ -14,6 +14,7 @@ exports.BattleAbilities = {
 	},
 	"unnerve": {
 		inherit: true,
+		onFoeEatItem: true,
 		desc: "When this Pokemon enters the field, the Sp. Attack stat of each of its opponents lowers by one stage.",
 		shortDesc: "On switch-in, this Pokemon lowers adjacent foes' Sp. Attack by 1.",
 		onStart: function (pokemon) {
@@ -22,9 +23,11 @@ exports.BattleAbilities = {
 				if (!foeactive[i] || !this.isAdjacent(foeactive[i], pokemon)) continue;
 				if (foeactive[i].volatiles['substitute']) {
 					// does it give a message?
+					//this.add('-activate', foeactive[i], 'Substitute', 'ability: Unnerve', '[of] ' + pokemon);
 					this.add('-activate', foeactive[i], 'Substitute', 'ability: Unnerve', '[of] ' + pokemon);
 				} else {
-					this.add('-ability', pokemon, 'Unnerve', '[of] ' + foeactive[i]);
+					//this.add('-ability', pokemon, 'Unnerve', '[of] ' + foeactive[i]);
+					this.add('-message', foeactive[i].name + '\'s Sp. Attack fell!');
 					this.boost({spa: -1}, foeactive[i], pokemon);
 				}
 			}
