@@ -1,3 +1,16 @@
+function createWeatherAbility(id, name, weather){
+	return {
+		desc: "When this Pokemon enters the battlefield, the weather becomes "+weather+" (for 5 turns normally, or 8 turns while holding Damp Rock).",
+		shortDesc: "On switch-in, the weather becomes "+weather+".",
+		onStart: function (source) {
+			this.setWeather(weather);
+		},
+		id: id,
+		name: name,
+		rating: 5,
+		num: 2
+	},
+}
 exports.BattleAbilities = {
 	"forecast": {
 		desc: "This Pokemon's type changes according to the current weather conditions: it becomes Fire-type during Sunny Day, Water-type during Rain Dance, Ice-type during Hail and so on with other weathers.",
@@ -81,4 +94,17 @@ exports.BattleAbilities = {
 		rating: 2,
 		num: 142
 	},
+	"cloudy": createWeatherAbility('cloudy','Cloudy','clearskies'),
+	"gladiatoruprise": createWeatherAbility('gladiatoruprise','Gladiator Uprise','warzone'),
+	"deltastream": createWeatherAbility('deltastream','Delta Stream','deltastream'),
+	"acidwarning": createWeatherAbility('acidwarning','Acid Warning','acidrain'),
+	"fluspread": createWeatherAbility('fluspread','Flu Spread','plague'),
+	"callofthedeath": createWeatherAbility('callofthedeath','Call of the Death','sinisterfog'),
+	"meteorshower": createWeatherAbility('meteorshower','Meteor Shower','metalmeteor'),
+	"pollenwarning": createWeatherAbility('pollenstorm','Pollen Warning','pollenstorm'),
+	"thunderstorm": createWeatherAbility('thunderwarning','Thunder Warning','thunderstorm'),
+	"psychosummoner": createWeatherAbility('psychosummoner','Psycho Summoner','mindstorm'),
+	"stormoflegends": createWeatherAbility('stormoflegends','Storm of Legends','meteorshower'),
+	"voidhole": createWeatherAbility('voidhole','Void Hole','blackhole'),
+	"pixiefog": createWeatherAbility('pixiefog','Pixie Fog','pixiefog'),
 };
