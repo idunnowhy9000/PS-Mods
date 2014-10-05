@@ -313,7 +313,7 @@ exports.BattleStatuses = {
 		effectType: 'Weather',
 		duration: 5,
 		durationCallback: function(source, effect) {
-			if (source && source.item === 'dracorock') {
+			if (source && source.item === 'steelrock') {
 				return 8;
 			}
 			return 5;
