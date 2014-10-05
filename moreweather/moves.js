@@ -170,6 +170,7 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Normal"
 	},
+	// move setters
 	clearsky: createWeatherSetter('clearsky','Clear Sky','ClearSkies','Normal'),
 	warzone: createWeatherSetter('warzone','Warzone','Warzone','Fighting'),
 	strongwinds: createWeatherSetter('strongwinds','Strong Winds','DeltaStream','Flying'),
