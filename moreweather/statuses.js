@@ -19,7 +19,7 @@ exports.BattleStatuses = {
 			}
 		},
 		onStart: function(battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
+			if (effect && effect.effectType === 'Ability') {
 				this.effectData.duration = 0;
 				this.add('-weather', 'RainDance', '[from] ability: ' + effect, '[of] ' + source);
 			} else {
@@ -55,7 +55,7 @@ exports.BattleStatuses = {
 			}
 		},
 		onStart: function(battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
+			if (effect && effect.effectType === 'Ability') {
 				this.effectData.duration = 0;
 				this.add('-weather', 'SunnyDay', '[from] ability: ' + effect, '[of] ' + source);
 			} else {
@@ -92,7 +92,7 @@ exports.BattleStatuses = {
 			}
 		},
 		onStart: function(battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
+			if (effect && effect.effectType === 'Ability') {
 				this.effectData.duration = 0;
 				this.add('-weather', 'Sandstorm', '[from] ability: ' + effect, '[of] ' + source);
 			} else {
@@ -121,7 +121,7 @@ exports.BattleStatuses = {
 			return 5;
 		},
 		onStart: function(battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
+			if (effect && effect.effectType === 'Ability') {
 				this.effectData.duration = 0;
 				this.add('-weather', 'Hail', '[from] ability: ' + effect, '[of] ' + source);
 			} else {
@@ -287,7 +287,7 @@ exports.BattleStatuses = {
 			return 5;
 		},
 		onStart: function(battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
+			if (effect && effect.effectType === 'Ability') {
 				this.effectData.duration = 0;
 				this.add('-weather', 'SinisterFog', '[from] ability: ' + effect, '[of] ' + source);
 			} else {
@@ -316,7 +316,7 @@ exports.BattleStatuses = {
 			return 5;
 		},
 		onStart: function(battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
+			if (effect && effect.effectType === 'Ability') {
 				this.effectData.duration = 0;
 				this.add('-weather', 'MetalMeteor', '[from] ability: ' + effect, '[of] ' + source);
 			} else {
@@ -345,7 +345,7 @@ exports.BattleStatuses = {
 			return 5;
 		},
 		onStart: function(battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
+			if (effect && effect.effectType === 'Ability') {
 				this.effectData.duration = 0;
 				this.add('-weather', 'Thunderstorm', '[from] ability: ' + effect, '[of] ' + source);
 			} else {
@@ -374,7 +374,7 @@ exports.BattleStatuses = {
 			return 5;
 		},
 		onStart: function(battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
+			if (effect && effect.effectType === 'Ability') {
 				this.effectData.duration = 0;
 				this.add('-weather', 'PollenStorm', '[from] ability: ' + effect, '[of] ' + source);
 			} else {
@@ -410,7 +410,7 @@ exports.BattleStatuses = {
 			return 5;
 		},
 		onStart: function(battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
+			if (effect && effect.effectType === 'Ability') {
 				this.effectData.duration = 0;
 				this.add('-weather', 'BlackHole', '[from] ability: ' + effect, '[of] ' + source);
 			} else {
@@ -439,7 +439,7 @@ exports.BattleStatuses = {
 			return 5;
 		},
 		onStart: function(battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
+			if (effect && effect.effectType === 'Ability') {
 				this.effectData.duration = 0;
 				this.add('-weather', 'PixieFog', '[from] ability: ' + effect, '[of] ' + source);
 			} else {
@@ -469,7 +469,7 @@ exports.BattleStatuses = {
 			return 5;
 		},
 		onStart: function(battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
+			if (effect && effect.effectType === 'Ability') {
 				this.effectData.duration = 0;
 				this.add('-weather', 'DragonMeteor', '[from] ability: ' + effect, '[of] ' + source);
 			} else {
@@ -498,7 +498,7 @@ exports.BattleStatuses = {
 			return 5;
 		},
 		onStart: function(battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
+			if (effect && effect.effectType === 'Ability') {
 				this.effectData.duration = 0;
 				this.add('-weather', 'Plague', '[from] ability: ' + effect, '[of] ' + source);
 			} else {
