@@ -170,6 +170,41 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Normal"
 	},
+	"defog": {
+		num: 432,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Lowers one adjacent target's evasion by 1 stage. Whether or not the target's evasion was affected, the effects of Safeguard, Mist, Spikes, Toxic Spikes, Stealth Rock, and Sticky Web end for the user's and the target's sides. In addition, the effects of Reflect and Light Screen will end for the target's side. Pokemon protected by Magic Coat or the Ability Magic Bounce are unaffected and instead use this move themselves. Ignores a target's Substitute, although a Substitute will still block the evasion lowering.",
+		shortDesc: "Removes hazards from field. Lowers foe's evasion.",
+		id: "defog",
+		name: "Defog",
+		pp: 15,
+		priority: 0,
+		isBounceable: true,
+		onHit: function (target, source) {
+			if (!target.volatiles['substitute']) this.boost({evasion:-1});
+			var sideConditions = {reflect:1, lightscreen:1, safeguard:1, mist:1, spikes:1, toxicspikes:1, stealthrock:1, stickyweb:1};
+			for (var i in sideConditions) {
+				if (target.side.removeSideCondition(i)) {
+					this.add('-sideend', target.side, this.getEffect(i).name, '[from] move: Defog', '[of] ' + target);
+				}
+			}
+			for (var i in sideConditions) {
+				if (i === 'reflect' || i === 'lightscreen') continue;
+				if (source.side.removeSideCondition(i)) {
+					this.add('-sideend', source.side, this.getEffect(i).name, '[from] move: Defog', '[of] ' + source);
+				}
+			}
+			if (this.isWeather('sinisterfog') || this.isWeather('pixiefog')) {
+				// todo: insert clearing sinister fog and pixie fog here
+				// idk how to do this k
+			}
+		},
+		secondary: false,
+		target: "normal",
+		type: "Flying"
+	},
 	// move setters
 	clearsky: createWeatherSetter('clearsky','Clear Sky','ClearSkies','Normal'),
 	warzone: createWeatherSetter('warzone','Warzone','Warzone','Fighting'),
