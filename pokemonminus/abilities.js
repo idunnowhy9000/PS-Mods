@@ -32,5 +32,24 @@ exports.BattleAbilities = {
 				}
 			}
 		},
-	}
+	},
+	"multitype": {
+		desc: "If this Pokemon is Arceus, its type and sprite change to match its held Plate. Either way, this Pokemon is holding a Plate, the Plate cannot be taken (such as by Trick or Thief). This ability cannot be Skill Swapped, Role Played or Traced.",
+		shortDesc: "If this Pokemon is Arceus, its type changes to match its held Plate.",
+		// Multitype's type-changing itself is implemented in statuses.js
+		onTakeItem: function (item) {
+			if (item.onPlate) return false;
+		},
+		onResidualOrder: 5,
+		onResidualSubOrder: 2,
+		onResidual: function (pokemon) {
+			if (this.getItem(pokemon.item).onPlate) {
+				this.heal(pokemon.maxhp / 16);
+			}
+		},
+		id: "multitype",
+		name: "Multitype",
+		rating: 4,
+		num: 121
+	},
 }
