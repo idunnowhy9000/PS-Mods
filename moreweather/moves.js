@@ -197,8 +197,7 @@ exports.BattleMovedex = {
 				}
 			}
 			if (this.isWeather('sinisterfog') || this.isWeather('pixiefog')) {
-				// todo: insert clearing sinister fog and pixie fog here
-				// idk how to do this k
+				this.setWeather('');
 			}
 		},
 		secondary: false,
