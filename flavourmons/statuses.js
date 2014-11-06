@@ -1,7 +1,7 @@
 exports.BattleStatuses = {
 	victini: {
-		onSwitchIn: function (target) {
-			target.faint();
+		onModifyMove: function (move, user, target) {
+			move.ohko = true;
 		}
 	},
 	venusaur: {
@@ -16,7 +16,6 @@ exports.BattleStatuses = {
 		effect: {
 			noCopy: true, // doesn't get copied by Baton Pass
 			onStart: function (pokemon, source, effect) {
-
 				if (effect.id === 'cutecharm') {
 					this.add('-start', pokemon, 'Attract', '[from] ability: Cute Charm', '[of] ' + source);
 				} else if (effect.id === 'destinyknot') {
@@ -37,6 +36,31 @@ exports.BattleStatuses = {
 					return false;
 				}
 			}
+		},
+	},
+	charizard: {
+		onBeforeMovePriority: 2,
+		onBeforeMove: function (pokemon, target, move) {
+			if (target.level < pokemon.level) {
+				return false;
+			}
+		},
+		onModifyMove: function (move, user, target) {
+			if (target.hasType('Ice')) {
+				move.ohko = true;
+			}
+		}
+	},
+	slugma: {
+		onImmunity: function (type, pokemon) {
+			if (type === 'slp') return false;
+		},
+	},
+	magikarp: {
+		onTryHit: function (target, source, move) {
+			if (!this.isWeather('raindance')) return;
+			if (target === source) return;
+			return null;
 		},
 	}
 };
