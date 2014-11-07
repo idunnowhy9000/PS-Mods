@@ -34,7 +34,8 @@ exports.BattleScripts = {
 		this.modData('Learnsets','pikachu').learnset.moonblast = ['6L1'];
 		this.modData('Learnsets','pikachu').learnset.playrough = ['6L1'];
 		// raichu
-		this.modData('Pokedex','pikachu').baseStats.atk = 100;
+		this.modData('Pokedex','raichu').baseStats.atk = 100;
+		this.modData('Pokedex','raichu').types = ["Electric","Fairy"];
 		// wobbuffett
 		this.modData('Learnsets','wobbuffet').learnset.recover = ['6L1'];
 		// jirachi
