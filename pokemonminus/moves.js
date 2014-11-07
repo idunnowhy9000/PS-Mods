@@ -53,6 +53,22 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Water"
 	},
+	"magneticslam": {
+		num: -102,
+		accuracy: 100,
+		basePower: 150,
+		category: "Physical",
+		desc: "Super-effective against Water-type Pokemon.",
+		shortDesc: "Super-effective against Water-type Pokemon.",
+		id: "magneticslam",
+		name: "Magnetic Slam",
+		pp: 5,
+		priority: 0,
+		getEffectiveness: weakToType('Water'),
+		secondary: false,
+		target: "normal",
+		type: "Fire"
+	},
 	"scald": {
 		inherit: true,
 		getEffectiveness: weakToType('Ice'),

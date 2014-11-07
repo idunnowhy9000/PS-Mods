@@ -15,4 +15,9 @@ exports.BattleStatuses = {
 			if (type === 'Ground') return false;
 		}
 	},
+	klefki: {
+		onImmunity: function (type) {
+			if (type === 'Ground') return false;
+		}
+	},
 }

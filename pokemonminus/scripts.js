@@ -121,6 +121,50 @@ exports.BattleScripts = {
 		this.modData('Learnsets', 'palkia').learnset.moonlight = ['6L1'];
 		this.modData('Learnsets', 'palkia').learnset.calmmind = ['6L1'];
 		this.modData('Learnsets', 'palkia').learnset.freezedry = ['6L1'];
+		// groudon
+		this.modData('Pokedex', 'groudon').baseStats['hp'] = 130;
+		this.modData('Pokedex', 'groudon').baseStats['atk'] = 150;
+		this.modData('Pokedex', 'groudon').baseStats['def'] = 140;
+		this.modData('Pokedex', 'groudon').baseStats['spa'] = 100;
+		this.modData('Pokedex', 'groudon').baseStats['spd'] = 110;
+		this.modData('Pokedex', 'groudon').baseStats['spe'] = 90;
+		this.modData('Pokedex', 'groudon').types = ["Ground", "Fire"];
+		this.modData('Learnsets', 'groudon').learnset.magneticslam = ['6L1'];
+		// ho-oh 106/140/110/110/164/90
+		this.modData('Pokedex', 'hooh').baseStats['hp'] = 106;
+		this.modData('Pokedex', 'hooh').baseStats['atk'] = 140;
+		this.modData('Pokedex', 'hooh').baseStats['def'] = 110;
+		this.modData('Pokedex', 'hooh').baseStats['spa'] = 110;
+		this.modData('Pokedex', 'hooh').baseStats['spd'] = 164;
+		this.modData('Pokedex', 'hooh').baseStats['spe'] = 90;
+		this.modData('Learnsets', 'hooh').learnset.wildcharge = ['6L1'];
+		this.modData('Learnsets', 'hooh').learnset.superpower = ['6L1'];
+		// klefki 97/80/129/120/139/75
+		// +Moonblast, +Dark Pulse, +Thunderbolt, +Vacuum Wave, +Taunt, +Encore, +Rapid Spin
+		this.modData('Pokedex', 'klefki').baseStats['hp'] = 97;
+		this.modData('Pokedex', 'klefki').baseStats['atk'] = 80;
+		this.modData('Pokedex', 'klefki').baseStats['def'] = 129;
+		this.modData('Pokedex', 'klefki').baseStats['spa'] = 120;
+		this.modData('Pokedex', 'klefki').baseStats['spd'] = 139;
+		this.modData('Pokedex', 'klefki').baseStats['spe'] = 75;
+		this.modData('Learnsets', 'klefki').learnset.moonblast = ['6L1'];
+		this.modData('Learnsets', 'klefki').learnset.darkpulse = ['6L1'];
+		this.modData('Learnsets', 'klefki').learnset.thunderbolt = ['6L1'];
+		this.modData('Learnsets', 'klefki').learnset.vacuumwave = ['6L1'];
+		this.modData('Learnsets', 'klefki').learnset.taunt = ['6L1'];
+		this.modData('Learnsets', 'klefki').learnset.encore = ['6L1'];
+		this.modData('Learnsets', 'klefki').learnset.rapidspin = ['6L1'];
+		// zekrom 110 (+10)/155 (+5)/125 (+5)/120/120 (+20)/90 (720 BST)
+		// +Ice Punch, +Knock Off, +Earthquake, +Yin Blast*
+		this.modData('Pokedex', 'zekrom').baseStats['hp'] = 110;
+		this.modData('Pokedex', 'zekrom').baseStats['atk'] = 155;
+		this.modData('Pokedex', 'zekrom').baseStats['def'] = 125;
+		this.modData('Pokedex', 'zekrom').baseStats['spa'] = 120;
+		this.modData('Pokedex', 'zekrom').baseStats['spd'] = 120;
+		this.modData('Pokedex', 'zekrom').baseStats['spe'] = 90;
+		this.modData('Learnsets', 'zekrom').learnset.icepunch = ['6L1'];
+		this.modData('Learnsets', 'zekrom').learnset.knockoff = ['6L1'];
+		this.modData('Learnsets', 'zekrom').learnset.earthquake = ['6L1'];
 		// Every hidden ability becomes released
 		for (var i in this.data.FormatsData) {
 			this.modData('FormatsData', i).unreleasedHidden = false;
