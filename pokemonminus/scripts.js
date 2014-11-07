@@ -137,8 +137,12 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'hooh').baseStats['spa'] = 110;
 		this.modData('Pokedex', 'hooh').baseStats['spd'] = 164;
 		this.modData('Pokedex', 'hooh').baseStats['spe'] = 90;
+		this.modData('Pokedex', 'hooh').abilities['0'] = "Rebirth";
+		this.modData('Pokedex', 'hooh').abilities['1'] = "Magic Guard";
+		this.modData('Pokedex', 'hooh').abilities['H'] = "Regenerator";
 		this.modData('Learnsets', 'hooh').learnset.wildcharge = ['6L1'];
 		this.modData('Learnsets', 'hooh').learnset.superpower = ['6L1'];
+		this.modData('Learnsets', 'hooh').learnset.cleansingrainbow = ['6L1'];
 		// klefki 97/80/129/120/139/75
 		// +Moonblast, +Dark Pulse, +Thunderbolt, +Vacuum Wave, +Taunt, +Encore, +Rapid Spin
 		this.modData('Pokedex', 'klefki').baseStats['hp'] = 97;
@@ -162,9 +166,22 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'zekrom').baseStats['spa'] = 120;
 		this.modData('Pokedex', 'zekrom').baseStats['spd'] = 120;
 		this.modData('Pokedex', 'zekrom').baseStats['spe'] = 90;
+		this.modData('Pokedex', 'zekrom').abilities['H'] = "Blitzing Ideal";
 		this.modData('Learnsets', 'zekrom').learnset.icepunch = ['6L1'];
 		this.modData('Learnsets', 'zekrom').learnset.knockoff = ['6L1'];
 		this.modData('Learnsets', 'zekrom').learnset.earthquake = ['6L1'];
+		// gothitelle
+		this.modData('Pokedex', 'gothitelle').baseStats['hp'] = 100;
+		this.modData('Pokedex', 'gothitelle').baseStats['atk'] = 55;
+		this.modData('Pokedex', 'gothitelle').baseStats['def'] = 110;
+		this.modData('Pokedex', 'gothitelle').baseStats['spa'] = 110;
+		this.modData('Pokedex', 'gothitelle').baseStats['spd'] = 130;
+		this.modData('Pokedex', 'gothitelle').baseStats['spe'] = 95;
+		this.modData('Pokedex', 'gothitelle').types = ["Psychic","Dark"];
+		this.modData('Learnsets', 'gothitelle').learnset.encore = ['6L1'];
+		this.modData('Learnsets', 'gothitelle').learnset.lovelykiss = ['6L1'];
+		// lugia
+		
 		// Every hidden ability becomes released
 		for (var i in this.data.FormatsData) {
 			this.modData('FormatsData', i).unreleasedHidden = false;

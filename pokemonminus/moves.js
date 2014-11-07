@@ -69,6 +69,36 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Fire"
 	},
+	"cleansingrainbow": {
+		num: -102,
+		accuracy: 100,
+		basePower: 100,
+		category: "Special",
+		desc: "Heals user of its status.",
+		shortDesc: "Heals user of its status.",
+		id: "cleansingrainbow",
+		name: "Cleansing Rainbow",
+		pp: 10,
+		priority: 0,
+		secondary: false,
+		target: "normal",
+		type: "Fairy"
+	},
+	"yinpower": {
+		num: -103,
+		accuracy: 95,
+		basePower: 100,
+		category: "Physical",
+		desc: "Gets 50% boost anyway from Blitzing Ideal.",
+		shortDesc: "Gets 50% boost anyway from Blitzing Ideal.",
+		id: "yinpower",
+		name: "Yin Power",
+		pp: 5,
+		priority: 0,
+		secondary: false,
+		target: "normal",
+		type: "Dark"
+	},
 	"scald": {
 		inherit: true,
 		getEffectiveness: weakToType('Ice'),
