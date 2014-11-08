@@ -20,4 +20,14 @@ exports.BattleStatuses = {
 			if (type === 'Ground') return false;
 		}
 	},
+	scizor: {
+		onImmunity: function (type) {
+			if (type === 'Ground') return false;
+		}
+	},
+	scizormega: {
+		onImmunity: function (type) {
+			if (type === 'Ground') return false;
+		}
+	},
 }

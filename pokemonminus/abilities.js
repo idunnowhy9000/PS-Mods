@@ -15,8 +15,6 @@ exports.BattleAbilities = {
 	"unnerve": {
 		inherit: true,
 		onFoeEatItem: true,
-		desc: "When this Pokemon enters the field, the Sp. Attack stat of each of its opponents lowers by one stage.",
-		shortDesc: "On switch-in, this Pokemon lowers adjacent foes' Sp. Attack by 1.",
 		onStart: function (pokemon) {
 			var foeactive = pokemon.side.foe.active;
 			for (var i = 0; i < foeactive.length; i++) {
@@ -90,6 +88,59 @@ exports.BattleAbilities = {
 				if (item) {
 					this.add('-enditem', target, item.name, '[from] move: Knock Off', '[of] ' + source);
 				}
+			}
+		},
+	},
+	"clairvoyantbody": {
+		desc: "This Pokemon takes 2/3 of damage if the opponent uses an attack calculated with its highest offensive stat",
+		shortDesc: "This Pokemon takes 2/3 of damage if the opponent uses an attack calculated with its highest offensive stat",
+		id: "clairvoyantbody",
+		name: "Clairvoyant Body",
+		// tba
+		rating: 2,
+		num: -102
+	},
+	"submerge": {
+		desc: "This Pokemon takes 2/3 of damage if the opponent uses an attack calculated with its highest offensive stat",
+		shortDesc: "This Pokemon takes 2/3 of damage if the opponent uses an attack calculated with its highest offensive stat",
+		id: "submerge",
+		name: "Submerge",
+		onAccuracy: function (accuracy) {
+			if (typeof accuracy !== 'number') return;
+			if (this.isWeather('raindance')) {
+				this.debug('Submerge - decreasing accuracy');
+				return accuracy * 0.8;
+			}
+		},
+		rating: 2,
+		num: -102
+	},
+	"lightmetal": {
+		inherit: true,
+		onModifyPokemon: false,
+		onModifySpe: function (speMod, pokemon) {
+			return this.chain(speMod, 1.5);
+		},
+		onModifyDefPriority: 6,
+		onModifyDef: function (pokemon) {
+			return this.chainModify(0.75);
+		},
+	},
+	"ironfist": {
+		inherit: true,
+		onBasePower: function (basePower, attacker, defender, move) {
+			if (move.isPunchAttack) {
+				this.debug('Iron Fist boost');
+				return this.chainModify(1.5);
+			}
+		},
+	},
+	"technician": {
+		inherit: true,
+		onBasePower: function (basePower, attacker, defender, move) {
+			if (basePower <= 60) {
+				this.debug('Technician boost');
+				return this.chainModify(2);
 			}
 		},
 	}

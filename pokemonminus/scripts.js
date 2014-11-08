@@ -130,7 +130,7 @@ exports.BattleScripts = {
 		this.modData('Pokedex', 'groudon').baseStats['spe'] = 90;
 		this.modData('Pokedex', 'groudon').types = ["Ground", "Fire"];
 		this.modData('Learnsets', 'groudon').learnset.magneticslam = ['6L1'];
-		// ho-oh 106/140/110/110/164/90
+		// ho-oh
 		this.modData('Pokedex', 'hooh').baseStats['hp'] = 106;
 		this.modData('Pokedex', 'hooh').baseStats['atk'] = 140;
 		this.modData('Pokedex', 'hooh').baseStats['def'] = 110;
@@ -143,8 +143,7 @@ exports.BattleScripts = {
 		this.modData('Learnsets', 'hooh').learnset.wildcharge = ['6L1'];
 		this.modData('Learnsets', 'hooh').learnset.superpower = ['6L1'];
 		this.modData('Learnsets', 'hooh').learnset.cleansingrainbow = ['6L1'];
-		// klefki 97/80/129/120/139/75
-		// +Moonblast, +Dark Pulse, +Thunderbolt, +Vacuum Wave, +Taunt, +Encore, +Rapid Spin
+		// klefki
 		this.modData('Pokedex', 'klefki').baseStats['hp'] = 97;
 		this.modData('Pokedex', 'klefki').baseStats['atk'] = 80;
 		this.modData('Pokedex', 'klefki').baseStats['def'] = 129;
@@ -158,8 +157,7 @@ exports.BattleScripts = {
 		this.modData('Learnsets', 'klefki').learnset.taunt = ['6L1'];
 		this.modData('Learnsets', 'klefki').learnset.encore = ['6L1'];
 		this.modData('Learnsets', 'klefki').learnset.rapidspin = ['6L1'];
-		// zekrom 110 (+10)/155 (+5)/125 (+5)/120/120 (+20)/90 (720 BST)
-		// +Ice Punch, +Knock Off, +Earthquake, +Yin Blast*
+		// zekrom
 		this.modData('Pokedex', 'zekrom').baseStats['hp'] = 110;
 		this.modData('Pokedex', 'zekrom').baseStats['atk'] = 155;
 		this.modData('Pokedex', 'zekrom').baseStats['def'] = 125;
@@ -181,7 +179,68 @@ exports.BattleScripts = {
 		this.modData('Learnsets', 'gothitelle').learnset.encore = ['6L1'];
 		this.modData('Learnsets', 'gothitelle').learnset.lovelykiss = ['6L1'];
 		// lugia
-		
+		this.modData('Pokedex', 'lugia').baseStats['hp'] = 111;
+		this.modData('Pokedex', 'lugia').baseStats['atk'] = 90;
+		this.modData('Pokedex', 'lugia').baseStats['def'] = 133;
+		this.modData('Pokedex', 'lugia').baseStats['spa'] = 107;
+		this.modData('Pokedex', 'lugia').baseStats['spd'] = 179;
+		this.modData('Pokedex', 'lugia').baseStats['spe'] = 110;
+		this.modData('Pokedex', 'lugia').types = ["Flying","Water"];
+		this.modData('Learnsets', 'lugia').learnset.scald = ['6L1'];
+		this.modData('Learnsets', 'lugia').learnset.surf = ['6L1'];
+		this.modData('Learnsets', 'lugia').learnset.hurricane = ['6L1'];
+		// rayquaza
+		this.modData('Pokedex', 'rayquaza').baseStats['atk'] = 160;
+		this.modData('Pokedex', 'rayquaza').baseStats['spa'] = 160;
+		this.modData('Pokedex', 'rayquaza').baseStats['spe'] = 115;
+		this.modData('Learnsets', 'rayquaza').learnset.azurestrike = ['6L1'];
+		// scizor
+		this.modData('Pokedex', 'scizor').baseStats['hp'] = 100;
+		this.modData('Pokedex', 'scizor').baseStats['atk'] = 140;
+		this.modData('Pokedex', 'scizor').baseStats['def'] = 110;
+		this.modData('Pokedex', 'scizor').baseStats['spe'] = 115;
+		this.modData('Pokedex', 'scizor').abilities[1] = 'Iron Fist';
+		this.modData('Learnsets', 'scizor').learnset.drainpunch = ['6L1'];
+		this.modData('Learnsets', 'scizor').learnset.thunderpunch = ['6L1'];
+		// scizor-mega
+		this.modData('Pokedex', 'scizormega').baseStats['hp'] = 100;
+		this.modData('Pokedex', 'scizormega').baseStats['atk'] = 165;
+		this.modData('Pokedex', 'scizormega').baseStats['def'] = 155;
+		this.modData('Pokedex', 'scizormega').baseStats['spd'] = 125;
+		this.modData('Pokedex', 'scizormega').baseStats['spe'] = 115;
+		this.modData('Pokedex', 'scizormega').abilities[0] = 'Tough Claws';
+		// darkrai
+		this.modData('Pokedex', 'darkrai').baseStats['hp'] = 90;
+		this.modData('Pokedex', 'darkrai').baseStats['atk'] = 100;
+		this.modData('Pokedex', 'darkrai').baseStats['spa'] = 145;
+		this.modData('Learnsets', 'darkrai').learnset.nightdaze = ['6L1'];
+		this.modData('Learnsets', 'darkrai').learnset.gunkshot = ['6L1'];
+		this.modData('Learnsets', 'darkrai').learnset.knockoff = ['6L1'];
+		// deoxys-n
+		// deoxys-a
+		// deoxys-d
+		// deoxys-s
+		// dialga
+		this.modData('Pokedex', 'dialga').baseStats['atk'] = 110;
+		this.modData('Pokedex', 'dialga').baseStats['def'] = 130;
+		this.modData('Pokedex', 'dialga').baseStats['spa'] = 170;
+		this.modData('Pokedex', 'dialga').baseStats['spe'] = 100;
+		this.modData('Pokedex', 'dialga').abilities[1] = "Regenerator";
+		this.modData('Learnsets', 'dialga').learnset.doomdesire = ['6L1'];
+		this.modData('Learnsets', 'dialga').learnset.futuresight = ['6L1'];
+		this.modData('Learnsets', 'dialga').learnset.morningsun = ['6L1'];
+		this.modData('Learnsets', 'dialga').learnset.calmmind = ['6L1'];
+		// yveltal
+		this.modData('Pokedex', 'yveltal').baseStats['hp'] = 136;
+		this.modData('Pokedex', 'yveltal').baseStats['atk'] = 136;
+		this.modData('Pokedex', 'yveltal').baseStats['def'] = 100;
+		this.modData('Pokedex', 'yveltal').baseStats['spa'] = 136;
+		this.modData('Pokedex', 'yveltal').baseStats['spd'] = 100;
+		this.modData('Pokedex', 'yveltal').baseStats['spe'] = 109;
+		this.modData('Learnsets', 'yveltal').learnset.knockoff = ['6L1'];
+		this.modData('Learnsets', 'yveltal').learnset.bravebird = ['6L1'];
+		this.modData('Learnsets', 'yveltal').learnset.nastyplot = ['6L1'];
+		this.modData('Learnsets', 'yveltal').learnset.willowisp = ['6L1'];
 		// Every hidden ability becomes released
 		for (var i in this.data.FormatsData) {
 			this.modData('FormatsData', i).unreleasedHidden = false;

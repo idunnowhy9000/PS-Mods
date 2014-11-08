@@ -102,5 +102,51 @@ exports.BattleMovedex = {
 	"scald": {
 		inherit: true,
 		getEffectiveness: weakToType('Ice'),
+	},
+	"azurestrike": {
+		num: -104,
+		accuracy: 95,
+		basePower: 170,
+		category: "Special",
+		desc: "Deals damage to one adjacent target and lowers the user's Defense and Special Defense by 1 stage. Makes contact.",
+		shortDesc: "Lowers the user's Defense and Sp. Def by 1.",
+		id: "azurestrike",
+		name: "Azure Strike",
+		pp: 5,
+		priority: 0,
+		self: {
+			boosts: {
+				def: -1,
+				spd: -1
+			}
+		},
+		secondary: false,
+		target: "normal",
+		type: "Flying"
+	},
+	"roaroftime": {
+		inherit: true,
+		self: false,
+		isNotProtectable: true,
+		isFutureMove: true,
+		onTryHit: function (target, source) {
+			source.side.addSideCondition('futuremove');
+			if (source.side.sideConditions['futuremove'].positions[source.position]) {
+				return false;
+			}
+			source.side.sideConditions['futuremove'].positions[source.position] = {
+				duration: 3,
+				move: 'roaroftime',
+				targetPosition: target.position,
+				source: source,
+				moveData: {
+					basePower: 140,
+					category: "Special",
+					type: 'Steel'
+				}
+			};
+			this.add('-start', source, 'Roar of Time');
+			return null;
+		},
 	}
 }
