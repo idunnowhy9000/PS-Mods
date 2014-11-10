@@ -73,4 +73,36 @@ exports.Formats = [
 			}
 		},
 	},
+	{
+		name: "Technician Tower",
+		section: "Other Metagames",
+
+		mod: "technichiantower",
+		ruleset: ['Pokemon', 'Standard', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause'],
+		banlist: ['Uber', 'Soul Dew', 'Gengarite', 'Kangaskhanite', 'Lucarionite', 'Mawilite', 'Technician', 'Skill Link'],
+		validateSet: function(set) {
+			for (var i in set.moves) {
+				var move = this.getMove(string(set.moves[i]));
+				if (move.basePower && move.basePower >= 90) return ['The move ' + move.name + ' is banned because it has >90 Base Power.'];
+				if (move.id === 'frustration' && set.happiness < 105) return ['The move Frustration is banned because Pokemon ' + (set.name || set.species) + ' has less than 105 happiness'];
+				if (move.id === 'return' && set.happiness > 150) return ['The move Return is banned because Pokemon ' + (set.name || set.species) + 'has more than 150 happiness'];
+				if (move.basePowerCallback && !(move.id in {'frustration':1,'return':1})) return ['The move ' + move.name + ' is banned because it has a variable BP'];
+				if (move.basePower && move.basePower > 63 && set.ability in {'Pixilate':1,'Aerilate':1,'Refrigerate':1}) return ['The move ' + move.name + ' is banned for Pokemon with an -ate ability.']
+			}
+		},
+		onBasePowerPriority: 8,
+		onBasePower: function (basePower, attacker, defender, move) {
+			if (basePower <= 60) {
+				this.debug('Technician boost');
+				return this.chainModify(1.5);
+			}
+		},
+	},
+	// technichian tower's scripts.js file (mods/technichiantower/scripts.js)
+	// exports.BattleScripts = {
+	// 	init: function() {
+	// 	   this.modData('Pokedex', 'scizormega').abilities['0'] = 'Swarm';
+	// 	   this.modData('Pokedex', 'heracrossmega').abilities['0'] = 'Swarm';
+	//   }
+	// }
 ];
