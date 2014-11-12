@@ -369,32 +369,31 @@ exports.BattleAbilities = {
 		rating: 3,
 		num: -28
     },
-    "grounded": {
-        desc: "While user is on the field, all Pokemon have their Ground immunities ignored.",
-        shortDesc: "All immunities to Ground are ignored while user is active.",
+	"grounded": {
+		desc: "While user is on the field, all Pokemon have their Ground immunities ignored.",
+		shortDesc: "All immunities to Ground are ignored while user is active.",
 		onAnyModifyPokemon: function(pokemon) {
 			pokemon.negateImmunity['Ground'] = true;
-        },
-        id: "grounded",
-        name: "Grounded",
-        rating: 3,
-        num: -29
+		},
+		id: "grounded",
+		name: "Grounded",
+		rating: 3,
+		num: -29
 	},
-	// todo: fix spacing
-      	"heatseek": {
-                desc: "This Pokemon's Fire moves cannot miss.",
-                shortDesc: "This Pokemon's Fire moves cannot miss.",
-                onModifyMove: function(move) {
-                    if (move.type === 'Fire') {
-                        move.accuracy = true;
-                    }
-                },
-                id: "heatseek",
-                name: "Heat Seek",
-                rating: 3,
-                num: -30
-      	},
-      	"ignate": {
+	"heatseek": {
+		desc: "This Pokemon's Fire moves cannot miss.",
+		shortDesc: "This Pokemon's Fire moves cannot miss.",
+		onModifyMove: function(move) {
+			if (move.type === 'Fire') {
+			move.accuracy = true;
+			}
+		},
+		id: "heatseek",
+		name: "Heat Seek",
+		rating: 3,
+		num: -30
+	},
+	"ignate": {
 		desc: "Turns all of this Pokemon's Normal-typed attacks into Fire-typed and deal 1.3x damage. Does not affect Hidden Power.",
 		shortDesc: "This Pokemon's Normal moves become Fire-type and do 1.3x damage.",
 		onModifyMove: function (move, pokemon) {
@@ -416,22 +415,22 @@ exports.BattleAbilities = {
 		num: -31
 	},
 	"judoka": {
-                desc: "This Pokemon does 1.5x damage against opponents weighing 60 kg (132.3 lbs) or more.",
-                shortDesc: "50% damage bonus against targets weighing 60 kg (132.3 lbs) or more.",
-                onBasePower: function (basePower, attacker, defender, move) {
+	desc: "This Pokemon does 1.5x damage against opponents weighing 60 kg (132.3 lbs) or more.",
+	shortDesc: "50% damage bonus against targets weighing 60 kg (132.3 lbs) or more.",
+		onBasePower: function (basePower, attacker, defender, move) {
 			if (target.weightkg >= 60) {
 				return this.chainModify(1.5);
 			}
 		},
-                id: "judoka",
-                name: "Judoka",
-                rating: 3,
-                num: -32
-        },
-        "paintshield": {
+		id: "judoka",
+		name: "Judoka",
+		rating: 3,
+		num: -32
+	},
+	"paintshield": {
 		desc: "Halves the damage done to this Pokemon by special attacks.",
 		shortDesc: "Halves special damage done to this Pokemon.",
-		onModifyAtkPriority: 6,
+		onModifySpAPriority: 6,
 		onSourceModifySpA: function (spa, attacker, defender, move) {
 			return this.chainModify(0.5);
 		},
@@ -440,7 +439,7 @@ exports.BattleAbilities = {
 		rating: 3.5,
 		num: -33
 	},
-        "petrified": {
+	"petrified": {
 		desc: "Turns all of this Pokemon's Grass-typed attacks into Rock-typed and deal 1.3x damage. Also prevents all damage except from direct attacks.",
 		shortDesc: "This Pokemon can only be damaged by direct attacks. Its Grass moves become Rock-type and do 1.3x damage.",
 		onModifyMove: function (move, pokemon) {
@@ -461,28 +460,28 @@ exports.BattleAbilities = {
 		rating: 3,
 		num: -34
 	},
-        "propogate": {
-                desc: "When this Pokemon enters battle, it afflicts its opponent with Leech Seed.",
-                shortDesc: "Uses Leech Seed on switch-in.",        
-                onStart: function (pokemon) {
+	"propogate": {
+		desc: "When this Pokemon enters battle, it afflicts its opponent with Leech Seed.",
+		shortDesc: "Uses Leech Seed on switch-in.",
+		onStart: function (pokemon) {
 			var foeactive = pokemon.side.foe.active;
-			for (var i = 0; i < foeactive.length; i++) {
+				for (var i = 0; i < foeactive.length; i++) {
 				if (!foeactive[i] || !this.isAdjacent(foeactive[i], pokemon)) continue;
 				if (foeactive[i].volatiles['substitute']) {
 					// does it give a message?
 					this.add('-activate', foeactive[i], 'Substitute', 'ability: Propogate', '[of] ' + pokemon);
 				}
-                                else if (target.hasType('Grass')) {
-                                    this.add('-immune', target, '[msg]');
-                                    return null;
-                                }   
-                                else {
+				else if (target.hasType('Grass')) {
+					this.add('-immune', target, '[msg]');
+					return null;
+				} 
+				else {
 					this.add('-ability', pokemon, 'Propogate', '[of] ' + foeactive[i]);
 				}
 			}
 		},
-                volatileStatus: 'leechseed', //necessary?
-                effect: {
+		volatileStatus: 'leechseed', //necessary?
+		effect: {
 			onStart: function (target) {
 				this.add('-start', target, 'move: Leech Seed');
 			},
@@ -499,31 +498,31 @@ exports.BattleAbilities = {
 				}
 			}
 		},
-                id: "propogate",
-                name: "Propogate",
-                rating: 3,
-                num: -35
-            },
+		id: "propogate",
+		name: "Propogate",
+		rating: 3,
+		num: -35
+	},
 	"purify": {
 		desc: "This Pokemon is immune to all Poison-type attacks and Toxic Spikes and absorbs Toxic Spikes on its side of the field when it enters battle; additionally, its Grass-type attacks receive a 50% boost if a Poison-type move hits this Pokemon or if it absorbs Toxic Spikes. Multiple boosts do not occur if this Pokemon is hit with multiple Poison-type attacks or if it is hit with a Poison-type attack after absorbing Toxic Spikes.",
 		shortDesc: "This Pokemon's Grass attacks do 1.5x damage if hit by one Poison move or by Toxic Spikes; absorbs Toxic Spikes; Poison immunity.",
 		onTryHit: function (target, source, move) {
 			if (target !== source && move.type === 'Poison') {
 				move.accuracy = true;
+			if (!target.addVolatile('purify')) {
+				this.add('-immune', target, '[msg]');
+			}
+			return null;
+			}
+		},
+		onSetStatus: function (status, target, source, effect) {
+			if (effect && effect.id === 'toxicspikes') {
 				if (!target.addVolatile('purify')) {
 					this.add('-immune', target, '[msg]');
 				}
-				return null;
+				return false;
 			}
 		},
-                onSetStatus: function (status, target, source, effect) {
-				if (effect && effect.id === 'toxicspikes') {
-					if (!target.addVolatile('purify')) {
-                                            this.add('-immune', target, '[msg]');
-                                        }
-                                        return false;
-				}
-			},
 		effect: {
 			noCopy: true, // doesn't get copied by Baton Pass
 			onStart: function (target) {
@@ -560,7 +559,7 @@ exports.BattleAbilities = {
 		rating: 3.5,
 		num: -37
 	},
-        "roadblock": {
+	"roadblock": {
 		desc: "When this Pokemon enters the field, its opponents cannot switch or flee the battle unless they are part Flying-type, have the Levitate ability, are holding Shed Shell, or they use the moves Baton Pass or U-Turn. Flying-type and Levitate Pokemon cannot escape if they are holding Iron Ball or Gravity is in effect. Levitate Pokemon also cannot escape if their ability is disabled through other means, such as Skill Swap or Gastro Acid.",
 		shortDesc: "Prevents foes from switching out normally unless they have immunity to Ground.",
 		onFoeModifyPokemon: function (pokemon) {
@@ -578,11 +577,11 @@ exports.BattleAbilities = {
 		rating: 5,
 		num: -38
 	},
-        "levitate": { //update levitate's description to indicate immunity to road block
-            inherit: true,
-            desc: "This Pokemon is immune to Ground-type attacks, Spikes, Toxic Spikes and the Arena Trap and Road Block abilities; it loses these immunities while holding Iron Ball, after using Ingrain or if Gravity is in effect.",
-        },
-        "scarecrow": {
+	"levitate": { //update levitate's description to indicate immunity to road block
+		inherit: true,
+		desc: "This Pokemon is immune to Ground-type attacks, Spikes, Toxic Spikes and the Arena Trap and Road Block abilities; it loses these immunities while holding Iron Ball, after using Ingrain or if Gravity is in effect.",
+	},
+	"scarecrow": {
 		desc: "This Pokemon is immune to Flying-type attacks.",
 		shortDesc: "This Pokemon is immune to Flying.",
 		onImmunity: function (type) {
@@ -593,7 +592,7 @@ exports.BattleAbilities = {
 		rating: 3,
 		num: -39
 	},
-        "sneaky": {
+	"sneaky": {
 		desc: "This Pokemon's Dark-type moves have their priority increased by 1.",
 		shortDesc: "Gives priority to Dark-type moves.",
 		onModifyPriority: function (priority, pokemon, target, move) {
@@ -604,23 +603,23 @@ exports.BattleAbilities = {
 		rating: 3,
 		num: -40
 	},
-        "sweetdreams": {
-                desc: "If this Pokemon is asleep at the end of a turn, it recovers 1/8 of its max HP.",
-                shortDesc: "Recovers 1/8 of max HP every turn spent asleep",
-                onResidualOrder: 5,
+	"sweetdreams": {
+		desc: "If this Pokemon is asleep at the end of a turn, it recovers 1/8 of its max HP.",
+		shortDesc: "Recovers 1/8 of max HP every turn spent asleep",
+		onResidualOrder: 5,
 		onResidual: function (pokemon) {
-                        if (this.status === 'slp') {
-                            this.heal(pokemon.maxhp / 16);
-                        }
+			if (this.status === 'slp') {
+				this.heal(pokemon.maxhp / 16);
+			}
 		},
-                id: "sweetdreams",
-                name: "Sweet Dreams",
-                rating: 3,
-                num: -41
-        },
-        "swordsman": {
-                desc: "Boosts the power of Blade, Slash, Cut, and Sword moves by 50%",
-                shortDesc: "Boosts the power of Blade, Slash, Cut, and Sword moves by 50%.",
+		id: "sweetdreams",
+		name: "Sweet Dreams",
+		rating: 3,
+		num: -41
+	},
+	"swordsman": {
+		desc: "Boosts the power of Blade, Slash, Cut, and Sword moves by 50%",
+		shortDesc: "Boosts the power of Blade, Slash, Cut, and Sword moves by 50%.",
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, attacker, defender, move) {
 			if (move.isSwordMove) {
@@ -632,32 +631,32 @@ exports.BattleAbilities = {
 		rating: 3,
 		num: -42
 	},
-        "trickster": {
-                desc: "This Pokemon's status moves that lower a target's stats have their effect doubled.",
-                shortDesc: "Stat-lowering status moves have their effect doubled.",
-                onModifyMove: function (move, pokemon) {
-                        var boosts = move.boosts;
-                        if (boosts) {
-                            if (boosts.atk && boosts.atk < 0) {
-                                boosts.atk *= 2;
-                            }
-                            if (boosts.def && boosts.def < 0) {
-                                boosts.def *= 2;
-                            }
-                            if (boosts.spa && boosts.spa < 0) {
-                                boosts.spa *= 2;
-                            }
-                            if (boosts.spd && boosts.spd < 0) {
-                                boosts.spd *= 2;
-                            }
-                            if (boosts.spe && boosts.spe < 0) {
-                                boosts.spe *= 2;
-                            }
-                        }
-                },
-                id: "trickster",
-                name: "Trickster",
-                rating: 3,
-                num: -43
-        },
+	"trickster": {
+		desc: "This Pokemon's status moves that lower a target's stats have their effect doubled.",
+		shortDesc: "Stat-lowering status moves have their effect doubled.",
+		onModifyMove: function (move, pokemon) {
+			var boosts = move.boosts;
+			if (boosts) {
+				if (boosts.atk && boosts.atk < 0) {
+					boosts.atk *= 2;
+				}
+				if (boosts.def && boosts.def < 0) {
+					boosts.def *= 2;
+				}
+				if (boosts.spa && boosts.spa < 0) {
+					boosts.spa *= 2;
+				}
+				if (boosts.spd && boosts.spd < 0) {
+					boosts.spd *= 2;
+				}
+				if (boosts.spe && boosts.spe < 0) {
+					boosts.spe *= 2;
+				}
+			}
+		},
+		id: "trickster",
+		name: "Trickster",
+		rating: 3,
+		num: -43
+	},
 },

@@ -19,9 +19,10 @@ Installing
 --------------------------------
 Megas For All installs like most mods in this repo (consult repo's README). However, it requires you to have a custom client and modified server files so, clone Pokémon Showdown's client or download as ZIP file.
 
-Next, copy all the code from ```abilities.js``` and ```pokedex.js``` without the first and last lines to ```Location/data/abilities.js``` and ```Location/data/pokedex.js``` respectively, where ```Location``` means the location where Pokémon Showdown's client and server is (for instance, ```~/Downloads/Pokemon-Showdown``` or ```C:\Users\Bob\Downloads\Pokemon-Showdown\```). Copy
+Next, copy all the code from ```abilities.js``` and ```pokedex.js``` without the first and last lines to ```Location/data/abilities.js``` and ```Location/data/pokedex.js``` respectively, where ```Location``` means the location where Pokémon Showdown's client and server is.
+Copy ```battle-engine.js``` to the Pokémon Showdown Server's folder.
 
-Finally put this code in your ```formats.js``` file in the ```config``` folder where Pokémon Showdown's server is located (for instance,  ```~/Downloads/Pokemon-Showdown/formats.js``` or ```C:\Users\Bob\Downloads\Pokemon-Showdown\config\formats.js```)
+Finally put this code in your ```formats.js``` file in the ```config``` folder where Pokémon Showdown's server is located.
 ```
 {
 	name: "Megas For All",
