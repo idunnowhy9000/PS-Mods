@@ -1,7 +1,7 @@
 exports.BattleStatuses = {
-  slp: {
-  inherit: true,
-    onBeforeMove: function (pokemon, target, move) {
+	slp: {
+		inherit: true,
+		onBeforeMove: function (pokemon, target, move) {
 			if (pokemon.getAbility().isHalfSleep) {
 				pokemon.statusData.time--;
 			}
@@ -17,57 +17,66 @@ exports.BattleStatuses = {
 			}
 			return false;
 		}
-  },
-  brn: {
-    inherit: true,
-    onBasePower: function (basePower, attacker, defender, move) {
+	},
+	brn: {
+		inherit: true,
+		onBasePower: function (basePower, attacker, defender, move) {
 			if (move && move.category === 'Physical' && attacker && attacker.ability !== 'guts' && attacker.ability !== 'grit power' && move.id !== 'facade') {
 				return this.chainModify(0.5);
 			}
 		}
-  }
-  raindance: {
-    inherit: true,
-    durationCallback: function (target, source, effect) {
-      var d = 5;
-      if (source) {
-			  if (source.hasItem('damprock')) d += 3;
-        if (source.hasAbility('fieldwarp')) d += 3;
-      }
+	}
+	raindance: {
+		inherit: true,
+		durationCallback: function (target, source, effect) {
+			var d = 5;
+			if (source) {
+				if (source.hasItem('damprock')) d += 3;
+				if (source.hasAbility('fieldwarp')) d += 3;
+			}
 			return d;
 		}
-  },
-  sunnyday: {
-    inherit: true,
-    durationCallback: function (target, source, effect) {
-      var d = 5;
+	},
+	sunnyday: {
+		inherit: true,
+		durationCallback: function (target, source, effect) {
+			var d = 5;
 			if (source) {
-			  if (source.hasItem('heatrock')) d += 3;
-        if (source.hasAbility('fieldwarp')) d += 3;
-      }
+				if (source.hasItem('heatrock')) d += 3;
+				if (source.hasAbility('fieldwarp')) d += 3;
+			}
 			return d;
 			}
-  },
-  sandstorm: {
-    inherit: true,
-    durationCallback: function (target, source, effect) {
-      var d = 5;
+	},
+	sandstorm: {
+		inherit: true,
+		durationCallback: function (target, source, effect) {
+			var d = 5;
 			if (source) {
-			  if (source.hasItem('smoothrock')) d += 3;
-        if (source.hasAbility('fieldwarp')) d += 3;
-      }
+				if (source.hasItem('smoothrock')) d += 3;
+				if (source.hasAbility('fieldwarp')) d += 3;
+			}
 			return d;
 			}
-  },
-  hail: {
-    inherit: true,
-    durationCallback: function (target, source, effect) {
-      var d = 5;
+	},
+	hail: {
+		inherit: true,
+		durationCallback: function (target, source, effect) {
+			var d = 5;
 			if (source) {
-			  if (source.hasItem('icyrock')) d += 3;
-        if (source.hasAbility('fieldwarp')) d += 3;
-      }
+				if (source.hasItem('icyrock')) d += 3;
+				if (source.hasAbility('fieldwarp')) d += 3;
+			}
 			return d;
 		}
-  }
+	},
+	mustrecharge: {
+		inherit: true,
+		onBeforeMove: function (pokemon) {
+			if (pokemon.ability === 'tireless') return true;
+			this.add('cant', pokemon, 'recharge');
+			pokemon.removeVolatile('mustrecharge');
+			return false;
+		},
+	},
 };

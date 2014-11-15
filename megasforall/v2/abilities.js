@@ -11,13 +11,13 @@ exports.BattleAbilities = {
 		num: -5
 	},
 	"unadaptable": {
-		desc: "This Pokemon's attacks that doesn't recieve STAB hits for 66%",
-		shortDesc: "This Pokemon's attacks that doesn't recieve STAB hits for 66%",
+		desc: "This Pokemon's attacks that doesn't recieve STAB hits for 70%",
+		shortDesc: "This Pokemon's attacks that doesn't recieve STAB hits for 70%",
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, attacker, defender, move) {
 			if(!move.hasSTAB){
 				this.debug('Unadaptable weaken');
-				return this.chainModify(0.66);
+				return this.chainModify(0.7);
 			}
 		},
 		id: "unadaptable",
@@ -326,34 +326,34 @@ exports.BattleAbilities = {
 		num: -25
 	},
 	"dreamer": {
-        desc: "This Pokemon's Special Attack is increased by 50% when it is asleep, and it can still use moves while asleep.",
+		desc: "This Pokemon's Special Attack is increased by 50% when it is asleep, and it can still use moves while asleep.",
 		shortDesc: "While asleep, can use moves and has 1.5x Special Attack.",
-        onModifySpA: function (spa, pokemon) {
+		onModifySpA: function (spa, pokemon) {
 			if (pokemon.status === 'slp') {
 				return this.chainModify(1.5);
 			}
-                },
-        //implement move choice in the sleep status itself
-        id: "dreamer",
-        name: "Dreamer",
-        rating: 3,
-        num: -26
-    },
+		},
+		//implement move choice in the sleep status itself
+		id: "dreamer",
+		name: "Dreamer",
+		rating: 3,
+		num: -26
+	},
 	"energycrystal": {
-        desc: "This Pokemon takes 3/4 damage from special moves. When it is hit by a special move, its Special Attack is boosted by one stage.",
-        shortDesc: "Takes 3/4 damage from special moves and raises Special Attack by 1 when hit by a special move.",
-        onSourceModifyDamage: function (damage, source, target, move) {
+		desc: "This Pokemon takes 3/4 damage from special moves. When it is hit by a special move, its Special Attack is boosted by one stage.",
+		shortDesc: "Takes 3/4 damage from special moves and raises Special Attack by 1 when hit by a special move.",
+		onSourceModifyDamage: function (damage, source, target, move) {
 			if (move.category === 'special') {
 				this.boost({spa:1});
 				return this.chainModify(0.75);
 			}
 		},
-        id: "energycrystal",
-        name: "Energy Crystal",
-        rating: 3,
-        num: -27
-    },
-    "fireabsorb": {
+		id: "energycrystal",
+		name: "Energy Crystal",
+		rating: 3,
+		num: -27
+	},
+	"fireabsorb": {
 		desc: "This Pokemon is immune to Fire moves. If hit by a Fire move, it recovers 25% of its max HP.",
 		shortDesc: "This Pokemon heals 1/4 of its max HP when hit by Fire moves; Fire immunity.",
 		onTryHit: function (target, source, move) {
@@ -368,7 +368,7 @@ exports.BattleAbilities = {
 		name: "Fire Absorb",
 		rating: 3,
 		num: -28
-    },
+	},
 	"grounded": {
 		desc: "While user is on the field, all Pokemon have their Ground immunities ignored.",
 		shortDesc: "All immunities to Ground are ignored while user is active.",
@@ -658,5 +658,72 @@ exports.BattleAbilities = {
 		name: "Trickster",
 		rating: 3,
 		num: -43
+	},
+	"accumulation": {
+		desc: "User's Rollout and Ice Ball deal triple damage.",
+		shortDesc: "Rollout and Ice Ball deal triple damage.",
+		onBasePowerPriority: 8,
+		onBasePower: function (basePower, attacker, defender, move) {
+			// tba
+		},
+		id: "accumulation",
+		name: "Accumulation",
+		rating: 3,
+		num: -44
+	},
+	"benthic": {
+		desc: "User's Water-type moves are supereffective against the Grass type.",
+		shortDesc: "Water-type moves are supereffective against the Grass type.",
+		onEffectiveness: function (typeMod, target, type, move) {
+			if (type === 'Grass' && move.type === 'Water') return 1;
+		},
+		id: "benthic",
+		name: "Benthic",
+		rating: 3,
+		num: -45
+	},
+	"megatransform": {
+		desc: "When user enters the battle or gains this ability, it transforms into the opponent's Mega form.",
+		shortDesc: "When user enters the battle or gains this ability, it transforms into the opponent's Mega form.",
+		onStart: function (pokemon) {
+			var target = pokemon.side.foe.active[pokemon.side.foe.active.length - 1 - pokemon.position];
+			if (target) {
+				var megaTarget = Object.clone(target);
+				var megaTemplate = megaTarget.baseTemplate;
+				for (var i in megaTemplate.formes) {
+					if (this.getTemplate(megaTemplate.formes[i]).isMega) {
+						// tba
+					}
+				}
+				pokemon.transformInto(target, pokemon);
+			}
+		},
+		id: "megatransform",
+		name: "Mega Transform",
+		rating: 3,
+		num: -45
+	},
+	"wintershield": {
+		desc: "Immunity to moves striking with increased priority.",
+		shortDesc: "Immunity to moves striking with increased priority.",
+		onTryHit: function (target, source, move) {
+			if (move.category === 'Status') return true;
+			if (move.priority > 0) {
+				return null;
+			}
+		},
+		id: "wintershield",
+		name: "Winter Shield",
+		rating: 3,
+		num: -46
+	},
+	"tireless": {
+		desc: "User does not have to recharge after using recharge moves.",
+		shortDesc: "User does not have to recharge after using recharge moves.",
+		//implement move choice in the recharge status itself
+		id: "tireless",
+		name: "Tireless",
+		rating: 3,
+		num: -47
 	},
 },
