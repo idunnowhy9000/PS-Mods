@@ -691,8 +691,8 @@ exports.BattleAbilities = {
 				var megaTarget = Object.clone(target);
 				var megaTemplate = megaTarget.baseTemplate;
 				for (var i in megaTemplate.formes) {
-					if (this.getTemplate(megaTemplate.formes[i]).isMega) {
-						// tba
+					if (this.getTemplate(megaTemplate.formes[i]).forme === 'Mega-X') {
+						target.set.species = megaTemplate.formes[i];
 					}
 				}
 				pokemon.transformInto(target, pokemon);
@@ -720,10 +720,68 @@ exports.BattleAbilities = {
 	"tireless": {
 		desc: "User does not have to recharge after using recharge moves.",
 		shortDesc: "User does not have to recharge after using recharge moves.",
-		//implement move choice in the recharge status itself
+		//implement move in the recharge status itself
 		id: "tireless",
 		name: "Tireless",
 		rating: 3,
 		num: -47
+	},
+	"tempest": {
+		desc: "When user enters the battle or gains this ability, user uses the move Twister without taking up a turn or using PP.",
+		shortDesc: "Upon switch in or gaining this ability, Pokemon uses Twister",
+		onStart: function (source) {
+			this.useMove('twister');
+		},
+		id: "tempest",
+		name: "Tempest",
+		rating: 3,
+		num: -48
+	},
+	"stuffed": {
+		desc: "When user enters the battle or gains this ability, user gains the Stockpile 3 effect.",
+		shortDesc: "Upon switch in or gaining this ability, user gains the Stockpile 3 effect.",
+		onStart: function (source) {
+			this.useMove('stockpile');
+			// tba
+		},
+		id: "stuffed",
+		name: "Stuffed",
+		rating: 3,
+		num: -49
+	},
+	"stormforce": {
+		desc: "When Rain Dance or Drizzle is active, user's Flying-, Electric-, and Dragon-type moves deal 30% more damage.",
+		shortDesc: "Boosts Flying, Electric and Dragon-type moves by 30% on Rain.",
+		onBasePowerPriority: 4,
+		onBasePower: function (basePower, attacker, defender, move) {
+			if (this.isWeather('raindance') && move.type in {'Flying':1,'Electric':1,'Dragon':1}) {
+				return this.chainModify(1.3);
+			}
+		},
+		id: "stormforce",
+		name: "Storm Force",
+		rating: 3,
+		num: -50
+	},
+	"raider": {
+		desc: "When user enters the battle or gains this ability, user uses the move Pluck without taking up a turn or using PP.",
+		shortDesc: "Upon switch in or gaining this ability, user uses Pluck.",
+		onStart: function (source) {
+			this.useMove('stockpile');
+			// tba
+		},
+		id: "raider",
+		name: "Raider",
+		rating: 3,
+		num: -51
+	},
+	"seeddrop": {
+		desc: "When user switches out, its replacement's HP is healed by 25%.",
+		shortDesc: "When user switches out, its replacement's HP is healed by 25%.",
+		// tba
+		id: "seeddrop",
+		name: "Seed Drop",
+		rating: 3,
+		num: -52
 	},
 },
