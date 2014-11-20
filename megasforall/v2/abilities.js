@@ -139,14 +139,14 @@ exports.BattleAbilities = {
 		desc: "This Pokemon has the ability to hit Steel-type Pokemon with Poison-type moves. Effectiveness of these moves takes into account the Steel-type Pokemon's other weaknesses and resistances.",
 		shortDesc: "This Pokemon can hit Steel-types with Poison-type moves.",
 		onModifyMove: function (move) {
-			if (move.type in {'Poison':1}) {
+			if (move.type === 'Poison') {
 				move.affectedByImmunities = false;
 			}
 		},
 		id: "corrosion",
 		name: "Corrosion",
+		rating: 4,
 		num: -15
-		rating: 3,
 	},	
 	"pollinate": {
 		desc: "This Pokemon's Powder moves have their priority increased by 1.",
@@ -784,4 +784,28 @@ exports.BattleAbilities = {
 		rating: 3,
 		num: -52
 	},
+	"clearsky": {
+		desc: "When user enters the battle or gains this ability, all weather conditions are removed.",
+		shortDesc: "All weather conditions are removed.",
+		onStart: function (source) {
+			this.setWeather('');
+		},
+		id: "clearsky",
+		name: "Clear Sky",
+		rating: 3,
+		num: -53
+	},
+	"valiant": {
+		desc: "This Pokemon has the ability to hit Fairy-type Pokemon with Dragon-type moves. Effectiveness of these moves takes into account the Steel-type Pokemon's other weaknesses and resistances.",
+		shortDesc: "This Pokemon can hit Steel-types with Poison-type moves.",
+		onModifyMove: function (move) {
+			if (move.type === 'Dragon') {
+				move.affectedByImmunities = false;
+			}
+		},
+		id: "valiant",
+		name: "Valiant",
+		num: -15
+		rating: -54,
+	},	
 },
