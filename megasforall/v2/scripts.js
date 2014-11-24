@@ -6,9 +6,10 @@ exports.BattleScripts = {
 		if (side.megaEvo) return false;
 		var template = this.getTemplate(item.megaStone);
 		if (!template.isMega) return false;
-		if (pokemon.baseTemplate.baseSpecies !== template.baseSpecies) {
+		if (pokemon.baseTemplate.baseSpecies !== template.baseSpecies) {	
+			var formTemp = false;
 			for (var i in pokemon.baseTemplate.otherFormes) {
-				var formTemp = this.getTemplate(pokemon.baseTemplate.otherFormes[i]);
+				formTemp = this.getTemplate(pokemon.baseTemplate.otherFormes[i]);
 				if (formTemp.isMega) {
 					if ((formTemp.forme === 'Mega-X' && item.id === 'charizarditex') || (formTemp.forme === 'Mega-Y' && item.id === 'charizarditey') || (formTemp.forme === 'Mega' && item.id === 'abomasite')) {
 						template = formTemp;
@@ -16,7 +17,7 @@ exports.BattleScripts = {
 					}
 				}
 			}
-			return false;
+			if (!formTemp) return false;
 		}
 
 		// okay, mega evolution is possible
