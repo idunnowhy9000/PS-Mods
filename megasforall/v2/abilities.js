@@ -171,7 +171,7 @@ exports.BattleAbilities = {
 		name: "Brute Force",
 		rating: 3,
 		num: -17
-	}，
+	},
 	"iceage": {
 		desc: "Non super-effective damaging moves targeted on this Pokemon become Ice-type attacks.",
 		shortDesc: "Non super-effective moves used on this Pokemon become Ice-type.",
@@ -179,7 +179,7 @@ exports.BattleAbilities = {
 			if (this.getEffectiveness(move, target) <= 0) {
 				move.type= 'Ice'
 			}
-		}，
+		},
 		id: "iceage",
 		name: "Ice Age",
 		rating: 3,
@@ -230,21 +230,21 @@ exports.BattleAbilities = {
 					this.debug('Doppler boost');
 					return this.chainModify(1.5);
 				}
-			},
+			};
 			if (this.isWeather('sunnyday')) {
 				if (move.type === 'Fire') {
 					this.debug('Doppler boost');
 					return this.chainModify(1.5);
 				}
-			},
+			};
 			if (this.isWeather('sandstorm')) {
 				if (move.type === 'Rock') {
 					this.debug('Doppler boost');
 					return this.chainModify(1.5);
 				}
-			},
+			};
 			if (this.isWeather('hail')) {
-				is (move.type === 'Ice') {
+				if (move.type === 'Ice') {
 					this.debug('Doppler boost');
 					return this.chainModify(1.5);
 				}
@@ -805,7 +805,7 @@ exports.BattleAbilities = {
 		},
 		id: "valiant",
 		name: "Valiant",
-		num: -15
+		num: -15,
 		rating: -54,
 	},	
-},
+}

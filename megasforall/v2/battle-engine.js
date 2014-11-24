@@ -4,19 +4,9 @@
 * line ~203 "this.abilityData = {id: this.ability};"
 */
 this.canMegaEvo = (this.battle.getItem(this.item).megaEvolves === this.baseTemplate.baseSpecies);
-if (this.baseTemplate.tier === "M4A") {
-	var itemId = this.battle.getItem(this.item).id;
-	switch (itemId) {
-		case "charizarditex":
-			this.canMegaEvo = (this.baseTemplate.forme === "Mega-X");
-		break;
-		case "charizarditey":
-			this.canMegaEvo = (this.baseTemplate.forme === "Mega-Y");
-		break;
-		case "abomasite":
-			this.canMegaEvo = (this.baseTemplate.forme === "Mega");
-		break;
-		default:
-		break;
+for (var i in this.baseTemplate.otherFormes) {
+	formTemp = this.getTemplate(this.baseTemplate.otherFormes[i]);
+	if (((formTemp.forme === 'Mega-X' && this.item === 'charizarditex') || (formTemp.forme === 'Mega-Y' && this.item === 'charizarditey') || (formTemp.forme === 'Mega' && this.item === 'abomasite')) && formTemp.tier === 'M4A') {
+		this.canMegaEvo = true;
 	}
 }

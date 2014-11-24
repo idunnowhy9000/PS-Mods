@@ -6,7 +6,7 @@ exports.BattleScripts = {
 		if (side.megaEvo) return false;
 		var template = this.getTemplate(item.megaStone);
 		if (!template.isMega) return false;
-		if (pokemon.baseTemplate.baseSpecies !== template.baseSpecies) {	
+		if (pokemon.baseTemplate.baseSpecies !== template.baseSpecies) {
 			var formTemp = false;
 			for (var i in pokemon.baseTemplate.otherFormes) {
 				formTemp = this.getTemplate(pokemon.baseTemplate.otherFormes[i]);
@@ -33,4 +33,18 @@ exports.BattleScripts = {
 		for (var i = 0; i < side.pokemon.length; i++) side.pokemon[i].canMegaEvo = false;
 		return true;
 	},
+	init: function () {
+		// learnsets
+		// hardcoded shit
+		var realMegas = {'venusaurmega':1,'charizardmegax':1,'charizardmegay':1,'blastoisemega':1,'alakazammega':1,'gengarmega':1,'kangaskhanmega':1,'pinsirmega':1,'gyaradosmega':1,'aerodactylmega':1,'mewtwomegax':1,'mewtwomegay':1,'ampharosmega':1,'scizormega':1,'heracrossmega':1,'houndoommega':1,'tyranitarmega':1,'blazikenmega':1,'gardevoirmega':1,'mawilemega':1,'aggronmega':1,'medichammega':1,'manectricmega':1,'banettemega':1,'absolmega':1,'latiasmega':1,'latiosmega':1,'garchompmega':1,'lucariomega':1,'abomasnowmega':1};
+		for (var i in this.data.Pokedex) {
+			var template = this.getTemplate(i);
+			var baseTemplate = this.getTemplate(template.baseSpecies);
+			if (!i in realMegas) {
+				this.modData('Pokedex', i).tier = 'M4A';
+			}
+			this.modData('Pokedex', i).weightkg = template.weightkg || baseTemplate.weightkg;
+			this.modData('Pokedex', i).heightm = baseTemplate.weightkg;
+		}
+	}
 }

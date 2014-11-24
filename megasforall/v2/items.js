@@ -7,7 +7,7 @@ exports.BattleItems = {
 		megaEvolves: "Abomasnow",
 		onTakeItem: function (item, source) {
 			if (item.megaEvolves === source.baseTemplate.baseSpecies) {
-				for (var i = 0; i < source.baseTemplate.otherFormes) {
+				for (var i in source.baseTemplate.otherFormes) {
 					var megaTemp = this.getTemplate(source.baseTemplate.otherFormes[i]);
 					if (megaTemp.forme === 'Mega' && megaTemp.tier === 'M4A') return true;
 				}
@@ -27,7 +27,7 @@ exports.BattleItems = {
 		megaEvolves: "Charizard",
 		onTakeItem: function (item, source) {
 			if (item.megaEvolves === source.baseTemplate.baseSpecies) {
-				for (var i = 0; i < source.baseTemplate.otherFormes) {
+				for (var i in source.baseTemplate.otherFormes) {
 					var megaTemp = this.getTemplate(source.baseTemplate.otherFormes[i]);
 					if (megaTemp.forme === 'Mega-X' && megaTemp.tier === 'M4A') return true;
 				}
@@ -47,7 +47,7 @@ exports.BattleItems = {
 		megaEvolves: "Charizard",
 		onTakeItem: function (item, source) {
 			if (item.megaEvolves === source.baseTemplate.baseSpecies) {
-				for (var i = 0; i < source.baseTemplate.otherFormes) {
+				for (var i in source.baseTemplate.otherFormes) {
 					var megaTemp = this.getTemplate(source.baseTemplate.otherFormes[i]);
 					if (megaTemp.forme === 'Mega-Y' && megaTemp.tier === 'M4A') return true;
 				}

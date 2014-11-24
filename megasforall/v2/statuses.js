@@ -21,11 +21,11 @@ exports.BattleStatuses = {
 	brn: {
 		inherit: true,
 		onBasePower: function (basePower, attacker, defender, move) {
-			if (move && move.category === 'Physical' && attacker && attacker.ability !== 'guts' && attacker.ability !== 'grit power' && move.id !== 'facade') {
+			if (move && move.category === 'Physical' && attacker && attacker.ability !== 'guts' && attacker.ability !== 'gritpower' && move.id !== 'facade') {
 				return this.chainModify(0.5);
 			}
 		}
-	}
+	},
 	raindance: {
 		inherit: true,
 		durationCallback: function (target, source, effect) {
