@@ -41,7 +41,7 @@ exports.BattleScripts = {
 			var template = this.getTemplate(i);
 			var baseTemplate = this.getTemplate(template.baseSpecies);
 			if (!i in realMegas) {
-				this.modData('Pokedex', i).tier = 'M4A';
+				this.modData('FormatsData', i).tier = 'M4A';
 			}
 			this.modData('Pokedex', i).weightkg = template.weightkg || baseTemplate.weightkg;
 			this.modData('Pokedex', i).heightm = baseTemplate.weightkg;
