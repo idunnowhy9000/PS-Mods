@@ -807,5 +807,74 @@ exports.BattleAbilities = {
 		name: "Valiant",
 		num: -15,
 		rating: -54,
-	},	
+	},
+	"germinate": {
+		desc: "Turns all of this Pokemon's Normal-typed attacks into Grass-type and deal 1.3x damage. Does not affect Hidden Power.",
+		shortDesc: "This Pokemon's Normal moves become Grass-type and do 1.3x damage.",
+		onModifyMove: function (move, pokemon) {
+			if (move.type === 'Normal' && move.id !== 'hiddenpower') {
+				move.type = 'Grass';
+				pokemon.addVolatile('germinate');
+			}
+		},
+		effect: {
+			duration: 1,
+			onBasePowerPriority: 8,
+			onBasePower: function (basePower, pokemon, target, move) {
+				return this.chainModify([0x14CD, 0x1000]);
+			}
+		},
+		id: "germinate",
+		name: "Germinate",
+		rating: 3,
+		num: -55
+	},
+	"heatseek": {
+		desc: "Every Fire-type attack used by this Pokemon will always hit regardless of Evasion or Accuracy modifiers.",
+		shortDesc: "This Pokemon's Fire-type attacks will never miss",
+		onModifyMove: function (move, pokemon) {
+			if (move.type === 'Fire') {
+				return true;
+			}
+			return accuracy;
+		},
+		id: "heatseek",
+		name: "Heat Seek",
+		rating: 2,
+		num: -56
+	},
+	"hibernate": {
+		desc: "When the user with this ability is asleep, its Defense and Special Defense receive a 300% boost.",
+		shortDesc: "When this Pokemon is asleep, its defenses are 3x.",
+		//300% boost is the same as 75% damamge reduction. 
+		onModifyDefPriority: 6,
+		onModifyDef: function (def, pokemon) {
+			if (pokemon.status === 'slp') {
+				return this.chainModify(3);
+			}
+		},
+		onModifySpDPriority: 6,
+		onModifySpD: function (SpD, pokemon) {
+			if (pokemon.status === 'slp') {
+				return this.chainModify(3);
+			}
+		},
+		id: "hibernate",
+		name: "Hibernate",
+		rating: 3,
+		num: -57
+	},
+	"hubris": {
+		desc: "If this Pokemon knocks out another Pokemon with a damaging attack, its Secial Attack is raised by one stage.",
+		shortDesc: "This Pokemon's Special Attack is boosted by 1 if it attacks and faints another Pokemon.",
+		onSourceFaint: function (target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				this.boost({SpA:1}, source);
+			}
+		},
+		id: "hubris",
+		name: "Hubris",
+		rating: 4,
+		num: -58
+	},
 }
