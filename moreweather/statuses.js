@@ -219,7 +219,8 @@ exports.BattleStatuses = {
 			}
 			return 5;
 		},
-		onModifyDefPriority: 10;
+		onEffectiveness: false,
+		onModifyDefPriority: 10,
 		onModifyDef: function(def, pokemon) {
 			if (pokemon.hasType('Flying') && this.isWeather('deltastream')) {
 				return this.modify(def, 1.3);
