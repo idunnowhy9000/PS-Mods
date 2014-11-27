@@ -149,12 +149,6 @@ exports.BattleStatuses = {
 			}
 			return 5;
 		},
-		onBasePower: function(basePower, attacker, defender, move) {
-			if (move.id === 'weatherball') {
-				this.debug('Clear Skies weatherball boost');
-				return this.chainModify(1.5);
-			}
-		},
 		onStart: function(battle, source, effect) {
 			if (effect && effect.effectType === 'Ability') {
 				this.effectData.duration = 0;
