@@ -5,12 +5,10 @@ exports.BattleItems = {
 		spritenum: 575,
 		megaStone: "Abomasnow-Mega",
 		megaEvolves: "Abomasnow",
+		m4aEvolves: "-Mega",
 		onTakeItem: function (item, source) {
 			if (item.megaEvolves === source.baseTemplate.baseSpecies) {
-				for (var i in source.baseTemplate.otherFormes) {
-					var megaTemp = this.getTemplate(source.baseTemplate.otherFormes[i]);
-					if (megaTemp.forme === 'Mega' && megaTemp.tier === 'M4A') return true;
-				}
+				if (this.getTemplate(source.baseTemplate.baseSpecies + m4aEvolves).exists) return true;
 				return false;
 			}
 			return true;
@@ -25,12 +23,10 @@ exports.BattleItems = {
 		spritenum: 585,
 		megaStone: "Charizard-Mega-X",
 		megaEvolves: "Charizard",
+		m4aEvolves: "-Mega-X",
 		onTakeItem: function (item, source) {
 			if (item.megaEvolves === source.baseTemplate.baseSpecies) {
-				for (var i in source.baseTemplate.otherFormes) {
-					var megaTemp = this.getTemplate(source.baseTemplate.otherFormes[i]);
-					if (megaTemp.forme === 'Mega-X' && megaTemp.tier === 'M4A') return true;
-				}
+				if (this.getTemplate(source.baseTemplate.baseSpecies + m4aEvolves).exists) return true;
 				return false;
 			}
 			return true;
@@ -45,12 +41,10 @@ exports.BattleItems = {
 		spritenum: 586,
 		megaStone: "Charizard-Mega-Y",
 		megaEvolves: "Charizard",
+		m4aEvolves: "-Mega-Y",
 		onTakeItem: function (item, source) {
 			if (item.megaEvolves === source.baseTemplate.baseSpecies) {
-				for (var i in source.baseTemplate.otherFormes) {
-					var megaTemp = this.getTemplate(source.baseTemplate.otherFormes[i]);
-					if (megaTemp.forme === 'Mega-Y' && megaTemp.tier === 'M4A') return true;
-				}
+				if (this.getTemplate(source.baseTemplate.baseSpecies + m4aEvolves).exists) return true;
 				return false;
 			}
 			return true;
