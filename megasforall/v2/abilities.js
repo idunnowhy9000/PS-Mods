@@ -742,8 +742,9 @@ exports.BattleAbilities = {
 		desc: "When user enters the battle or gains this ability, user gains the Stockpile 3 effect.",
 		shortDesc: "Upon switch in or gaining this ability, user gains the Stockpile 3 effect.",
 		onStart: function (source) {
-			this.useMove('stockpile');
-			// tba
+			this.addVolatile('stockpile1');
+			this.addVolatile('stockpile2');
+			this.addVolatile('stockpile3');
 		},
 		id: "stuffed",
 		name: "Stuffed",
@@ -768,8 +769,7 @@ exports.BattleAbilities = {
 		desc: "When user enters the battle or gains this ability, user uses the move Pluck without taking up a turn or using PP.",
 		shortDesc: "Upon switch in or gaining this ability, user uses Pluck.",
 		onStart: function (source) {
-			this.useMove('stockpile');
-			// tba
+			this.useMove('pluck');
 		},
 		id: "raider",
 		name: "Raider",
