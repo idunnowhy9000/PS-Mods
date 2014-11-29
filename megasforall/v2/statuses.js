@@ -10,7 +10,7 @@ exports.BattleStatuses = {
 				pokemon.cureStatus();
 				return;
 			}
-			if (pokemon.hasAbility('dreamer')) return;
+			if (pokemon.ability === 'dreamer') return;
 			this.add('cant', pokemon, 'slp');
 			if (move.sleepUsable) {
 				return;
@@ -31,8 +31,8 @@ exports.BattleStatuses = {
 		durationCallback: function (target, source, effect) {
 			var d = 5;
 			if (source) {
-				if (source.hasItem('damprock')) d += 3;
-				if (source.hasAbility('fieldwarp')) d += 3;
+				if (source.item === 'damprock') d += 3;
+				if (source.ability === 'fieldwarp') d += 3;
 			}
 			return d;
 		}
@@ -42,8 +42,8 @@ exports.BattleStatuses = {
 		durationCallback: function (target, source, effect) {
 			var d = 5;
 			if (source) {
-				if (source.hasItem('heatrock')) d += 3;
-				if (source.hasAbility('fieldwarp')) d += 3;
+				if (source.item === 'heatrock') d += 3;
+				if (source.ability === 'fieldwarp') d += 3;
 			}
 			return d;
 			}
@@ -53,8 +53,8 @@ exports.BattleStatuses = {
 		durationCallback: function (target, source, effect) {
 			var d = 5;
 			if (source) {
-				if (source.hasItem('smoothrock')) d += 3;
-				if (source.hasAbility('fieldwarp')) d += 3;
+				if (source.item === 'smoothrock') d += 3;
+				if (source.ability === 'fieldwarp') d += 3;
 			}
 			return d;
 			}
@@ -64,8 +64,8 @@ exports.BattleStatuses = {
 		durationCallback: function (target, source, effect) {
 			var d = 5;
 			if (source) {
-				if (source.hasItem('icyrock')) d += 3;
-				if (source.hasAbility('fieldwarp')) d += 3;
+				if (source.item === 'icyrock') d += 3;
+				if (source.ability === 'fieldwarp') d += 3;
 			}
 			return d;
 		}

@@ -82,9 +82,10 @@ exports.BattleScripts = {
 		// hardcoded shit
 		for (var i in this.data.Pokedex) {
 			var template = this.getTemplate(i);
+			if (!template.tier === 'M4A') continue;
 			var baseTemplate = this.getTemplate(template.baseSpecies);
-			this.modData('Pokedex', i).weightkg = template.weightkg || baseTemplate.weightkg;
-			this.modData('Pokedex', i).heightm = baseTemplate.weightkg;
+			this.modData('Pokedex', i).weightkg = (template.weightkg ? template.weightkg : baseTemplate.weightkg);
+			this.modData('Pokedex', i).heightm = baseTemplate.heightm;
 		}
 	}
 }
