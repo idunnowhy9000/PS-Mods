@@ -82,13 +82,13 @@ exports.BattleScripts = {
 		this.modData('Learnsets', 'bellossom').learnset.moonblast = ['6L1'];
 		this.modData('Learnsets', 'bellossom').learnset.drainingkiss = ['6L1'];
 		this.modData('Learnsets', 'blissey').learnset.moonblast = ['6L1'];
-		// hardcoded shit
+		// other shit
 		for (var i in this.data.Pokedex) {
 			var template = this.getTemplate(i);
-			if (!template.tier === 'M4A') continue;
 			var baseTemplate = this.getTemplate(template.baseSpecies);
+			if (!template.tier === 'M4A') continue;
 			this.modData('Pokedex', i).weightkg = (template.weightkg ? template.weightkg : baseTemplate.weightkg);
-			this.modData('Pokedex', i).heightm = baseTemplate.heightm;
+			this.modData('Pokedex', i).heightm = (template.heightm ? template.heightm : baseTemplate.heightm);
 		}
 	}
 }
