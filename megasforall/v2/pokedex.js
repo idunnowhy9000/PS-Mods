@@ -175,13 +175,6 @@ exports.BattlePokedex = {
 		"types": ["Bug", "Fairy"],
 		"abilities": {"0": "Magic Guard"}
 	},
-	"beedrillmega": {
-		"species": "Beedrill-Mega",
-		"baseSpecies": "Beedrill",
-		"baseStats": {"hp": 65, "atk": 150, "def": 40, "spa": 15, "spd": 80, "spe": 145},
-		"types": ["Bug", "Poison"],
-		"abilities": {"0": "Adaptability"}
-	},
 	"beheeyemmega": {
 		"species": "Beheeyem-Mega",
 		"baseSpecies": "Beheeyem",
@@ -1855,20 +1848,6 @@ exports.BattlePokedex = {
 		"types": ["Electric", "Water"],
 		"abilities": {"0": "Water Absorb"}
 	},
-	"sableyemega": {
-		"species": "Sableye-Mega",
-		"baseSpecies": "Sableye",
-		"baseStats": {"hp": 50, "atk": 85, "def": 125, "spa": 85, "spd": 115, "spe": 20},
-		"types": ["Dark", "Ghost"],
-		"abilities": {"0": "Magic Bounce"}
-	},
-	"salamencemega": {
-		"species": "Salamence-Mega",
-		"baseSpecies": "Salamence",
-		"baseStats": {"hp": 95, "atk": 145, "def": 130, "spa": 120, "spd": 90, "spe": 120},
-		"types": ["Dragon", "Flying"],
-		"abilities": {"0": "Aerilate"}
-	},
 	"samurottmega": {
 		"species": "Samurott-Mega",
 		"baseSpecies": "Samurott",
@@ -1939,16 +1918,9 @@ exports.BattlePokedex = {
 		"types": ["Poison", "Dark"],
 		"abilities": {"0": "Mold Breaker"}
 	},
-	"sharpedomega": {
-		"species": "Sharpedo-Mega",
-		"baseSpecies": "Sharpedo",
-		"baseStats": {"hp": 70, "atk": 140, "def": 70, "spa": 110, "spd": 65, "spe": 105},
-		"types": ["Water", "Dark"],
-		"abilities": {"0": "Strong Jaw"}
-	},
 	"shayminmega": {
-		"species": "Shaymin-Mega",
-		"baseSpecies": "Shayminland",
+		"species": "Shaymin-Land-Mega",
+		"baseSpecies": "Shaymin-Land",
 		"baseStats": {"hp": 100, "atk": 110, "def": 130, "spa": 120, "spd": 135, "spe": 105},
 		"types": ["Grass"],
 		"abilities": {"0": "Purify"}
@@ -2023,13 +1995,6 @@ exports.BattlePokedex = {
 		"types": ["Normal"],
 		"abilities": {"0": "Stall"}
 	},
-	"slowbromega": {
-		"species": "Slowbro-Mega",
-		"baseSpecies": "Slowbro",
-		"baseStats": {"hp": 95, "atk": 75, "def": 180, "spa": 130, "spd": 80, "spe": 30},
-		"types": ["Water", "Psychic"],
-		"abilities": {"0": "Shell Armor"}
-	},
 	"slowkingmega": {
 		"species": "Slowking-Mega",
 		"baseSpecies": "Slowking",
@@ -2101,13 +2066,6 @@ exports.BattlePokedex = {
 		"types": ["Water", "Psychic"],
 		"abilities": {"0": "Regenerator"}
 	},
-	"steelixmega": {
-		"species": "Steelix-Mega",
-		"baseSpecies": "Steelix",
-		"baseStats": {"hp": 75, "atk": 125, "def": 230, "spa": 55, "spd": 95, "spe": 30},
-		"types": ["Steel", "Ground"],
-		"abilities": {"0": "Sand Force"}
-	},
 	"stoutlandmega": {
 		"species": "Stoutland-Mega",
 		"baseSpecies": "Stoutland",
@@ -2149,13 +2107,6 @@ exports.BattlePokedex = {
 		"baseStats": {"hp": 100, "atk": 83, "def": 113, "spa": 103, "spd": 113, "spe": 55},
 		"types": ["Poison"],
 		"abilities": {"0": "Stuffed"}
-	},
-	"swampertmega": {
-		"species": "Swampert-Mega",
-		"baseSpecies": "Swampert",
-		"baseStats": {"hp": 100, "atk": 150, "def": 110, "spa": 95, "spd": 110, "spe": 70},
-		"types": ["Water", "Ground"],
-		"abilities": {"0": "Swift Swim"}
 	},
 	"swannamega": {
 		"species": "Swanna-Mega",
