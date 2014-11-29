@@ -14,9 +14,12 @@ exports.BattleScripts = {
 			if (!item.megaStone) return false;
 			template = this.getTemplate(item.megaStone);
 			if (pokemon.baseTemplate.baseSpecies !== template.baseSpecies) {
-				if (item.m4aEvolves && this.getTemplate(pokemon.baseTemplate.baseSpecies + item.m4aEvolves).exists) {
+				var isM4A = false;
+				if (item.m4aEvolves && this.getTemplate(pokemon.baseTemplate.baseSpecies + item.m4aEvolves).tier === 'M4A') {
 					template = this.getTemplate(pokemon.baseTemplate.baseSpecies + item.m4aEvolves);
+					isM4A = true;
 				}
+				if (!isM4A) return false;
 			}
 		}
 		if (!template.isMega) return false;
