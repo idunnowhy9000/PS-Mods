@@ -13,13 +13,6 @@ exports.BattlePokedex = {
 		"types": ["Water"],
 		"abilities": {"0": "Regenerator"}
 	},
-	"altariamega": {
-		"species": "Altaria-Mega",
-		"baseSpecies": "Altaria",
-		"baseStats": {"hp": 75, "atk": 110, "def": 110, "spa": 110, "spd": 105, "spe": 80},
-		"types": ["Dragon", "Fairy"],
-		"abilities": {"0": "Pixilate"}
-	},
 	"ambipommega": {
 		"species": "Ambipom-Mega",
 		"baseSpecies": "Ambipom",
@@ -96,13 +89,6 @@ exports.BattlePokedex = {
 		"baseStats": {"hp": 90, "atk": 105, "def": 120, "spa": 135, "spd": 145, "spe": 95},
 		"types": ["Ice", "Flying"],
 		"abilities": {"0": "Snow Warning"}
-	},
-	"audinomega": {
-		"species": "Audino-Mega",
-		"baseSpecies": "Audino",
-		"baseStats": {"hp": 103, "atk": 60, "def": 126, "spa": 80, "spd": 126, "spe": 50},
-		"types": ["Normal", "Fairy"],
-		"abilities": {"0": "Healer"}
 	},
 	"aurorusmega": {
 		"species": "Aurorus-Mega",
@@ -258,13 +244,6 @@ exports.BattlePokedex = {
 		"baseStats": {"hp": 70, "atk": 185, "def": 70, "spa": 115, "spd": 70, "spe": 65},
 		"types": ["Grass", "Dark"],
 		"abilities": {"0": "Scarecrow"}
-	},
-	"cameruptmega": {
-		"species": "Camerupt-Mega",
-		"baseSpecies": "Camerupt",
-		"baseStats": {"hp": 70, "atk": 120, "def": 100, "spa": 145, "spd": 105, "spe": 20},
-		"types": ["Fire", "Ground"],
-		"abilities": {"0": "Sheer Force"}
 	},
 	"carbinkmega": {
 		"species": "Carbink-Mega",
@@ -489,13 +468,6 @@ exports.BattlePokedex = {
 		"baseStats": {"hp": 90, "atk": 70, "def": 110, "spa": 100, "spd": 135, "spe": 70},
 		"types": ["Water", "Ice"],
 		"abilities": {"0": "Serene Grace"}
-	},
-	"dianciemega": {
-		"species": "Diancie-Mega",
-		"baseSpecies": "Diancie",
-		"baseStats": {"hp": 50, "atk": 160, "def": 110, "spa": 160, "spd": 110, "spe": 110},
-		"types": ["Rock", "Fairy"],
-		"abilities": {"0": "Magic Bounce"}
 	},
 	"diggersbymega": {
 		"species": "Diggersby-Mega",
@@ -791,13 +763,6 @@ exports.BattlePokedex = {
 		"types": ["Normal", "Dragon"],
 		"abilities": {"0": "Arena Trap"}
 	},
-	"gallademega": {
-		"species": "Gallade-Mega",
-		"baseSpecies": "Gallade",
-		"baseStats": {"hp": 68, "atk": 165, "def": 95, "spa": 65, "spd": 115, "spe": 110},
-		"types": ["Psychic", "Fighting"],
-		"abilities": {"0": "Inner Focus"}
-	},
 	"galvantulamega": {
 		"species": "Galvantula-Mega",
 		"baseSpecies": "Galvantula",
@@ -839,13 +804,6 @@ exports.BattlePokedex = {
 		"baseStats": {"hp": 65, "atk": 70, "def": 130, "spa": 150, "spd": 115, "spe": 95},
 		"types": ["Ice"],
 		"abilities": {"0": "Winter Shield"}
-	},
-	"glaliemega": {
-		"species": "Glalie-Mega",
-		"baseSpecies": "Glalie",
-		"baseStats": {"hp": 80, "atk": 120, "def": 80, "spa": 120, "spd": 80, "spe": 100},
-		"types": ["Ice"],
-		"abilities": {"0": "Refrigerate"}
 	},
 	"gliscormegax": {
 		"species": "Gliscor-Mega-X",
@@ -1225,20 +1183,6 @@ exports.BattlePokedex = {
 		"types": ["Water", "Dragon"],
 		"abilities": {"0": "Rain Dish"}
 	},
-	"latiasmega": {
-		"species": "Latias-Mega",
-		"baseSpecies": "Latias",
-		"baseStats": {"hp": 80, "atk": 100, "def": 120, "spa": 140, "spd": 150, "spe": 110},
-		"types": ["Dragon", "Psychic"],
-		"abilities": {"0": "Levitate"}
-	},
-	"latiosmega": {
-		"species": "Latios-Mega",
-		"baseSpecies": "Latios",
-		"baseStats": {"hp": 80, "atk": 130, "def": 100, "spa": 160, "spd": 120, "spe": 110},
-		"types": ["Dragon", "Psychic"],
-		"abilities": {"0": "Levitate"}
-	},
 	"leafeonmega": {
 		"species": "Leafeon-Mega",
 		"baseSpecies": "Leafeon",
@@ -1287,13 +1231,6 @@ exports.BattlePokedex = {
 		"baseStats": {"hp": 78, "atk": 105, "def": 86, "spa": 50, "spd": 86, "spe": 115},
 		"types": ["Normal"],
 		"abilities": {"0": "Fur Coat"}
-	},
-	"lopunnymega": {
-		"species": "Lopunny-Mega",
-		"baseSpecies": "Lopunny",
-		"baseStats": {"hp": 65, "atk": 136, "def": 94, "spa": 54, "spd": 96, "spe": 135},
-		"types": ["Normal", "Fighting"],
-		"abilities": {"0": "Scrappy"}
 	},
 	"lucariomega": {
 		"species": "Lucario-Mega",
