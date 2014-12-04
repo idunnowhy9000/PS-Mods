@@ -17,19 +17,19 @@ DEVELOPMENT STAGE: **ALPHA** (implemented a bit)
 acestriker13's version will not be finished and *probably never will be.*
 Installing
 --------------------------------
-Megas For All installs like most mods in this repo (consult repo's README). However, it requires you to have a custom client and modified server files so, clone Pokémon Showdown's client or download as ZIP file.
+Megas For All installs like most mods in this repo (consult repo's README). However, it requires you to have a custom client and modified server files so, clone PokÃ©mon Showdown's client or download as ZIP file.
 
-Next, copy all the code from ```abilities.js``` and ```pokedex.js``` without the first and last lines to ```Location/data/abilities.js``` and ```Location/data/pokedex.js``` respectively, where ```Location``` means the location where Pokémon Showdown's client and server is.
-Copy ```battle-engine.js``` to the Pokémon Showdown Server's folder.
+Next, copy all the code from ```abilities.js``` and ```pokedex.js``` without the first and last lines to ```Location/data``` respectively, where ```Location``` means the location where PokÃ©mon Showdown's client is.
+Copy the folder to ```mods/megasforall``` in the Showdown's server folder.
+Replace PokÃ©mon Showdown Server's ```battle-engine.js```'s ```this.canMegaEvo = ...``` (line ~205) with the first line of mod's ```battle-engine.js```.
 
-Finally put this code in your ```formats.js``` file in the ```config``` folder where Pokémon Showdown's server is located.
+Finally put this code in your ```formats.js``` file in the ```config``` folder where PokÃ©mon Showdown's server is located.
 ```
 {
 	name: "Megas For All",
 	section: "Other Metagames",
 
-    mod: 'megasforall',
-	ruleset: ['Pokemon', 'Standard', 'Baton Pass Clause', 'Swagger Clause', 'Team Preview'],
-	banlist: ['Uber', 'Soul Dew', 'Gengarite', 'Kangaskhanite', 'Lucarionite', 'Mawilite']
+	mod: 'megasforall',
+	ruleset: ['OU']
 },
 ```
