@@ -16,13 +16,7 @@ exports.BattleStatuses = {
 		effect: {
 			noCopy: true, // doesn't get copied by Baton Pass
 			onStart: function (pokemon, source, effect) {
-				if (effect.id === 'cutecharm') {
-					this.add('-start', pokemon, 'Attract', '[from] ability: Cute Charm', '[of] ' + source);
-				} else if (effect.id === 'destinyknot') {
-					this.add('-start', pokemon, 'Attract', '[from] item: Destiny Knot', '[of] ' + source);
-				} else {
-					this.add('-start', pokemon, 'Attract');
-				}
+				this.add('-start', pokemon, 'Attract');
 			},
 			onBeforeMove: function (pokemon, target, move) {
 				if (this.effectData.source && !this.effectData.source.isActive && pokemon.volatiles['attract']) {
@@ -44,6 +38,7 @@ exports.BattleStatuses = {
 			if (target.level < pokemon.level) {
 				return false;
 			}
+			//if (pokemon.
 		},
 		onModifyMove: function (move, user, target) {
 			if (target.hasType('Ice')) {
@@ -62,5 +57,37 @@ exports.BattleStatuses = {
 			if (target === source) return;
 			return null;
 		},
-	}
+	},
+	shedinja: {
+		onBeforeMove: function (pokemon, target, move) {
+			return false;
+		}
+	},
+	golduck: {
+		onModifyPriority: function (priority, pokemon, target, move) {
+			if (move && this.isWeather(['raindance', 'primordialsea'])) return 6;
+		},
+	},
+	machamp: {
+		onModifyMove: function (move) {
+			if (move.multihit && move.multihit.length) {
+				move.multihit = 4;
+			}
+		},
+	},
+	dewgong: {
+		onModifySpe: function (speMod, pokemon) {
+			if (this.isWeather('hail')) {
+				return this.chain(speMod, 2);
+			}
+		},
+	},
+	gyarados: {
+		onModifyMove: function (move, user, target) {
+			if (move.id === 'rage' || move.id === 'thrash') {
+				move.ohko = true;
+			}
+		},
+		//onStart: function (
+	},
 };
