@@ -105,4 +105,26 @@ exports.Formats = [
 	// 	   this.modData('Pokedex', 'heracrossmega').abilities['0'] = 'Swarm';
 	//   }
 	// }
+	{
+	        name: "Reliablemons",
+	        section: "Other Metagames",
+	
+	        ruleset: ['Pokemon', 'Standard', 'Team Preview'],
+	        banlist: ['Uber', 'Soul Dew', 'Gengarite', 'Kangaskhanite', 'Lucarionite'],
+	        onModifyMove: function(move, pokemon) {
+	            var moves = pokemon.moves;
+	            if (move.id === moves[0]) {
+	                var cheese = 0;
+	                var crackers = true;
+	            } else if (move.id === moves[1] && pokemon.typesData[1]) {
+	                var cheese = 1;
+	                var crackers = true;
+	            } else {
+	                var crackers = false;
+	            }
+	            if (crackers) {
+	                move.type = pokemon.typesData[cheese].type;
+	            }
+	        }
+	 },
 ];
