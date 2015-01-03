@@ -1,0 +1,3 @@
+exports.BattleStatuses = {
+	mstone: {}
+}
