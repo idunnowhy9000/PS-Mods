@@ -24,5 +24,14 @@ exports.BattleScripts = {
 		this.modData('Learnsets','spinda').learnset.overheat = ['6L1'];
 		this.modData('Learnsets','spinda').learnset.firepunch = ['6L1'];
 		this.modData('Learnsets','spinda').learnset.flareblitz = ['6L1'];
+		this.modData('Learnsets','tauros').learnset.closecombat = ['6L1'];
+		this.modData('Learnsets','tauros').learnset.doublekick = ['6L1'];
+		this.modData('Learnsets','tauros').learnset.jumpkick = ['6L1'];
+		this.modData('Learnsets','miltank').learnset.playrough = ['6L1'];
+		this.modData('Learnsets','bouffalant').learnset.submission = ['6L1'];
+		this.modData('Learnsets','bouffalant').learnset.closecombat = ['6L1'];
+		this.modData('Learnsets','bouffalant').learnset.mudsport = ['6L1'];
+		this.modData('Learnsets','snorlax').learnset.psychic = ['6L1'];
+		this.modData('Learnsets','arceus').learnset.psychic = ['6L1'];
 	}
 }

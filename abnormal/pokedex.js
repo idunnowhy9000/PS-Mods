@@ -71,4 +71,116 @@ exports.BattlePokedex = {
 		inherit: true,
 		types: ["Fire"]
 	},
+	tauros: {
+		inherit: true,
+		types: ["Ground", "Fighting"]
+	},
+	miltank: {
+		inherit: true,
+		types: ["Ground", "Fairy"]
+	},
+	bouffalant: {
+		inherit: true,
+		types: ["Ground", 'Fighting']
+	},
+	snorlax: {
+		inherit: true,
+		types: ["Psychic"]
+	},
+	slaking: {
+		inherit: true,
+		types: ["Ground"]
+	},
+	arceus: {
+		inherit: true,
+		types: ["Fairy", "Psychic"]
+	},
+	blissey: {
+		inherit: true,
+		types: ["Fairy"]
+	},
+	regigigas: {
+		inherit: true,
+		types: ["Ground"]
+	},
+	castform: {
+		inherit: true,
+		types: ["Flying", "Ghost"]
+	},
+	lioone: {
+		inherit: true,
+		types: ["Ground", "Fire"]
+	},
+	delcatty: {
+		inherit: true,
+		types: ["Fairy"]
+	},
+	swellow: {
+		inherit: true,
+		types: ["Flying"]
+	},
+	lickilicky: {
+		inherit: true,
+		types: ['Ghost', 'Rock']
+	},
+	dunsparce: {
+		inherit: true,
+		types: ["Bug", 'Ground']
+	},
+	purugly: {
+		inherit: true,
+		types: ["Dark", 'Fairy']
+	},
+	cincinno: {
+		inherit: true,
+		types: ["Grass", 'Fairy']
+	},
+	furfrou: {
+		inherit: true,
+		types: ["Fairy"]
+	},
+	stoutland: {
+		inherit: true,
+		types: ["Ground"]
+	},
+	persian: {
+		inherit: true,
+		types: ["Dark"]
+	},
+	eevee: {
+		inherit: true,
+		types: ["Fairy"]
+	},
+	audino: {
+		inherit: true,
+		types: ["Fairy"]
+	},
+	bibarel: {
+		inherit: true,
+		types: ["Psychic", "Water"]
+	},
+	staraptor: {
+		inherit: true,
+		types: ['Flying', "Fighting"]
+	},
+	raticate: {
+		inherit: true,
+		types: ["Dark"]
+	},
+	furret: {
+		inherit: true,
+		types: ["Electric", "Fairy"]
+	},
+	noctowl: {
+		inherit: true,
+		types: ["Psychic", "Flying"]
+	},
+	unfezant: {
+		inherit: true,
+		types: ["Dark", "Flying"]
+	},
+	lopunny: {
+		inherit: true,
+		types: ["Fairy"]
+	},
 }
