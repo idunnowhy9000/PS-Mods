@@ -67,4 +67,56 @@ exports.BattleMovedex = {
 		inherit: true,
 		type: "Rock"
 	},
+	hornattack: {
+		inherit: true,
+		type: "Bug"
+	},
+	bodyslam: {
+		inherit: true,
+		type: "Ground"
+	},
+	retaliate: {
+		inherit: true,
+		type: "Dark"
+	},
+	protect: {
+		inherit: true,
+		type: "Psychic"
+	},
+	recover: {
+		inherit: true,
+		type: "Psychic"
+	},
+	slackoff: {
+		inherit: true,
+		type: "Ground"
+	},
+	headcharge: {
+		inherit: true,
+		type: "Ground"
+	},
+	judgement: {
+		inherit: true,
+		type: "Fairy"
+	},
+	crushgrip: {
+		inherit: true,
+		type: "Ground"
+	},
+	crushclaw: {
+		inherit: true,
+		type: "Dark"
+	},
+	stockpile: {
+		inherit: true,
+		type: "Grass"
+	},
+	swallow: {
+		inherit: true,
+		type: "Poison"
+	},
+	spitup: {
+		inherit: true,
+		type: "Poison"
+	},
 }
