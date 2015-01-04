@@ -22,7 +22,7 @@ exports.BattleScripts = {
 				if (!isM4A) return false;
 			}
 		}
-		if (!template.isMega) return false;
+		if (!template.isMega && !isM4A) return false;
 
 		var foeActive = side.foe.active;
 		for (var i = 0; i < foeActive.length; i++) {
@@ -36,7 +36,7 @@ exports.BattleScripts = {
 		pokemon.baseTemplate = template; // mega evolution is permanent :o
 		pokemon.details = template.species + (pokemon.level === 100 ? '' : ', L' + pokemon.level) + (pokemon.gender === '' ? '' : ', ' + pokemon.gender) + (pokemon.set.shiny ? ', shiny' : '');
 		this.add('detailschange', pokemon, pokemon.details);
-		this.add('message', template.baseSpecies + " has Mega Evolved into Mega " + template.baseSpecies + "!");
+		this.add('-mega', pokemon, template.baseSpecies, item);
 		var oldAbility = pokemon.ability;
 		pokemon.setAbility(template.abilities['0']);
 		pokemon.baseAbility = pokemon.ability;
