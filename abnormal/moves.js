@@ -119,4 +119,160 @@ exports.BattleMovedex = {
 		inherit: true,
 		type: "Poison"
 	},
+	extremespeed: {
+		inherit: true,
+		type: "Fire"
+	},
+	weatherball: {
+		inherit: true,
+		type: "Flying"
+	},
+	snore: {
+		inherit: true,
+		type: "Psychic"
+	},
+	bellydrum: {
+		inherit: true,
+		type: "Dragon"
+	},
+	sleeptalk: {
+		inherit: true,
+		type: "Psychic"
+	},
+	softboiled: {
+		inherit: true,
+		type: "Fairy"
+	},
+	facade: {
+		inherit: true,
+		type: "Fighting"
+	},
+	explosion: {
+		inherit: true,
+		type: "Fire"
+	},
+	selfdestruct: {
+		inherit: true,
+		type: "Fire"
+	},
+	tailslap: {
+		inherit: true,
+		type: "Fairy"
+	},
+	batonpass: {
+		inherit: true,
+		type: "Psychic"
+	},
+	whirlwind: {
+		inherit: true,
+		type: "Flying"
+	},
+	camouflage: {
+		inherit: true,
+		type: "Ghost"
+	},
+	wringout: {
+		inherit: true,
+		type: "Grass"
+	},
+	spikecannon: {
+		inherit: true,
+		type: "Ground"
+	},
+	rapidspin: {
+		inherit: true,
+		type: "Fighting"
+	},
+	conversion: {
+		inherit: true,
+		type: "Electric"
+	},
+	conversion2: {
+		inherit: true,
+		type: "Electric"
+	},
+	sharpen: {
+		inherit: true,
+		type: "Steel"
+	},
+	metronome: {
+		inherit: true,
+		type: "Psychic"
+	},
+	covet: {
+		inherit: true,
+		type: "Fairy"
+	},
+	quickattack: {
+		inherit: true,
+		type: "Electric"
+	},
+	round: {
+		inherit: true,
+		type: "Flying"
+	},
+	workup: {
+		inherit: true,
+		type: "Fairy"
+	},
+	superfang: {
+		inherit: true,
+		type: "Dark"
+	},
+	hyperfang: {
+		inherit: true,
+		type: "Dark"
+	},
+	disable: {
+		inherit: true,
+		type: "Psychic"
+	},
+	present: {
+		inherit: true,
+		type: "Ice"
+	},
+	smellingsalts: {
+		inherit: true,
+		type: "Fighting"
+	},
+	secretpower: {
+		inherit: true,
+		type: "Psychic"
+	},
+	lovelykiss: {
+		inherit: true,
+		type: "Dark"
+	},
+	milkdrink: {
+		inherit: true,
+		type: "Fairy"
+	},
+	sing: {
+		inherit: true,
+		type: "Fairy"
+	},
+	eggbomb: {
+		inherit: true,
+		type: "Fire"
+	},
+	barrage: {
+		inherit: true,
+		type: "Grass"
+	},
+	dizzypunch: {
+		inherit: true,
+		type: "Psychic"
+	},
+	sketch: {
+		inherit: true,
+		type: "Psychic"
+	},
+	glare: {
+		inherit: true,
+		type: "Poison"
+	},
+	psychup: {
+		inherit: true,
+		type: "Psychic"
+	},
 }

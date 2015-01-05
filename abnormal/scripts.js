@@ -72,5 +72,7 @@ exports.BattleScripts = {
 		this.modData('Learnsets','unfezant').learnset.knockoff = ['6L1'];
 		this.modData('Learnsets','unfezant').learnset.pursuit = ['6L1'];
 		this.modData('Learnsets','lopunny').learnset.playrough = ['6L1'];
+		this.modData('Learnsets','diggersby').learnset.closecombat = ['6L1'];
+		this.modData('Learnsets','pidgeot').learnset.dazzlinggleam = ['6L1'];
 	}
 }

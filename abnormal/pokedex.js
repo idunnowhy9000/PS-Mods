@@ -183,4 +183,36 @@ exports.BattlePokedex = {
 		inherit: true,
 		types: ["Fairy"]
 	},
+	smeargle: {
+		inherit: true,
+		types: ["Psychic"]
+	},
+	bunnelby: {
+		inherit: true,
+		types: ["Ground"]
+	},
+	diggersby: {
+		inherit: true,
+		types: ["Ground", "Fighting"]
+	},
+	pidgey: {
+		inherit: true,
+		types: ["Flying"]
+	},
+	pidgeotto: {
+		inherit: true,
+		types: ["Flying"]
+	},
+	pidgeot: {
+		inherit: true,
+		types: ["Fairy", "Flying"]
+	},
+	pidgeotmega: {
+		inherit: true,
+		types: ["Fairy", "Flying"]
+	},
+	watchog: {
+		inherit: true,
+		types: ["Dark", "Electric"]
+	},
 }
