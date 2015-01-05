@@ -28,11 +28,11 @@ Where:
 * ```SECTION``` is the category it is listed under
 * ```GAME TYPE``` is the game mode of the metagame (doubles, triples)
 * ```MOD``` is the mod used by the format
-* ```RANDBAT TEAM``` is a random team *idk how to explain this* (say if you type in ```random``` you will battle with an automatically generated singles team, ```randomDoubles``` is an automatically generated doubles team, ```randomCC``` is a Challenge Cup team.)
+* ```RANDBAT TEAM``` is a random team (say if you type in ```random``` you will battle with an automatically generated singles team, ```randomDoubles``` is an automatically generated doubles team, ```randomCC``` is a Challenge Cup team.)
 * ```RULESET``` is the ruleset where the format follows (usually ```Pokemon, Standard, Team Preview```)
 * ```BANLIST``` is the banlist from the formats (usually a combination ```Simple + Shell Smash```, a Pokémon ```Xerneas```, or an item ```Soul Dew```)
 
-**NOTE**: If the metagame is a mod, you'll need to create a folder with the name of `MOD` (where MOD is your mod name) in your Pokémon Showdown Server's ```mod``` folder. Next, copy all the `.js` files in the folder.
+**NOTE**: If the metagame has a mod, you'll need to create a folder with the name of `MOD` (where MOD is your mod name) in your Pokémon Showdown Server's ```mod``` folder. Next, copy all the `.js` files in the folder.
 Credits
 --------------------------------
 * idunnowhy9000 (00001111a on smogon): Leader, creator
