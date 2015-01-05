@@ -60,7 +60,7 @@ exports.BattleItems = {
 		onImmunity: function (type, pokemon) {
 			if (type === 'hail') return false;
 		},
-		desc: " Extends the duration of Hail weather set by the holder from 5 turns to 10. The holder is immune to Hail damage."
+		desc: "Extends the duration of Hail weather set by the holder from 5 turns to 10. The holder is immune to Hail damage."
 	},
 	snowball: {
 		inherit: true,

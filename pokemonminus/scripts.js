@@ -1,20 +1,5 @@
 exports.BattleScripts = {
 	init: function() {
-		// gengar
-		this.modData('Learnsets', 'gengar').learnset.encore = ['6L1'];
-		// gengar-mega
-		// kyogre
-		this.modData('Learnsets', 'kyogre').learnset.originpulse = ['6L1'];
-		// mewtwo
-		// mewtwo-mega-x
-		// mewtwo-mega-y
-		this.modData('Pokedex', 'mewtwomegay').baseStats['hp'] = 116;
-		this.modData('Pokedex', 'mewtwomegay').baseStats['atk'] = 130;
-		this.modData('Pokedex', 'mewtwomegay').baseStats['def'] = 90;
-		this.modData('Pokedex', 'mewtwomegay').baseStats['spa'] = 204;
-		this.modData('Pokedex', 'mewtwomegay').baseStats['spd'] = 120;
-		this.modData('Pokedex', 'mewtwomegay').baseStats['spe'] = 160;
-		this.modData('Pokedex', 'mewtwomegay').abilities[0] = "Rational";
 		// xerneas
 		this.modData('Pokedex', 'xerneas').baseStats['hp'] = 136;
 		this.modData('Pokedex', 'xerneas').baseStats['atk'] = 131;
@@ -140,7 +125,6 @@ exports.BattleScripts = {
 		this.modData('Learnsets', 'gothitelle').learnset.encore = ['6L1'];
 		this.modData('Learnsets', 'gothitelle').learnset.lovelykiss = ['6L1'];
 		// lugia
-		this.modData('Pokedex', 'lugia').types = ["Flying","Water"];
 		this.modData('Learnsets', 'lugia').learnset.scald = ['6L1'];
 		this.modData('Learnsets', 'lugia').learnset.surf = ['6L1'];
 		this.modData('Learnsets', 'lugia').learnset.hurricane = ['6L1'];
@@ -149,8 +133,6 @@ exports.BattleScripts = {
 		// scizor
 		this.modData('Learnsets', 'scizor').learnset.drainpunch = ['6L1'];
 		this.modData('Learnsets', 'scizor').learnset.thunderpunch = ['6L1'];
-		// scizor-mega
-		this.modData('Pokedex', 'scizormega').abilities[0] = 'Tough Claws';
 		// darkrai
 		this.modData('Learnsets', 'darkrai').learnset.nightdaze = ['6L1'];
 		this.modData('Learnsets', 'darkrai').learnset.gunkshot = ['6L1'];
@@ -169,11 +151,6 @@ exports.BattleScripts = {
 		this.modData('Learnsets', 'yveltal').learnset.bravebird = ['6L1'];
 		this.modData('Learnsets', 'yveltal').learnset.nastyplot = ['6L1'];
 		this.modData('Learnsets', 'yveltal').learnset.willowisp = ['6L1'];
-		// genesect
-		// sylveon
-		// thundurus
-		// thundurus-t
-		// wobbuffet
 		// Every hidden ability becomes released
 		for (var i in this.data.FormatsData) {
 			this.modData('FormatsData', i).unreleasedHidden = false;
