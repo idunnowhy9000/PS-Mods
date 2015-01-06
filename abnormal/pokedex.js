@@ -215,4 +215,24 @@ exports.BattlePokedex = {
 		inherit: true,
 		types: ["Dark", "Electric"]
 	},
+	starly: {
+		inherit: true,
+		types: ["Flying"]
+	},
+	staravia: {
+		inherit: true,
+		types: ["Flying"]
+	},
+	bidoof: {
+		inherit: true,
+		types: ["Psychic"]
+	},
+	bunnelby: {
+		inherit: true,
+		types: ["Ground"]
+	},
+	licikitung: {
+		inherit: true,
+		types: ["Ghost"]
+	},
 }
