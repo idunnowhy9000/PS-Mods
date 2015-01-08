@@ -174,7 +174,7 @@ exports.BattleItems = {
 	quickpowder: {
 		inherit: true,
 		onDamage: function (damage, target, source, effect) {
-			if (effect.effectType !== 'Move') {
+			if (effect.effectType === 'Move') {
 				target.boost({spe: 1});
 			}
 		},
