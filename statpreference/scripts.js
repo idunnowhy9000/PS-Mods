@@ -15,7 +15,7 @@ exports.BattleScripts = {
 					isAdded: false
 				});
 			}
-
+			
 			if (!dontRecalculateStats) {
 				for (var statName in this.stats) {
 					var stat = this.template.baseStats[statName];

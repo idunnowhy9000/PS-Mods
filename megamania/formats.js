@@ -3,6 +3,6 @@
 		section: "Other Metagames",
 		
 		mod: "megamania",
-		ruleset: ['OU'],
+		ruleset: ['OU', 'Mega Mania'],
 		banlist: ['Regigigas', 'Slaking']
 	}

@@ -1,1 +1,1 @@
-this.canMegaEvo = ((this.battle.getItem(this.item).megaEvolves === this.baseTemplate.baseSpecies) || (forme && forme.isMega && forme.requiredMove && this.set.moves.indexOf(toId(forme.requiredMove)) > -1) || (this.battle.getItem(this.item).id === 'megastone' && !this.volatiles['msstone']));
+this.canMegaEvo = ((this.battle.getItem(this.item).megaEvolves === this.baseTemplate.baseSpecies) || (forme && forme.isMega && forme.requiredMove && this.set.moves.indexOf(toId(forme.requiredMove)) > -1) || (this.battle.getItem(this.item).id === 'megastone'));

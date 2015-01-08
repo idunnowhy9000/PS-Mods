@@ -1,3 +1,3 @@
 exports.BattleStatuses = {
-	mstone: {}
+	megamania: {}
 }
