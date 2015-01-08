@@ -163,4 +163,31 @@ exports.BattleItems = {
 		},
 		desc: "The holder takes halved damage from moves used by Ghost and Dark type Pokemon."
 	},
+	silverpowder: {
+		inherit: true,
+		onSwitchInPriority: 101,
+		onSwitchIn: function (pokemon) {
+			// todo
+		},
+		desc: "The holder sets a Substitute when they switch in, consuming the Silver Powder in place of the normal 25% HP."
+	},
+	quickpowder: {
+		inherit: true,
+		onDamage: function (damage, target, source, effect) {
+			if (effect.effectType !== 'Move') {
+				target.boost({spe: 1});
+			}
+		},
+		desc: "The holder's Speed increases by one stage when they are struck by a damaging move. This does not consume the Quick Powder."
+	},
+	honey: {
+		id: "honey",
+		name: "Honey",
+		num: -4,
+		gen: 4,
+		onStart: function (pokemon) {
+			// todo
+		},
+		desc: "No Pokemon may use Status moves so long as the holder is on the field."
+	},
 }
