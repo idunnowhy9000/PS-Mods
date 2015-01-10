@@ -11,7 +11,7 @@ exports.BattleItems = {
 	fistplate: {
 		inherit: true,
 		onBasePower: function (basePower, attacker, defender, move) {
-			if (move.isPunchAttack) {
+			if (move.isPunchAttack || move.isKickAttack) {
 				return this.chainModify(1.5);
 			}
 		},
@@ -42,7 +42,7 @@ exports.BattleItems = {
 	icicleplate: {
 		inherit: true,
 		onModifyMove: function (move, pokemon) {
-			if (move.isPunchAttack) {
+			if (move.isPunchAttack || move.isKickAttack) {
 				move.type = 'Ice';
 				pokemon.addVolatile('icicleplate');
 			}
