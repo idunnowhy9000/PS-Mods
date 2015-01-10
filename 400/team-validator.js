@@ -1,4 +1,8 @@
 if (format.banlistTable && format.banlistTable['400clause']) {
-	return !(Object.sum(template.baseStats) <= 400);
+	var bst;
+	for (var i in template.baseStats) {
+		bst += template.baseStats[i];
+	}
+	if (bst <= 400) return false;
 }
 // (Add this after line ~584 containing "alreadyChecked[template.speciesid] = true;")

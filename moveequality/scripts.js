@@ -2,8 +2,7 @@ exports.BattleScripts = {
 	init: function () {
 		for (var i in this.data.Movedex) {
 			var move = this.data.Movedex[i];
-			if (move.priority === 0
-				&& move.category !== 'Status') {
+			if (move.priority === 0 && move.category !== 'Status') {
 				var basePower = move.basePower;
 				switch (move.multihit) {
 					case 2:
