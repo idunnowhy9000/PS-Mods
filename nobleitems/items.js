@@ -19,10 +19,11 @@ exports.BattleItems = {
 	},
 	expertbelt: {
 		inherit: true,
-		onBasePower: function (basePower, attacker, defender, move) {
-			// todo
-			if (target.runEffectiveness(move) <= 0) {
-				
+		onModifyDamage: function (damage, source, target, move) {
+			if (target.runEffectiveness(move) > 0) {
+				return this.chainModify(1.5);
+			} else {
+				return this.chainModify(0.5);
 			}
 		},
 		desc: "The holder's super effective hits are 50% stronger, but ineffective hits are halved in damage."
@@ -122,9 +123,9 @@ exports.BattleItems = {
 	spelltag: {
 		inherit: true,
 		onAfterDamage: function (damage, target, source, move) {
-			if (!source || source.volatiles['disable']) return;
+			if (!target || target.volatiles['disable']) return;
 			if (source !== target && move && move.effectType === 'Move') {
-				source.addVolatile('disable');
+				target.addVolatile('disable');
 			}
 		},
 		desc: "The holder's damaging Ghost type moves Disable the target's last used move if they hit."
@@ -139,7 +140,14 @@ exports.BattleItems = {
 			pokemon.setType('Ghost', true);
 		},
 		onTakeItem: function (item, pokemon, source) {
-			pokemon.setType('', true); // todo
+			var oldType = pokemon.template.types;
+			pokemon.typesData = oldType.map(function (type) {
+				return {
+					type: type,
+					suppressed: false,
+					isAdded: false
+				};
+			});
 			return true;
 		},
 		desc: "The holder becomes a Ghost type so long as they hold the item. (This replaces all their current typing) No effect if the holder is already a Ghost."
@@ -165,9 +173,62 @@ exports.BattleItems = {
 	},
 	silverpowder: {
 		inherit: true,
-		onSwitchInPriority: 101,
-		onSwitchIn: function (pokemon) {
-			// todo
+		effect: {
+			onStart: function (target) {
+				this.add('-start', target, 'Substitute');
+				this.effectData.hp = Math.floor(target.maxhp / 4);
+				delete target.volatiles['partiallytrapped'];
+				
+				target.takeItem(); // todo
+			},
+			onTryPrimaryHitPriority: -1,
+			onTryPrimaryHit: function (target, source, move) {
+				if (target === source) {
+					this.debug('sub bypass: self hit');
+					return;
+				}
+				if (move.notSubBlocked || move.isSoundBased && this.gen >= 6) {
+					return;
+				}
+				if (move.category === 'Status') {
+					var SubBlocked = {
+						block:1, embargo:1, entrainment:1, gastroacid:1, healblock:1, healpulse:1, leechseed:1, lockon:1, meanlook:1, mindreader:1, nightmare:1, painsplit:1, psychoshift:1, simplebeam:1, skydrop:1, soak: 1, spiderweb:1, switcheroo:1, topsyturvy:1, trick:1, worryseed:1, yawn:1
+					};
+					if (move.status || move.boosts || move.volatileStatus === 'confusion' || SubBlocked[move.id]) {
+						return false;
+					}
+					return;
+				}
+				var damage = this.getDamage(source, target, move);
+				if (!damage) {
+					return null;
+				}
+				damage = this.runEvent('SubDamage', target, source, move, damage);
+				if (!damage) {
+					return damage;
+				}
+				if (damage > target.volatiles['substitute'].hp) {
+					damage = target.volatiles['substitute'].hp;
+				}
+				target.volatiles['substitute'].hp -= damage;
+				source.lastDamage = damage;
+				if (target.volatiles['substitute'].hp <= 0) {
+					target.removeVolatile('substitute');
+				} else {
+					this.add('-activate', target, 'Substitute', '[damage]');
+				}
+				if (move.recoil) {
+					this.damage(Math.round(damage * move.recoil[0] / move.recoil[1]), source, target, 'recoil');
+				}
+				if (move.drain) {
+					this.heal(Math.ceil(damage * move.drain[0] / move.drain[1]), source, target, 'drain');
+				}
+				this.runEvent('AfterSubDamage', target, source, move, damage);
+				return 0; // hit
+			},
+			onEnd: function (target) {
+				this.add('-end', target, 'Substitute');
+			}
 		},
 		desc: "The holder sets a Substitute when they switch in, consuming the Silver Powder in place of the normal 25% HP."
 	},
@@ -185,8 +246,29 @@ exports.BattleItems = {
 		name: "Honey",
 		num: -4,
 		gen: 4,
-		onStart: function (pokemon) {
-			// todo
+		onStart: function (target, source, sourceEffect) {
+			pokemon.addVolatile("honey");
+		},
+		effect: {
+			onStart: function (target, source) {
+				var movesTarget = target.moveset, movesSource = source.moveset;
+				
+				for (var i = 0; i > movesTarget.length; i++) {
+					var move = this.battle.getMove(movesTarget[i].id);
+					if (move.category === 'Status') pokemon.disableMove(movesTarget[i].id, false);
+				}
+				
+				for (var i = 0; i > movesSource.length; i++) {
+					var move = this.battle.getMove(movesSource[i].id);
+					if (move.category === 'Status') pokemon.disableMove(movesSource[i].id, false);
+				}
+			},
+			onBeforeMove: function (pokemon, target, move) {
+				if (move.category === 'Status') return false;
+			},
+			onEnd: function (pokemon) {
+				// todo
+			}
 		},
 		desc: "No Pokemon may use Status moves so long as the holder is on the field."
 	},
