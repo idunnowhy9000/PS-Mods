@@ -81,6 +81,45 @@ exports.BattleScripts = {
 		for (var i = 0; i < side.pokemon.length; i++) side.pokemon[i].canMegaEvo = false;
 		return true;
 	},
+	
+	side: {
+		getData: function() {
+			var forme;
+			var data = {
+				name: this.name,
+				id: this.id,
+				pokemon: []
+			};
+			for (var i = 0; i < this.pokemon.length; i++) {
+				var pokemon = this.pokemon[i];
+				data.pokemon.push({
+					ident: pokemon.fullname,
+					details: pokemon.details,
+					condition: pokemon.getHealth(pokemon.side),
+					active: (pokemon.position < pokemon.side.active.length),
+					stats: {
+						atk: pokemon.baseStats['atk'],
+						def: pokemon.baseStats['def'],
+						spa: pokemon.baseStats['spa'],
+						spd: pokemon.baseStats['spd'],
+						spe: pokemon.baseStats['spe']
+					},
+					moves: pokemon.moves.map(function(move) {
+						if (move === 'hiddenpower') {
+							return move + toId(pokemon.hpType) + (pokemon.hpPower === 70 ? '' : pokemon.hpPower);
+						}
+						return move;
+					}),
+					baseAbility: pokemon.baseAbility,
+					item: pokemon.item,
+					pokeball: pokemon.pokeball,
+					canMegaEvo: this.battle.canMegaEvo(pokemon)
+				});
+			}
+			return data;
+		}
+	},
+	
 	init: function () {
 		// learnsets
 		this.modData('Learnsets', 'accelgor').learnset.toxicspikes = ['6L1'];

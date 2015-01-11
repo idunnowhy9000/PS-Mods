@@ -3,6 +3,6 @@
 		section: "Other Metagames",
 		
 		mod: "megamania",
-		ruleset: ['OU', 'Mega Mania'],
-		banlist: ['Regigigas', 'Slaking']
+		ruleset: ['Pokemon', 'Standard', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause', 'Mega Mania'],
+		banlist: ['Uber', 'Soul Dew', 'Gengarite', 'Kangaskhanite', 'Lucarionite', 'Mawilite', 'Salamencite', 'Regigigas', 'Slaking','Ignore Illegal Abilities']
 	}
