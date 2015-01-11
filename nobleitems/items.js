@@ -27,7 +27,7 @@ exports.BattleItems = {
 		onModifyDamage: function (damage, source, target, move) {
 			if (target.runEffectiveness(move) > 0) {
 				return this.chainModify(1.5);
-			} else if (target.runEffectiveness(move) !== 0) {
+			} else if (target.runEffectiveness(move) < 0) {
 				return this.chainModify(0.5);
 			}
 		},
