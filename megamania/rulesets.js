@@ -23,6 +23,8 @@ exports.BattleFormats = {
 					ability = this.getAbility(baseAbility);
 				if (ability.exists) {
 					set.ability = ability.name;
+				} else {
+					set.ability = template.abilities[0];
 				}
 			}
 		},
