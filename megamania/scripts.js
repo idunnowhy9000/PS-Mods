@@ -62,7 +62,7 @@ exports.BattleScripts = {
 			}
 			// abilities
 			var oldAbility = pokemon.ability;
-			var baseAbility = pokemon.name.split("/")[0],
+			var baseAbility = pokemon.name.split("/")[1],
 				ability = this.getAbility(baseAbility);
 			if (ability.exists) {
 				pokemon.setAbility(ability.name);
