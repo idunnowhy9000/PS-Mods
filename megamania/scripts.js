@@ -1,4 +1,36 @@
 exports.BattleScripts = {
+	canMegaEvo: function (pokemon) {
+		var side = pokemon.side;
+		if (side.megaEvo) return false;
+		
+ 		var otherForme;
+		var template;
+		if (pokemon.baseTemplate.otherFormes) otherForme = this.getTemplate(pokemon.baseTemplate.otherFormes[0]);
+		if (otherForme && otherForme.isMega && otherForme.requiredMove) {
+			if (pokemon.moves.indexOf(toId(otherForme.requiredMove)) < 0) return false;
+			template = otherForme;
+		} else {
+			var item = this.getItem(pokemon.item);
+			if (item.id === 'megastone') {
+				if (pokemon.side.sideConditions["megamania"].megas[pokemon.id]) return false;
+			} else {
+				if (!item.megaStone) return false;
+				template = this.getTemplate(item.megaStone);
+				if (pokemon.baseTemplate.baseSpecies !== template.baseSpecies) return false;
+			}
+		}
+		if (!template.isMega) return false;
+		var foeActive = side.foe && side.foe.active;
+		if (foeActive) {
+			for (var i = 0; i < foeActive.length; i++) {
+				if (!foeActive[i] || !foeActive[i].volatiles['skydrop'] || foeActive[i].volatiles['skydrop'].source !== pokemon) continue;
+				return false;
+			}
+		}
+		
+		return template;
+	},
+	
 	runMegaEvo: function (pokemon) {
 		if (!pokemon.canMegaEvo) return false;
 
@@ -30,13 +62,13 @@ exports.BattleScripts = {
 
 		// okay, mega evolution is possible
 		
-		if (item.id === 'megastone' && !template.isMega) {
-			// for previous mega evolves
-			
+		if (item.id === 'megastone') {
+			// check previous mega evolution
+			if (pokemon.side.sideConditions["megamania"].megas[pokemon.id]) return false;
 			// change stat
-			for (var statName in this.baseStats) {
-				var stat = this.baseStats[statName], newStat = stat;
-				if (this.set.shiny) {
+			for (var statName in pokemon.baseStats) {
+				var stat = pokemon.baseStats[statName], newStat = stat;
+				if (pokemon.set.shiny) {
 					if (statName === 'atk') newStat += 30;
 					if (statName === 'spa') newStat += 10;
 				} else {
@@ -48,6 +80,9 @@ exports.BattleScripts = {
 					|| statName === 'spd') newStat += 20;
 				stat = newStat;
 			}
+			// add mega to team data
+			if (!pokemon.side.sideConditions["megamania"]) pokemon.side.addSideCondition("megamania");
+			pokemon.side.sideConditions["megamania"].megas[pokemon.id] = true;
 			// make mega
 			this.add('-mega', pokemon, template.baseSpecies, item);
 		} else {

@@ -1,3 +1,7 @@
 exports.BattleStatuses = {
-	megamania: {}
+	megamania: {
+		onStart: function (pokemon) {
+			this.effectData.megas = [];
+		}
+	}
 }
