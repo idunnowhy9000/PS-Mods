@@ -74,5 +74,8 @@ exports.BattleScripts = {
 		this.modData('Learnsets','lopunny').learnset.playrough = ['6L1'];
 		this.modData('Learnsets','diggersby').learnset.closecombat = ['6L1'];
 		this.modData('Learnsets','pidgeot').learnset.dazzlinggleam = ['6L1'];
+		this.modData('Learnsets','watchog').learnset.quickattack = ['6L1'];
+		this.modData('Learnsets','watchog').learnset.wildcharge = ['6L1'];
+		this.modData('Learnsets','watchog').learnset.suckerpunch = ['6L1'];
 	}
 }

@@ -213,7 +213,7 @@ exports.BattlePokedex = {
 	},
 	watchog: {
 		inherit: true,
-		types: ["Dark", "Electric"]
+		types: ["Electric", "Dark"]
 	},
 	starly: {
 		inherit: true,

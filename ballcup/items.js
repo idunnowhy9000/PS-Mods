@@ -120,7 +120,7 @@ exports.BattleItems = {
 	},
 	"loveball":{
 		inherit: true,
-		desc: "If the opposing pokemon is infatuated, moves do x1.5 more power.",
+		desc: "If the opposing Pokemon is infatuated, moves do x1.5 more power.",
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, target, pokemon) {
 			if (target.volatiles['attract']) {
@@ -137,7 +137,7 @@ exports.BattleItems = {
 	},
 	"fastball":{
 		inherit:true,
-		desc: "When switched in, the pokemon's first move will always go first.",
+		desc: "When switched in, the Pokemon's first move will always go first.",
 		effect: {
 			duration: 1,
 			onModifyPriority: function (priority, pokemon, target, move) {
@@ -205,18 +205,21 @@ exports.BattleItems = {
 	},
 	"diveball": {
 		inherit: true,
-		desc: "Prevents Burns on the user",
+		desc: "Prevents burns on the user",
 		onResidualOrder: 5,
 		onResidualSubOrder: 1,
 		onResidual: function (pokemon) {
 			if (pokemon.status && pokemon.status === 'brn'){
 				pokemon.cureStatus();
 			}
-		}
+		},
+		onImmunity: function (type, pokemon) {
+			if (type === 'brn') return false;
+		},
 	},
 	"luxuryball":{
 		inherit: true,
-		desc: "Increases Defence and Special Defence by x1.5, lowers Attack and Special Attack x0.5",
+		desc: "Increases Defense and Special Defense by x1.5, lowers Attack and Special Attack x0.5",
 		onModifyAtkPriority: 1,
 		onModifyAtk: function (atk) {
 			return this.chainModify(0.5);
@@ -267,7 +270,7 @@ exports.BattleItems = {
 	},
 	"parkball":{
 		inherit: true,
-		desc: "Special Effects on moves are increased by x1.2",
+		desc: "Special effects on moves are increased by x1.2",
 		onModifyMove: function (move) {
 			if (move.secondaries){
 				for (var i = 0; i < move.secondaries.length; i++) {
