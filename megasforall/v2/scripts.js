@@ -82,6 +82,19 @@ exports.BattleScripts = {
 		this.modData('Learnsets', 'bellossom').learnset.moonblast = ['6L1'];
 		this.modData('Learnsets', 'bellossom').learnset.drainingkiss = ['6L1'];
 		this.modData('Learnsets', 'blissey').learnset.moonblast = ['6L1'];
+		this.modData('Learnsets', 'bouffalant').learnset.bulkup = ['6L1'];
+		this.modData('Learnsets', 'braviary').learnset.quickattack = ['6L1'];
+		this.modData('Learnsets', 'breloom').learnset.highjumpkick = ['6L1'];
+		this.modData('Learnsets', 'bronzong').learnset.voltswitch = ['6L1'];
+		this.modData('Learnsets', 'butterfree').learnset.psyshock = ['6L1'];
+		this.modData('Learnsets', 'cacturne').learnset.firepunch = ['6L1'];
+		this.modData('Learnsets', 'cacturne').learnset.icepunch = ['6L1'];
+		this.modData('Learnsets', 'cacturne').learnset.knockoff = ['6L1'];
+		this.modData('Learnsets', 'carbink').learnset.earthpower = ['6L1'];
+		this.modData('Learnsets', 'carnivine').learnset.thunderfang = ['6L1'];
+		this.modData('Learnsets', 'carnivine').learnset.icefang = ['6L1'];
+		this.modData('Learnsets', 'carnivine').learnset.acidspray = ['6L1'];
+		this.modData('Learnsets', 'carracosta').learnset.stoneedge = ['6L1'];
 		// other shit
 		for (var i in this.data.Pokedex) {
 			var template = this.getTemplate(i);

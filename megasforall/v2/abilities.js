@@ -163,8 +163,8 @@ exports.BattleAbilities = {
 		desc: "Makes all of this Pokemon's attacks physical.",
 		shortDesc: "This Pokemon's moves all become physical.",
 		onModifyMove: function (move) {
-			if (move.category == 'special') {
-				move.category = 'physical';
+			if (move.category == 'Special') {
+				move.category = 'Physical';
 			}
 		},
 		id: "brute force",
@@ -177,7 +177,7 @@ exports.BattleAbilities = {
 		shortDesc: "Non super-effective moves used on this Pokemon become Ice-type.",
 		onTryHit: function (target, source, move) {
 			if (this.getEffectiveness(move, target) <= 0) {
-				move.type= 'Ice'
+				move.type = 'Ice';
 			}
 		},
 		id: "iceage",
@@ -222,7 +222,7 @@ exports.BattleAbilities = {
 	},
 	"doppler": {
 		desc: "Raises the power of this Pokemon's Water-type moves by 50% in rain, Fire-type moves by 50% in sun, Rock-Type moves by 50% in sandstorm, and Ice-Type moves by 50% in hail.",
-		shortDesc: "This Pokemon's Flying/Electric/Dragon attacks do 1.3x in Rain.",
+		shortDesc: "Raises the power of moves that corresponds with the current weather.",
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, attacker, defender, move) {
 			if (this.isWeather('raindance')) {
@@ -343,7 +343,7 @@ exports.BattleAbilities = {
 		desc: "This Pokemon takes 3/4 damage from special moves. When it is hit by a special move, its Special Attack is boosted by one stage.",
 		shortDesc: "Takes 3/4 damage from special moves and raises Special Attack by 1 when hit by a special move.",
 		onSourceModifyDamage: function (damage, source, target, move) {
-			if (move.category === 'special') {
+			if (move.category === 'Special') {
 				this.boost({spa:1});
 				return this.chainModify(0.75);
 			}
@@ -385,7 +385,7 @@ exports.BattleAbilities = {
 		shortDesc: "This Pokemon's Fire moves cannot miss.",
 		onModifyMove: function(move) {
 			if (move.type === 'Fire') {
-			move.accuracy = true;
+				move.accuracy = true;
 			}
 		},
 		id: "heatseek",
@@ -415,8 +415,8 @@ exports.BattleAbilities = {
 		num: -31
 	},
 	"judoka": {
-	desc: "This Pokemon does 1.5x damage against opponents weighing 60 kg (132.3 lbs) or more.",
-	shortDesc: "50% damage bonus against targets weighing 60 kg (132.3 lbs) or more.",
+		desc: "This Pokemon does 1.5x damage against opponents weighing 60 kg (132.3 lbs) or more.",
+		shortDesc: "50% damage bonus against targets weighing 60 kg (132.3 lbs) or more.",
 		onBasePower: function (basePower, attacker, defender, move) {
 			if (target.weightkg >= 60) {
 				return this.chainModify(1.5);
@@ -664,7 +664,9 @@ exports.BattleAbilities = {
 		shortDesc: "Rollout and Ice Ball deal triple damage.",
 		onBasePowerPriority: 8,
 		onBasePower: function (basePower, attacker, defender, move) {
-			// tba
+			if (move.id === 'rollout' || move.id === 'iceball') {
+				return this.chainModify(3);
+			}
 		},
 		id: "accumulation",
 		name: "Accumulation",
@@ -694,8 +696,10 @@ exports.BattleAbilities = {
 					if (this.getTemplate(megaTemplate.formes[i]).forme === 'Mega-X') {
 						megaTarget.baseTemplate = this.getTemplate(megaTarget.formes[i]);
 						megaTarget.details = megaTarget.species + (megaTarget.level === 100 ? '' : ', L' + megaTarget.level) + (megaTarget.gender === '' ? '' : ', ' + megaTarget.gender) + (megaTarget.set.shiny ? ', shiny' : '');
+						break;
 					}
 				}
+				if (!megaTarget.template.isMega) return;
 				pokemon.transformInto(megaTarget, pokemon);
 			}
 		},
@@ -731,7 +735,7 @@ exports.BattleAbilities = {
 		desc: "When user enters the battle or gains this ability, user uses the move Twister without taking up a turn or using PP.",
 		shortDesc: "Upon switch in or gaining this ability, Pokemon uses Twister",
 		onStart: function (source) {
-			this.useMove('twister');
+			source.useMove('twister');
 		},
 		id: "tempest",
 		name: "Tempest",
@@ -742,9 +746,8 @@ exports.BattleAbilities = {
 		desc: "When user enters the battle or gains this ability, user gains the Stockpile 3 effect.",
 		shortDesc: "Upon switch in or gaining this ability, user gains the Stockpile 3 effect.",
 		onStart: function (source) {
-			this.addVolatile('stockpile1');
-			this.addVolatile('stockpile2');
-			this.addVolatile('stockpile3');
+			source.addVolatile('stockpile');
+			source.volatiles['stockpile'].layers = 3;
 		},
 		id: "stuffed",
 		name: "Stuffed",
@@ -769,7 +772,7 @@ exports.BattleAbilities = {
 		desc: "When user enters the battle or gains this ability, user uses the move Pluck without taking up a turn or using PP.",
 		shortDesc: "Upon switch in or gaining this ability, user uses Pluck.",
 		onStart: function (source) {
-			this.useMove('pluck');
+			source.useMove('pluck');
 		},
 		id: "raider",
 		name: "Raider",
@@ -779,7 +782,11 @@ exports.BattleAbilities = {
 	"seeddrop": {
 		desc: "When user switches out, its replacement's HP is healed by 25%.",
 		shortDesc: "When user switches out, its replacement's HP is healed by 25%.",
-		// tba
+		sideCondition: 'SeedDrop',
+		onBeforeSwitchOut: function (pokemon) {
+			pokemon.addSideCondition("seeddropSwitch");
+			pokemon.side.sideConditions["seeddropSwitch"].source = pokemon;
+		},
 		id: "seeddrop",
 		name: "Seed Drop",
 		rating: 3,
@@ -798,7 +805,7 @@ exports.BattleAbilities = {
 	},
 	"valiant": {
 		desc: "This Pokemon has the ability to hit Fairy-type Pokemon with Dragon-type moves. Effectiveness of these moves takes into account the Steel-type Pokemon's other weaknesses and resistances.",
-		shortDesc: "This Pokemon can hit Steel-types with Poison-type moves.",
+		shortDesc: "This Pokemon can hit Fairy-types with Dragon-type moves.",
 		onModifyMove: function (move) {
 			if (move.type === 'Dragon') {
 				move.affectedByImmunities = false;
@@ -870,7 +877,7 @@ exports.BattleAbilities = {
 		shortDesc: "This Pokemon's Special Attack is boosted by 1 if it attacks and faints another Pokemon.",
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				this.boost({SpA:1}, source);
+				this.boost({spa:1}, source);
 			}
 		},
 		id: "hubris",

@@ -79,4 +79,10 @@ exports.BattleStatuses = {
 			return false;
 		},
 	},
+	seeddropSwitch: {
+		onSwitchIn: function (pokemon) {
+			if (pokemon === this.effectData.source) return;
+			pokemon.heal(pokemon.maxhp / 4);
+		}
+	}
 };
