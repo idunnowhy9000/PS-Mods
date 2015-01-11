@@ -10,7 +10,7 @@ exports.BattleFormats = {
 				for (var i in template.abilities) {
 					if (set.ability === template.abilities[i]) legalAbility = true;
 				}
-				if (!legalAbility) return ['The ability ' + set.ability + ' is banned on Pokémon that do not naturally have it.'];
+				if (!legalAbility && this.getItem(set.item).id === "megastone") return ['The ability ' + set.ability + ' is banned on Pokémon that do not naturally have it.'];
 			}
 		},
 	}
