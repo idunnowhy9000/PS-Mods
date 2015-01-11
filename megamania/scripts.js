@@ -12,7 +12,7 @@ exports.BattleScripts = {
 			var item = this.getItem(pokemon.item);
 			if (item.id === 'megastone') {
 				if (side.sideConditions["megamania"]) {
-					if (side.sideConditions["megamania"].megas) return false;
+					return false;
 				}
 				return true;
 			}
@@ -41,7 +41,7 @@ exports.BattleScripts = {
 		if (item.id === 'megastone') {
 			// check previous mega evolution
 			if (side.sideConditions["megamania"]) {
-				if (side.sideConditions["megamania"].megas) return false;
+				return false;
 			} else {
 				side.addSideCondition("megamania");
 			}
@@ -60,8 +60,6 @@ exports.BattleScripts = {
 					|| statName === 'spd') newStat += 20;
 				pokemon.baseStats[statName] = newStat;
 			}
-			// add mega to team data
-			side.sideConditions["megamania"].megas = pokemon.id;
 			// make mega
 			this.add('detailschange', pokemon, pokemon.details);
 			this.add('-mega', pokemon, pokemon.baseSpecies, item);
