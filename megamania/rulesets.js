@@ -13,12 +13,7 @@ exports.BattleFormats = {
 				// validate banned abilities
 				var bannedAbilities = {'Arena Trap':1,'Huge Power':1,'Imposter':1,'Parental Bond':1,'Pure Power':1,'Shadow Tag':1,'Wonder Guard':1};
 				if (set.ability in bannedAbilities) {
-					
-					
-					for (var i in template.abilities) {
-						
-					}
-					if (!legalAbility && ) return ['The ability ' + set.ability + ' is banned on Pokémon that do not naturally have it.'];
+					if (!legalAbility) return ['The ability ' + set.ability + ' is banned on Pokémon that do not naturally have it.'];
 				}
 			}
 		},
