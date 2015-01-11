@@ -60,6 +60,14 @@ exports.BattleScripts = {
 					|| statName === 'spd') newStat += 20;
 				pokemon.baseStats[statName] = newStat;
 			}
+			// abilities
+			var oldAbility = pokemon.ability;
+			var baseAbility = pokemon.name.split("/")[0],
+				ability = this.getAbility(baseAbility);
+			if (ability.exists) {
+				pokemon.setAbility(ability.name);
+				pokemon.baseAbility = pokemon.ability;
+			}
 			// make mega
 			this.add('detailschange', pokemon, pokemon.details);
 			this.add('-mega', pokemon, pokemon.baseSpecies, item);
