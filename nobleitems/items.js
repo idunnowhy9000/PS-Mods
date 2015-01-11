@@ -40,7 +40,7 @@ exports.BattleItems = {
 			return this.chainModify(1.5);
 		},
 		onModifySpe: function (speMod) {
-			return this.chain(speMod, 0.33);
+			return this.chain(speMod, 0.67);
 		},
 		desc: "Boosts this Pokemon's attack by 50%, but lowers speed by 33%."
 	},
