@@ -5,13 +5,6 @@ exports.BattleFormats = {
 			// validate names
 			if (!set.name) return;
 			set.name = set.name.replace(/[^\u0000-\u007F]/g, ''); // use only ascii chars for name
-			// validate abilities
-			var template = this.getTemplate(set.species || set.name),
-				legalAbility = false;
-			for (var i in template.abilities) {
-				if (set.ability === template.abilities[i]) legalAbility = true;
-			}
-			if (this.getItem(set.item).id !== "megastone" && !legalAbility) return [(set.name || set.species) + " cannot have " + set.ability + "."];
 			else {
 				// set ability to nickname's (ignore illegal abilities)
 				var abilities = set.name.split("/"),
