@@ -1,6 +1,5 @@
 exports.BattleFormats = {
 	megamania: {
-		effectType: 'Banlist',
 		validateSet: function (set, format, isNonstandard) {
 			// validate names
 			if (!set.name) return;
