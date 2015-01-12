@@ -3,8 +3,8 @@ exports.BattleFormats = {
 		effectType: 'Banlist',
 		validateSet: function (set, format, isNonstandard) {
 			// validate names
-			if (!pokemon.name) return;
-			pokemon.name = pokemon.name.replace(/[^\u0000-\u007F]/g, ''); // use only ascii chars for name
+			if (!set.name) return;
+			set.name = set.name.replace(/[^\u0000-\u007F]/g, ''); // use only ascii chars for name
 			// validate abilities
 			var template = this.getTemplate(set.species || set.name),
 				legalAbility = false;
@@ -14,7 +14,7 @@ exports.BattleFormats = {
 			if (this.getItem(set.item).id !== "megastone" && !legalAbility) return [(set.name || set.species) + " cannot have " + set.ability + "."];
 			else {
 				// set ability to nickname's (ignore illegal abilities)
-				var abilities = pokemon.name.split("/"),
+				var abilities = set.name.split("/"),
 					baseAbility = abilities[0],
 					megaAbility = abilities[1];
 				// check abilities exists (mega abilities are checked when mega evolving)
