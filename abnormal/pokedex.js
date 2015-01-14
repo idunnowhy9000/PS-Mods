@@ -235,4 +235,16 @@ exports.BattlePokedex = {
 		inherit: true,
 		types: ["Ghost"]
 	},
+	fearow: {
+		inherit: true,
+		types: ["Steel", "Flying"]
+    },
+	ditto: {
+		inherit: true,
+		types: ["Psychic"]
+    },
+	swablu: {
+		inherit: true,
+		types: ["Fairy", "Flying"]
+    },
 }

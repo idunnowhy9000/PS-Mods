@@ -275,4 +275,36 @@ exports.BattleMovedex = {
 		inherit: true,
 		type: "Psychic"
 	},
+	endeavor: {
+		inherit: true,
+		type: "Fighting"
+    },
+	flail: {
+		inherit: true,
+		type: "Dark"
+    },
+	technoblast: {
+		inherit: true,
+		type: "Steel"
+    },
+	uproar: {
+		inherit: true,
+		type: "Dragon"
+    },
+	accupressure: {
+		inherit: true,
+		type: "Psychic"
+    },
+	entrainment: {
+		inherit: true,
+		type: "Fairy"
+    },
+	yawn: {
+		inherit: true,
+		type: "Fairy"
+    },
+	wish: {
+		inherit: true,
+		type: "Fairy"
+    },
 }

@@ -77,5 +77,9 @@ exports.BattleScripts = {
 		this.modData('Learnsets','watchog').learnset.quickattack = ['6L1'];
 		this.modData('Learnsets','watchog').learnset.wildcharge = ['6L1'];
 		this.modData('Learnsets','watchog').learnset.suckerpunch = ['6L1'];
+		this.modData('Learnsets','fearow').learnset.ironhead = ['6L1'];
+		this.modData('Learnsets','fearow').learnset.bravebird = ['6L1'];
+		this.modData('Learnsets','swablu').learnset.mistyterrain = ['6L1'];
+		this.modData('Learnsets','swablu').learnset.playrough = ['6L1'];
 	}
 }
