@@ -210,7 +210,7 @@ exports.BattleAbilities = {
 		onBasePower: function (basePower, attacker, defender, move) {
 			if (this.isWeather('raindance')) {
 				if (move.type === 'Flying' || move.type === 'Electric' || move.type === 'Dragon') {
-					this.debug('Sand Force boost');
+					this.debug('Storm Force boost');
 					return this.chainModify([0x14CD, 0x1000]);
 				}
 			}
@@ -884,5 +884,130 @@ exports.BattleAbilities = {
 		name: "Hubris",
 		rating: 4,
 		num: -58
+	},
+	"spiritabsorb": {
+		desc: "If another Pokemon faints when user is active, user's HP is healed by 25%.",
+		shortDesc: "If another Pokemon faints when user is active, user's HP is healed by 25%.",
+		onSourceFaint: function (target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				source.heal(source.maxhp / 4);
+			}
+		},
+		id: "spiritabsorb",
+		name: "Spirit Absorb",
+		rating: 4,
+		num: -59
+	},
+	"soulless": {
+		desc: "When user faints, the opponent directly opposite of user faints as well.",
+		shortDesc: "When user faints, the opponent directly opposite of user faints as well.",
+		onFaint: function (target, source, effect) {
+			if (!source || !effect) return;
+			source.faint();
+		},
+		id: "soulless",
+		name: "Soulless",
+		rating: 4,
+		num: -60
+	},
+	"reflector": {
+		desc: "When user enters the battle or gains this ability, Reflect is set up on user's side for five turns.",
+		shortDesc: "Reflect is set up on user's side for five turns.",
+		onStart: function(source) {
+			this.useMove('reflect');
+		},
+		id: "reflector",
+		name: "Reflector",
+		rating: 4,
+		num: -61
+	},
+	"projector": {
+		desc: "When user enters the battle or gains this ability, Light Screen is set up on user's side for five turns.",
+		shortDesc: "Light Screen is set up on user's side for five turns.",
+		onStart: function(source) {
+			this.useMove('lightscreen');
+		},
+		id: "projector",
+		name: "Projector",
+		rating: 4,
+		num: -62
+	},
+	"precision": {
+		desc: "When this Pokemon uses an attack that has 40 Base Power or less (including Struggle), the move's Base Power receives a 2x boost. For example, a move with 40 Base Power effectively becomes a move with 80 Base Power.",
+		shortDesc: "This Pokemon's attacks of 40 Base Power or less do 2x damage. Includes Struggle.",
+		onBasePowerPriority: 8,
+		onBasePower: function (basePower, attacker, defender, move) {
+			if (basePower <= 40) {
+				this.debug('Technician boost');
+				return this.chainModify(2);
+			}
+		},
+		id: "precision",
+		name: "Precision",
+		rating: 4,
+		num: -63
+	},
+	"overwhelm": {
+		desc: "When user enters the battle or gains this ability, the Taunt effect is applied to the opponent.",
+		shortDesc: "When user enters the battle or gains this ability, the Taunt effect is applied to the opponent.",
+		onStart: function(source) {
+			this.useMove('taunt');
+		},
+		id: "overwhelm",
+		name: "Overwhelm",
+		rating: 4,
+		num: -63
+	},
+	"mineraldissolve": {
+		desc: "Immunity to Rock and Sandstorm. User's HP is healed by 25% when hit by a Rock-type move or Stealth Rock. Sandstorm restores user's HP by 12.5% per turn.",
+		shortDesc: "Immunity to Rock and Sandstorm. User's HP is healed by 25% when hit by a Rock-type move or Stealth Rock. Sandstorm restores user's HP by 12.5% per turn.",
+		onWeather: function (target, source, effect) {
+			if (effect.id === 'sandstorm' || effect.id === 'stealthrock') {
+				this.heal(target.maxhp / 8);
+			}
+		},
+		onTryHit: function (target, source, move) {
+			if (target !== source && move.type === 'Rock') {
+				if (!this.heal(target.maxhp / 4)) {
+					this.add('-immune', target, '[msg]');
+				}
+				return null;
+			}
+		},
+		id: "mineraldissolve",
+		name: "Mineral Dissolve",
+		rating: 4,
+		num: -64
+	},
+	"looming": {
+		desc: "User's Dragon-type attacks gain +1 priority.",
+		shortDesc: "Gives priority to Dragon-type moves.",
+		onModifyPriority: function (priority, pokemon, target, move) {
+			if (move.type === 'Dragon') return priority + 1;
+		},
+		id: "looming",
+		name: "Looming",
+		rating: 4,
+		num: -65
+	},
+	"entrenchment": {
+		desc: "For each stage that user's Speed stat is lowered, its Defense stat is raised by one stage.",
+		shortDesc: "For each stage that user's Speed stat is lowered, its Defense stat is raised by one stage.",
+		onAfterEachBoost: function (boost, target, source) {
+			if (!source || target.side === source.side) {
+				return;
+			}
+			var statsLowered = false;
+			if (boost['spd'] < 0) {
+				statsLowered = true;
+			}
+			if (statsLowered) {
+				this.boost({def: 2});
+			}
+		},
+		id: "entrenchment",
+		name: "Entrenchment",
+		rating: 4,
+		num: -66
 	},
 }
