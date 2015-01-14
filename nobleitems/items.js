@@ -140,8 +140,7 @@ exports.BattleItems = {
 		name: "Reaper Cloth",
 		num: -2,
 		gen: 4,
-		onSwitchInPriority: 101,
-		onSwitchIn: function (pokemon) {
+		onStart: function (pokemon) {
 			if (!pokemon.hasType("Ghost")) pokemon.setType("Ghost", true);
 		},
 		onTakeItem: function (item, pokemon, source) {
