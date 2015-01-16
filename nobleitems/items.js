@@ -286,4 +286,71 @@ exports.BattleItems = {
 		},
 		desc: "No Pokemon may use Status moves so long as the holder is on the field."
 	},
+	nugget: {
+		id: "nugget",
+		name: "Nugget",
+		num: -5,
+		gen: 1,
+		onModifySpDPriority: 2,
+		onModifySpD: function (def, pokemon) {
+			return this.chainModify(1.3);
+		},
+		onAfterMoveSecondary: function (target, source, move) {
+			if (target && target !== source && move.type === 'Fire') {
+				target.takeItem();
+			}
+		},
+		desc: "Boosts a Pokemon's Special Defense by 30%. Fire-type attack consumes it."
+	},
+	bignugget: {
+		id: "bjgnugget",
+		name: "Big Nugget",
+		num: -6,
+		gen: 5,
+		onModifySpDPriority: 2,
+		onModifySpD: function (def, pokemon) {
+			return this.chainModify(1.5);
+		},
+		onModifySpe: function (speMod, pokemon) {
+			return this.chainModify(0.76);
+		},
+		onAfterMoveSecondary: function (target, source, move) {
+			if (target && target !== source && move.type === 'Fire') {
+				target.takeItem();
+			}
+		},
+		desc: "Boosts a Pokemon's Special Defense by 50%, but lowers Speed by 33%. Fire-type attack turns it into Nugget."
+	},
+	relicgold: {
+		id: "relicgold",
+		name: "Relic Gold",
+		num: -7,
+		gen: 5,
+		onModifyDefPriority: 2,
+		onModifyDef: function (def, pokemon) {
+			if (pokemon.baseTemplate === 'Regirock' || pokemon.baseTemplate === 'Registeel' || pokemon.baseTemplate === 'Regice' || pokemon.baseTemplate === 'Regigigas') {
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpDPriority: 2,
+		onModifySpD: function (spd, pokemon) {
+			if (pokemon.baseTemplate === 'Regirock' || pokemon.baseTemplate === 'Registeel' || pokemon.baseTemplate === 'Regice' || pokemon.baseTemplate === 'Regigigas') {
+				return this.chainModify(1.5);
+			}
+		},
+		desc: "When held by Regirock, Registeel, Regice, or Regigigas, the holder's defenses are increased by 50%."
+	},
+	amuletcoin: {
+		id: "amuletcoin",
+		name: "Amulet Coin",
+		num: -8,
+		gen: 2,
+		effect: {
+			duration: 1,
+			onModifyMove: function (move) {
+				move.accuracy = true;
+			}
+		},
+		desc: "On the first turn being sent in, the holder's moves have perfect accuracy."
+	},
 }
