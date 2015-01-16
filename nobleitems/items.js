@@ -316,7 +316,7 @@ exports.BattleItems = {
 		},
 		onAfterMoveSecondary: function (target, source, move) {
 			if (target && target !== source && move.type === 'Fire') {
-				target.takeItem();
+				target.item = "nugget";
 			}
 		},
 		desc: "Boosts a Pokemon's Special Defense by 50%, but lowers Speed by 33%. Fire-type attack turns it into Nugget."
