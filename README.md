@@ -35,5 +35,6 @@ Where:
 **NOTE**: If the metagame has a mod, you'll need to create a folder with the name of `MOD` (where MOD is your mod name) in your Pokémon Showdown Server's ```mod``` folder. Next, copy all the `.js` files in the folder.
 Credits
 --------------------------------
-* idunnowhy9000 (00001111a on smogon): Leader, creator
+* idunnowhy9000 (NotACoolName on smogon): Leader, creator
 * macrarazy (macrarazy on smogon): Contributed to coding More Weather
+* Ghoul King (Ghoul King on smogon): Contributed to coding AbNormal

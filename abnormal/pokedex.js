@@ -247,4 +247,7 @@ exports.BattlePokedex = {
 		inherit: true,
 		types: ["Fairy", "Flying"]
     },
+	missingno: {
+		inherit: true,
+	}
 }

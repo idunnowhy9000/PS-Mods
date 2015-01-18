@@ -7,7 +7,7 @@ One of the largest changes to the Metagame in Generation 6 was the introduction 
 
 This is one of the mods that this repo has to offer.
 
-DEVELOPMENT STAGE: **ALPHA** (implemented a bit)
+DEVELOPMENT STAGE: **BETA**
 
 **Most of the code used in V2 is cloned from [FireArrow5's repo][2] with his permission.**
 
