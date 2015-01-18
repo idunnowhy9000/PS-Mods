@@ -62,9 +62,11 @@ exports.BattleScripts = {
 			}
 			// abilities
 			var oldAbility = pokemon.ability;
-			var baseAbility = pokemon.name.split("/")[1],
+			var baseAbility = pokemon.name,
 				ability = this.getAbility(baseAbility);
-			if (ability.exists) {
+			// if banned ability, cannot change ability.
+			var bannedAbilities = {'Arena Trap':1,'Huge Power':1,'Imposter':1,'Parental Bond':1,'Pure Power':1,'Shadow Tag':1,'Wonder Guard':1};
+			if (ability.exists && !ability.name in bannedAbilities) {
 				pokemon.setAbility(ability.name);
 				pokemon.baseAbility = pokemon.ability;
 			}
