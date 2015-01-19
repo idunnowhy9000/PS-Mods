@@ -353,4 +353,28 @@ exports.BattleItems = {
 		},
 		desc: "On the first turn being sent in, the holder's moves have perfect accuracy."
 	},
+	insectplate: {
+		inherit: true,
+		onModifyMove: function (move, pokemon) {
+			if (move.isContact && move.type === 'Normal') {
+				move.type = 'Bug';
+				pokemon.addVolatile('insectplate');
+			}
+		},
+		effect: {
+			duration: 1,
+			onBasePowerPriority: 8,
+			onBasePower: function (basePower, pokemon, target, move) {
+				return this.chainModify(1.3);
+			}
+		},
+		desc: "The holder's Normal moves that make contact become Bug type and increase in power by 30%."
+	},
+	luckincense: {
+		id: "luckincense",
+		name: "Luck Incense",
+		num: -9,
+		gen: 4,
+		desc: ""
+	}
 }
