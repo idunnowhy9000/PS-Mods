@@ -174,8 +174,8 @@ exports.BattleScripts = {
 			var template = this.getTemplate(i);
 			var baseTemplate = this.getTemplate(template.baseSpecies);
 			if (!template.tier === 'M4A') continue;
-			this.modData('Pokedex', i).weightkg = (template.weightkg ? template.weightkg : baseTemplate.weightkg);
-			this.modData('Pokedex', i).heightm = (template.heightm ? template.heightm : baseTemplate.heightm);
+			this.modData('Pokedex', i).weightkg = template.weightkg || baseTemplate.weightkg;
+			this.modData('Pokedex', i).heightm = template.heightm || baseTemplate.heightm;
 		}
 	}
 }
