@@ -307,4 +307,36 @@ exports.BattleMovedex = {
 		inherit: true,
 		type: "Fairy"
     },
+	doublehit: {
+		inherit: true,
+		type: "Dark"
+	},
+	headbutt: {
+		inherit: true,
+		type: "Rock"
+	},
+	echoedvoice: {
+		inherit: true,
+		type: "Flying"
+	},
+	vicegrip: {
+		inherit: true,
+		type: "Bug"
+	},
+	substitute: {
+		inherit: true,
+		type: "Poison"
+	},
+	tickle: {
+		inherit: true,
+		type: "Fairy"
+	},
+	teeterdance: {
+		inherit: true,
+		type: "Psychic"
+	},
+	simplebeam: {
+		inherit: true,
+		type: "Psychic"
+	},
 }

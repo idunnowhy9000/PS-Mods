@@ -247,7 +247,16 @@ exports.BattlePokedex = {
 		inherit: true,
 		types: ["Fairy", "Flying"]
     },
+	fletchling: {
+		inherit: true,
+		types: ["Flying"]
+	},
+	azurill: {
+		inherit: true,
+		types: ["Fairy"]
+	},
 	missingno: {
 		inherit: true,
-	}
+		types: ["Bird", "999"]
+	},
 }
