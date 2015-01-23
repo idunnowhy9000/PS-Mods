@@ -375,6 +375,36 @@ exports.BattleItems = {
 		name: "Luck Incense",
 		num: -9,
 		gen: 4,
-		desc: ""
+		onCriticalHit: false,
+		onTrySecondaryHit: function () {
+			return null;
+		},
+		// confusion and thunder wave implemented in statuses
+		desc: "Prevents crits and secondary effects happening on you. Also prevents confusion and thunder wave turns."
+	},
+	dracoplate: {
+		inherit: true,
+		desc: "The holder's Dragon type moves are super effective against Water, Fire, Grass, and Electric Pokemon."
+	},
+	dragonfang: {
+		inherit: true,
+		desc: "The holder hits 30% harder against targets that have not yet moved."
+	},
+	kingsrock: {
+		inherit: true,
+		onTryHit: function (target, source, move) {
+			if (target === source || move.category === 'Status' || move.priority < 1 || move.type === '???' || move.id === 'struggle' || move.isFutureMove) return;
+			return null;
+		},
+		desc: "Completely blocks an increased priority damaging move targeting the holder. Consumed in the process."
+	},
+	dragonscale: {
+		inherit: true,
+		onSourceModifyDamage: function (damage, source, target, move) {
+			if (move.type === 'Fire' || move.type === 'Water' || move.type === 'Grass' || move.type === 'Electric') {
+				return this.chainModify(0.7);
+			}
+		},
+		desc: "Fire, Water, Grass, and Electric attacks do 30% less damage to the holder."
 	}
 }
