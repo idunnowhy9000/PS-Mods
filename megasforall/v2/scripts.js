@@ -169,11 +169,11 @@ exports.BattleScripts = {
 		this.modData('Learnsets', 'carnivine').learnset.icefang = ['6L1'];
 		this.modData('Learnsets', 'carnivine').learnset.acidspray = ['6L1'];
 		this.modData('Learnsets', 'carracosta').learnset.stoneedge = ['6L1'];
-		// other shit
+		// pokedex entries
 		for (var i in this.data.Pokedex) {
 			var template = this.getTemplate(i);
 			var baseTemplate = this.getTemplate(template.baseSpecies);
-			if (!template.tier === 'M4A') continue;
+			if (template.tier !== 'M4A') continue;
 			this.modData('Pokedex', i).weightkg = template.weightkg || baseTemplate.weightkg;
 			this.modData('Pokedex', i).heightm = template.heightm || baseTemplate.heightm;
 		}

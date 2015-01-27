@@ -259,4 +259,12 @@ exports.BattlePokedex = {
 		inherit: true,
 		types: ["Bird", "999"]
 	},
+	fletchinder: {
+		inherit: true,
+		types: ["Flying", "Fire"]
+	},
+	talonflame: {
+		inherit: true,
+		types: ["Flying", "Fire"]
+	},
 }

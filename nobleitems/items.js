@@ -252,6 +252,8 @@ exports.BattleItems = {
 		gen: 4,
 		onStart: function (target, source, sourceEffect) {
 			pokemon.addVolatile("honey");
+			this.effectData.sourceDisabledMoves = [];
+			this.effectData.targetDisabledMoves = [];
 		},
 		effect: {
 			onStart: function (target, source) {
@@ -259,12 +261,18 @@ exports.BattleItems = {
 				
 				for (var i = 0; i > movesTarget.length; i++) {
 					var move = this.battle.getMove(movesTarget[i].id);
-					if (move.category === 'Status') pokemon.disableMove(movesTarget[i].id, false);
+					if (move.category === 'Status') {
+						pokemon.disableMove(movesTarget[i].id, false);
+						this.effectData.targetDisabledMoves.push(movesTarget[i].id);
+					}
 				}
 				
 				for (var i = 0; i > movesSource.length; i++) {
 					var move = this.battle.getMove(movesSource[i].id);
-					if (move.category === 'Status') pokemon.disableMove(movesSource[i].id, false);
+					if (move.category === 'Status') {
+						pokemon.disableMove(movesSource[i].id, false);
+						this.effectData.sourceDisabledMoves.push(movesTarget[i].id);
+					}
 				}
 			},
 			onBeforeMove: function (pokemon, target, move) {
@@ -272,13 +280,13 @@ exports.BattleItems = {
 			},
 			onEnd: function (pokemon) {
 				for (var m = 0; m < pokemon.moves.length; m++) {
-					if (this.battle.getMove(pokemon.moves[m]).category === 'Status') pokemon.moves[m].disabled = false;
+					if (this.effectData.sourceDisabledMoves.indexOf(pokemon.moves[m]) > -1) pokemon.moves[m].disabled = false;
 				}
 				for (var i = 0; i < this.sides.length; i++) {
 					for (var j = 0; j < this.sides[i].active.length; j++) {
 						var target = this.sides[i].active[j];
 						for (var m = 0; m < target.moves.length; m++) {
-							if (this.battle.getMove(target.moves[m]).category === 'Status') target.moves[m].disabled = false;
+							if (this.effectData.targetDisabledMoves.indexOf(pokemon.moves[m]) > -1) target.moves[m].disabled = false;
 						}
 					}
 				}
@@ -384,10 +392,20 @@ exports.BattleItems = {
 	},
 	dracoplate: {
 		inherit: true,
+		onEffectiveness: function (source, typeMod, move, type) {
+			if (move.type === 'Dragon') {
+				if (type === "Water" || type === "Fire" || type === "Grass" || type === "Electric") return 1;
+			}
+		},
 		desc: "The holder's Dragon type moves are super effective against Water, Fire, Grass, and Electric Pokemon."
 	},
 	dragonfang: {
 		inherit: true,
+		onBasePower: function (basePower, pokemon, target) {
+			if (!target.lastMove) {
+				return this.chainModify(1.3);
+			}
+		},
 		desc: "The holder hits 30% harder against targets that have not yet moved."
 	},
 	kingsrock: {

@@ -339,4 +339,44 @@ exports.BattleMovedex = {
 		inherit: true,
 		type: "Psychic"
 	},
+		feint: {
+		inherit: true,
+		type: "Fighting"
+	},
+	struggle: {
+		inherit: true,
+		type: "Fairy"
+	},
+	skullbash: {
+		inherit: true,
+		type: "Rock"
+	},
+	followme: {
+		inherit: true,
+		type: "Fairy"
+	},
+	transform: {
+		inherit: true,
+		type: "Psychic"
+	},
+	smokescreen: {
+		inherit: true,
+		type: "Poison"
+	},
+	splash: {
+		inherit: true,
+		type: "Water"
+	},
+	camouflage: {
+		inherit: true,
+		onHit: function (target) {
+			var newType = 'Ground';
+			if (this.isTerrain('electricterrain')) newType = 'Electric';
+			else if (this.isTerrain('grassyterrain')) newType = 'Grass';
+			else if (this.isTerrain('mistyterrain')) newType = 'Fairy';
+
+			if (!target.setType(newType)) return false;
+			this.add('-start', target, 'typechange', newType);
+		},
+	}
 }

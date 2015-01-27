@@ -84,5 +84,16 @@ exports.BattleScripts = {
 		this.modData('Learnsets','fletchling').learnset.hurricane = ['6L1'];
 		this.modData('Learnsets','missingno').learnset.payday = ['6L1'];
 		this.modData('Learnsets','missingno').learnset.bind = ['6L1'];
+		this.modData('Learnsets','breloom').learnset.eggbomb = ['6L1'];
+		this.modData('Learnsets','sceptile').learnset.eggbomb = ['6L1'];
+		this.modData('Learnsets','torkoal').learnset.eggbomb = ['6L1'];
+		this.modData('Learnsets','garchomp').learnset.quickattack = ['6L1'];
+		this.modData('Learnsets','persian').learnset.quickattack = ['6L1'];
+		this.modData('Learnsets','beedrill').learnset.quickattack = ['6L1'];
+		this.modData('Learnsets','ninjask').learnset.quickattack = ['6L1'];
+		this.modData('Learnsets','slurpuff').learnset.dizzypunch = ['6L1'];
+		this.modData('Learnsets','machamp').learnset.dizzypunch = ['6L1'];
+		this.modData('Learnsets','hitmonchan').learnset.dizzypunch = ['6L1'];
+		this.modData('Learnsets','poliwrath').learnset.dizzypunch = ['6L1'];
 	}
 }
