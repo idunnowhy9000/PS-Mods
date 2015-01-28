@@ -424,5 +424,77 @@ exports.BattleItems = {
 			}
 		},
 		desc: "Fire, Water, Grass, and Electric attacks do 30% less damage to the holder."
+	},
+	splashplate: {
+        inherit: true,
+	},
+	mysticwater: {
+	    inherit: true,
+	    onModifyMove: function (move, pokemon) {
+	        if (move.type === 'Water' && !move.drain) {
+	            move.drain = [1, 2];
+	        }
+	    },
+		desc: "The holder's Water type moves have drains 50%."
+	},
+	deepseascale: {
+	    inherit: true,
+	    onModifySpDPriority: 2,
+	    onModifySpD: function (def, pokemon) {
+	        if (pokemon.template.eggGroup.indexOf("Water 1") > -1) {
+	            return this.chainModify(1.5);
+	        }
+	    },
+	    onStart: function (pokemon) {
+	        if (!pokemon.hasType('Water')) {
+	            pokemon.typesData[1] = {
+	                type: 'Water',
+	                suppressed: false,
+                    isAdded: false
+	            };
+	        }
+	    },
+	    onTakeItem: function (item, pokemon, source) {
+	        var oldType = pokemon.template.types;
+	        pokemon.typesData = oldType.map(function (type) {
+	            return {
+	                type: type,
+	                suppressed: false,
+	                isAdded: false
+	            };
+	        });
+	        return true;
+	    },
+		desc: "If the holder is in the Water 1 egg group their special defense is raised 50%. If they are not already Water type, their second type becomes Water."
+	},
+	deepseatooth: {
+	    inherit: true,
+	    onModifySpAPriority: 5,
+	    onSourceModifySpA: function (atk, attacker, defender, move) {
+	        if (attacker.template.eggGroup.indexOf("Water 1") > -1) {
+	            return this.chainModify(0.5);
+	        }
+	    },
+	    onStart: function (pokemon) {
+	        if (!pokemon.hasType('Water')) {
+	            pokemon.typesData[1] = {
+	                type: 'Water',
+	                suppressed: false,
+	                isAdded: false
+	            };
+	        }
+	    },
+	    onTakeItem: function (item, pokemon, source) {
+	        var oldType = pokemon.template.types;
+	        pokemon.typesData = oldType.map(function (type) {
+	            return {
+	                type: type,
+	                suppressed: false,
+	                isAdded: false
+	            };
+	        });
+	        return true;
+	    },
+	    desc: "If the holder is in the Water1 egg group their special attacks do 50% more damage. If they are not already Water type, their second type becomes Water."
 	}
 }
