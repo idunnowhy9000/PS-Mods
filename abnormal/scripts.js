@@ -95,5 +95,20 @@ exports.BattleScripts = {
 		this.modData('Learnsets','machamp').learnset.dizzypunch = ['6L1'];
 		this.modData('Learnsets','hitmonchan').learnset.dizzypunch = ['6L1'];
 		this.modData('Learnsets','poliwrath').learnset.dizzypunch = ['6L1'];
+		this.modData('Learnsets', 'heracross').learnset.spikecannon = ['6L1'];
+		this.modData('Learnsets', 'qwilfish').learnset.spikecannon = ['6L1'];
+		this.modData('Learnsets', 'escavalier').learnset.spikecannon = ['6L1'];
+		this.modData('Learnsets', 'cacturne').learnset.spikecannon = ['6L1'];
+		this.modData('Learnsets', 'maractus').learnset.spikecannon = ['6L1'];
+		this.modData('Learnsets', 'ferroseed').learnset.spikecannon = ['6L1'];
+		this.modData('Learnsets', 'latias').learnset.extremespeed = ['6L1'];
+		this.modData('Learnsets', 'latios').learnset.extremespeed = ['6L1'];
+		this.modData('Learnsets', 'escavalier').learnset.extremespeed = ['6L1'];
+		this.modData('Learnsets', 'ninjask').learnset.extremespeed = ['6L1'];
+		this.modData('Learnsets', 'rapidash').learnset.extremespeed = ['6L1'];
+		this.modData('Learnsets', 'sharpedo').learnset.extremespeed = ['6L1'];
+		this.modData('Learnsets', 'swellow').learnset.extremespeed = ['6L1'];
+		this.modData('Learnsets', 'ambipom').learnset.tailslap = ['6L1'];
+		this.modData('Learnsets', 'skitty').learnset.tailslap = ['6L1'];
 	}
 }

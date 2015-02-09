@@ -378,5 +378,37 @@ exports.BattleMovedex = {
 			if (!target.setType(newType)) return false;
 			this.add('-start', target, 'typechange', newType);
 		},
-	}
+	},
+	takedown: {
+		inherit: true,
+		type: "Rock"
+	},
+	thrash: {
+		inherit: true,
+		type: "Dark"
+	},
+	razorwind: {
+		inherit: true,
+		type: "Steel"
+	},
+	naturalgift: {
+		inherit: true,
+		type: "Grass"
+	},
+	afteryou: {
+		inherit: true,
+		type: "Fairy"
+	},
+	assist: {
+		inherit: true,
+		type: "Fairy"
+	},
+	attract: {
+		inherit: true,
+		type: "Fairy"
+	},
+	focusenergy: {
+		inherit: true,
+		type: "Fighting"
+	},
 }
