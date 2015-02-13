@@ -110,5 +110,13 @@ exports.BattleScripts = {
 		this.modData('Learnsets', 'swellow').learnset.extremespeed = ['6L1'];
 		this.modData('Learnsets', 'ambipom').learnset.tailslap = ['6L1'];
 		this.modData('Learnsets', 'skitty').learnset.tailslap = ['6L1'];
+		this.modData('Learnsets','klinklang').learnset.explosion= ['6L1'];
+		this.modData('Learnsets','klinklang').learnset.selfdestruct= ['6L1'];
+		this.modData('Learnsets','salamence').learnset.uproar= ['6L1'];
+		this.modData('Learnsets','venusaur').learnset.uproar= ['6L1'];
+		this.modData('Learnsets','mewtwo').learnset.trumpcard= ['6L1'];
+		this.modData('Learnsets','lucario').learnset.trumpcard= ['6L1'];
+		this.modData('Learnsets','ralts').learnset.trumpcard= ['6L1'];
+		this.modData('Learnsets','alakazam').learnset.trumpcard= ['6L1'];
 	}
 }

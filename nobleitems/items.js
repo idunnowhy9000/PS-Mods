@@ -496,5 +496,78 @@ exports.BattleItems = {
 	        return true;
 	    },
 	    desc: "If the holder is in the Water1 egg group their special attacks do 50% more damage. If they are not already Water type, their second type becomes Water."
-	}
+	},
+	seaincense: {
+		inherit: true,
+		desc: "Activates the move Aqua Ring upon switching in.",
+		onStart: function(source) {
+            this.useMove('aquaring');
+        }
+	},
+	waveincense: {
+		inherit: true,
+		desc: "Holder is immune to Ground-type attacks if it is Water-type and immune to Water-type moves if it is Flying-type.",
+		onTryHit: function (target, source, move) {
+			if (target !== source && (move.type === 'Ground' && source.hasType("Water")) || (move.type === "Water" && source.hasType("Flying"))) {
+				return null;
+			}
+		}
+	},
+	prismscale: {
+		inherit: true,
+		desc: "Special attacks made against the holder have 1/4th recoil. (This includes Psyshock/Psystrike/Secret Sword)",
+		onModifyMove: function (move, pokemon, target) {
+			if (target !== pokemon && move.category === "Special") {
+				move.recoil = [1, 4];
+			}
+		}
+	},
+	redscale: {
+		inherit: true,
+		desc: "Attack is increased by 50% when the holder afflicted by a non-volatile status.",
+		onBasePowerPriority: 8,
+		onBasePower: function (basePower, pokemon, target, move) {
+			var status = this.battle.getEffect(pokemon.status);
+			if (status.effectType === "Status") return this.chainModify(1.5);
+		}
+	},
+	flameplate: {
+		inherit: true,
+		desc: "The holder's Normal moves become Fire type and have a 50% chance of Burning.",
+		onModifyMove: function (move, pokemon) {
+			if (move.type === 'Normal' && move.id !== 'hiddenpower') {
+				move.type = 'Fire';
+				
+				if (!move.secondaries) move.secondaries = [];
+				move.secondaries.push({
+					chance: 50,
+					status: 'brn'
+				});
+			}
+		}
+	},
+	charcoal: {
+		inherit: true,
+		desc: "Moves do not need to charge or recharge to take effect.",
+		// implemented in statuses
+	},
+	flameorb: {
+		inherit: true,
+		desc: "If held by a non fire type, at the end of the turn the holder is burned and increases their speed by 15%. If the holder is fire type, their attacks have a 25% chance to burn the opponent. (This is additive to any existing burn chance)",
+		onModifySpe: function (speMod, pokemon) {
+			if (pokemon.status === 'brn') {
+				return this.chain(speMod, 1.15);
+			}
+		},
+		onModifyMove: function (move, pokemon) {
+			if (pokemon.hasType("Fire")) {
+				if (!move.secondaries) move.secondaries = [];
+				move.secondaries.push({
+					chance: 50, // todo
+					status: 'brn'
+				});
+			}
+		}
+	},
+	heatrock: {}
 }

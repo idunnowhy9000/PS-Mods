@@ -25,5 +25,14 @@ exports.BattleStatuses = {
 			this.directDamage(this.getDamage(pokemon, pokemon, 40));
 			return false;
 		}
-	}
+	},
+	mustrecharge: {
+		inherit: true,
+		onBeforeMove: function (pokemon) {
+			if (pokemon.item === 'charcoal') return true;
+			this.add('cant', pokemon, 'recharge');
+			pokemon.removeVolatile('mustrecharge');
+			return false;
+		},
+	},
 }

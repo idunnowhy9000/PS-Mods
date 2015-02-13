@@ -411,4 +411,36 @@ exports.BattleMovedex = {
 		inherit: true,
 		type: "Fighting"
 	},
+		tackle: {
+		inherit: true,
+		type: "Ground"
+	},
+	strength: {
+		inherit: true,
+		type: "Rock"
+	},
+	payday: {
+		inherit: true,
+		type: "Dark"
+	},
+	sonicboom: {
+		inherit: true,
+		type: "Steel"
+	},
+	lockon: {
+		inherit: true,
+		type: "Steel"
+	},
+	morningsun: {
+		inherit: true,
+		type: "Fire"
+		},
+	painsplit: {
+		inherit: true,
+		type: "Ghost"
+	},
+	scaryface: {
+		inherit: true,
+		type: "Ghost"
+	},
 }
