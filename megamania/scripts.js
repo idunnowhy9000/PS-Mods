@@ -44,6 +44,7 @@ exports.BattleScripts = {
 				return false;
 			} else {
 				side.addSideCondition("megamania");
+				side.sideConditions["megamania"] = pokemon.id;
 			}
 			// change stat
 			for (var statName in pokemon.baseStats) {
@@ -66,7 +67,7 @@ exports.BattleScripts = {
 				ability = this.getAbility(baseAbility);
 			// if banned ability, cannot change ability.
 			var bannedAbilities = {'Arena Trap':1,'Huge Power':1,'Imposter':1,'Parental Bond':1,'Pure Power':1,'Shadow Tag':1,'Wonder Guard':1};
-			if (ability.exists && !ability.name in bannedAbilities) {
+			if (ability.exists && !(ability.name in bannedAbilities)) {
 				pokemon.setAbility(ability.name);
 				pokemon.baseAbility = pokemon.ability;
 			}
@@ -86,6 +87,55 @@ exports.BattleScripts = {
 
 		for (var i = 0; i < side.pokemon.length; i++) side.pokemon[i].canMegaEvo = false;
 		return true;
+	},
+	
+	// recalculate stats upon forme change (for Meloetta,...)
+	pokemon: {
+		formeChange: function (template, dontRecalculateStats) {
+			template = this.battle.getTemplate(template);
+
+			if (!template.abilities) return false;
+			this.illusion = null;
+			this.template = template;
+			this.types = template.types;
+			this.typesData = [];
+			for (var i = 0, l = this.types.length; i < l; i++) {
+				this.typesData.push({
+					type: this.types[i],
+					suppressed: false,
+					isAdded: false
+				});
+			}
+
+			if (!dontRecalculateStats) {
+				for (var statName in this.stats) {
+					var stat = this.template.baseStats[statName];
+					if (this.id === this.side.sideConditions["megamania"]) {
+						var newStat = this.template.baseStats[statName];
+						if (pokemon.set.shiny) {
+							if (statName === 'atk') newStat += 30;
+							if (statName === 'spa') newStat += 10;
+						} else {
+							if (statName === 'atk') newStat += 10;
+							if (statName === 'spa') newStat += 30;
+						}
+						if (statName === 'spe'
+							|| statName === 'def'
+							|| statName === 'spd') newStat += 20;
+						stat = newStat;
+					}
+					
+					stat = Math.floor(Math.floor(2 * stat + this.set.ivs[statName] + Math.floor(this.set.evs[statName] / 4)) * this.level / 100 + 5);
+
+					// nature
+					var nature = this.battle.getNature(this.set.nature);
+					if (statName === nature.plus) stat *= 1.1;
+					if (statName === nature.minus) stat *= 0.9;
+					this.baseStats[statName] = this.stats[statName] = Math.floor(stat);
+				}
+			this.speed = this.stats.spe;
+			}
+		}
 	},
 	
 	side: {
