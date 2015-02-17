@@ -569,5 +569,58 @@ exports.BattleItems = {
 			}
 		}
 	},
-	heatrock: {}
+	heatrock: {
+		inherit: true,
+		desc: "Doubles the duration of Sun set by the holder and renders the holder immune to Rock type moves.",
+		onTryHit: function (target, source, move) {
+			if (target === source || move.category === 'Status' || move.type !== 'Rock') return;
+			return null;
+		},
+	},
+	lavacookie: {
+		id: "lavacookie",
+		name: "Lava Cookie",
+		num: -9,
+		gen: 3,
+		desc: "If the holder is burned, they recover 100% of their health, and their burn is cured. The item is then consumed.",
+		onUpdate: function (pokemon) {
+			if (pokemon.status === 'brn') {
+				this.heal(pokemon.maxhp);
+				pokemon.cureStatus();
+				if (pokemon.useItem()) {
+					this.battle.add('-enditem', pokemon, 'Lava Cookie');
+				}
+			}
+		},
+	},
+	magmarizer: {
+		id: "magmarizer",
+		name: "Magmarizer",
+		num: -10,
+		gen: 4,
+		desc: "Doubles the chance of burn on the user's attacks with a chance of burn. If the user is Magmar or Magmortar, the chance is tripled instead",
+		onModifyMove: function (move, pokemon) {
+			if (move.secondaries && move.id !== 'secretpower') {
+				this.debug('doubling secondary chance');
+				for (var i = 0; i < move.secondaries.length; i++) {
+					if (move.secondaries[i].status !== 'brn') continue;
+					
+					if (pokemon.template.species === "Magmar" || pokemon.template.species === "Magmortar") move.secondaries[i].chance *= 3;
+					else move.secondaries[i].chance *= 2;
+				}
+			}
+		},
+	},
+	magmastone: {
+		id: "magmastone",
+		name: "Magma Stone",
+		num: -11,
+		gen: 4,
+		desc: "Fire types gain 1/8th health back each turn.",
+		onResidualOrder: 5,
+		onResidualSubOrder: 2,
+		onResidual: function (pokemon) {
+			if (pokemon.hasType("Fire")) this.heal(pokemon.maxhp / 8);
+		},
+	}
 }

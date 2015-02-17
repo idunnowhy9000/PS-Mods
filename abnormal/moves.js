@@ -411,7 +411,7 @@ exports.BattleMovedex = {
 		inherit: true,
 		type: "Fighting"
 	},
-		tackle: {
+	tackle: {
 		inherit: true,
 		type: "Ground"
 	},
@@ -442,5 +442,37 @@ exports.BattleMovedex = {
 	scaryface: {
 		inherit: true,
 		type: "Ghost"
+	},
+	wrap: {
+        inherit: true,
+        type: "Poison"
+    },
+	scratch: {
+		inherit: true,
+		type: "Bug"
+	},
+	megakick: {
+		inherit: true,
+		type: "Fighting"
+	},
+	horndrill: {
+		inherit: true,
+		type: "Steel"
+	},
+	foresight: {
+		inherit: true,
+		type: "Psychic"
+	},
+	sweetscent: {
+		inherit: true,
+		type: "Grass"
+	},
+	nobleroar: {
+		inherit: true,
+		type: "Fire"
+	},
+	playnice: {
+		inherit: true,
+		type: "Fairy"
 	},
 }

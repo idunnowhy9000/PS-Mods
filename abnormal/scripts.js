@@ -118,5 +118,22 @@ exports.BattleScripts = {
 		this.modData('Learnsets','lucario').learnset.trumpcard= ['6L1'];
 		this.modData('Learnsets','ralts').learnset.trumpcard= ['6L1'];
 		this.modData('Learnsets','alakazam').learnset.trumpcard= ['6L1'];
+		this.modData('Learnsets','pangoro').learnset.fakeout= ['6L1'];
+		this.modData('Learnsets','hawlucha').learnset.fakeout= ['6L1'];
+		this.modData('Learnsets','breloom').learnset.fakeout= ['6L1'];
+		this.modData('Learnsets','poliwrath').learnset.fakeout= ['6L1'];
+		this.modData('Learnsets','eevee').learnset.fakeout= ['6L1'];
+		this.modData('Learnsets','shinx').learnset.fakeout= ['6L1'];
+		this.modData('Learnsets','reuniculus').learnset.barrage= ['6L1'];
+		this.modData('Learnsets','rhyperior').learnset.barrage= ['6L1'];
+		this.modData('Learnsets','shiftry').learnset.barrage= ['6L1'];
+		this.modData('Learnsets','ferrothorn').learnset.barrage= ['6L1'];
+		this.modData('Learnsets','golem').learnset.barrage= ['6L1'];
+		this.modData('Learnsets','cherrim').learnset.barrage= ['6L1'];
+		this.modData('Learnsets','mawile').learnset.lovelykiss= ['6L1'];
+		this.modData('Learnsets','froslass').learnset.lovelykiss= ['6L1'];
+		this.modData('Learnsets','bellsprout').learnset.lovelykiss= ['6L1'];
+		this.modData('Learnsets','snubbull').learnset.lovelykiss= ['6L1'];
+		this.modData('Learnsets','munchlax').learnset.lovelykiss= ['6L1'];
 	}
 }
