@@ -135,5 +135,25 @@ exports.BattleScripts = {
 		this.modData('Learnsets','bellsprout').learnset.lovelykiss= ['6L1'];
 		this.modData('Learnsets','snubbull').learnset.lovelykiss= ['6L1'];
 		this.modData('Learnsets','munchlax').learnset.lovelykiss= ['6L1'];
-	}
+		this.modData('Learnsets','regirock').learnset.slackoff= ['6L1'];
+		this.modData('Learnsets','regice').learnset.slackoff= ['6L1'];
+		this.modData('Learnsets','registeel').learnset.slackoff= ['6L1'];
+		this.modData('Learnsets','regigigas').learnset.slackoff= ['6L1'];
+		this.modData('Learnsets','snorlax').learnset.slackoff= ['6L1'];
+		this.modData('Learnsets','bibarel').learnset.slackoff= ['6L1'];
+		this.modData('Learnsets','seel').learnset.slackoff= ['6L1'];
+		this.modData('Learnsets','spheal').learnset.slackoff= ['6L1'];
+		this.modData('Learnsets','electrode').learnset.boomburst= ['6L1'];
+		this.modData('Learnsets','drifblim').learnset.boomburst= ['6L1'];
+		this.modData('Learnsets','yanmega').learnset.boomburst= ['6L1'];
+		this.modData('Learnsets','bronzong').learnset.boomburst= ['6L1'];
+		this.modData('Learnsets','roserade').learnset.triattack= ['6L1'];
+		this.modData('Learnsets','klang').learnset.triattack= ['6L1'];
+		this.modData('Learnsets','combee').learnset.triattack= ['6L1'];
+		this.modData('Learnsets','weezing').learnset.triattack= ['6L1'];
+		this.modData('Learnsets','exeggcute').learnset.triattack= ['6L1'];
+		this.modData('Learnsets','probopass').learnset.triattack= ['6L1'];
+		this.modData('Learnsets','bonsly').learnset.triattack= ['6L1'];
+		this.modData('Learnsets','jumpluff').learnset.triattack= ['6L1'];
+			}
 }

@@ -41,5 +41,5 @@ exports.BattleAbilities = {
 				move.affectedByImmunities = false;
 			}
 		},
-	}
+	},
 }

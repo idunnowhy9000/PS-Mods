@@ -475,4 +475,28 @@ exports.BattleMovedex = {
 		inherit: true,
 		type: "Fairy"
 	},
+	bide: {
+		inherit: true,
+		type: "Rock"
+	},
+	megapunch: {
+		inherit: true,
+		type: "Fighting"
+	},
+	bind: {
+		inherit: true,
+		type: "Poison"
+	},
+	perishsong: {
+		inherit: true,
+		type: "Ghost"
+	},
+	bestow: {
+		inherit: true,
+		type: "Ice"
+	},
+	odorsleuth: {
+		inherit: true,
+		type: "Bug"
+	},
 }
