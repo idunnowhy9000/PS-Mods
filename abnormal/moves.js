@@ -499,4 +499,100 @@ exports.BattleMovedex = {
 		inherit: true,
 		type: "Bug"
 	},
+	slam: {
+		inherit: true,
+		type: "Grass"
+	},
+	happyhour: {
+		inherit: true,
+		type: "Dark"
+	},
+	guillotine: {
+		inherit: true,
+		type: "Steel"
+	},
+	chipaway: {
+		inherit: true,
+		type: "Fighting"
+	},
+	pound: {
+		inherit: true,
+		type: "Fighting"
+	},
+	cometpunch: {
+		inherit: true,
+		type: "Fighting"
+	},
+	block: {
+		inherit: true,
+		type: "Rock"
+	},
+	growth: {
+		inherit: true,
+		type: "Grass"
+	},
+	minimize: {
+		inherit: true,
+		type: "Psychic"
+	},
+		recycle: {
+		inherit: true,
+		type: "Psychic"
+	},
+	rage: {
+		inherit: true,
+		type: "Dark"
+	},
+	holdback: {
+		inherit: true,
+		type: "Fighting"
+	},
+	falseswipe: {
+		inherit: true,
+		type: "Steel"
+	},
+	hiddenpower: {
+		inherit: true,
+		type: "Fairy"
+	},
+	screech: {
+		inherit: true,
+		type: "Ghost"
+	},
+	luckychant: {
+		inherit: true,
+		type: "Fairy"
+	},
+	mimic: {
+		inherit: true,
+		type: "Psychic"
+	},
+	copycat: {
+		inherit: true,
+		type: "Fairy"
+	},
+	furyattack: {
+		inherit: true,
+		type: "Flying"
+	},
+	furyswipes: {
+		inherit: true,
+		type: "Steel"
+	},
+	tailwhip: {
+		inherit: true,
+		type: "Fairy"
+	},
+	swagger: {
+		inherit: true,
+		type: "Dark"
+	},
+	supersonic: {
+		inherit: true,
+		type: "Electric"
+	},
+	safeguard: {
+		inherit: true,
+		type: "Psychic"
+	},
 }
