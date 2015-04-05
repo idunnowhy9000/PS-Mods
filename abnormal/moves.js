@@ -278,35 +278,35 @@ exports.BattleMovedex = {
 	endeavor: {
 		inherit: true,
 		type: "Fighting"
-    },
+	},
 	flail: {
 		inherit: true,
 		type: "Dark"
-    },
+	},
 	technoblast: {
 		inherit: true,
 		type: "Steel"
-    },
+	},
 	uproar: {
 		inherit: true,
 		type: "Dragon"
-    },
+	},
 	accupressure: {
 		inherit: true,
 		type: "Psychic"
-    },
+	},
 	entrainment: {
 		inherit: true,
 		type: "Fairy"
-    },
+	},
 	yawn: {
 		inherit: true,
 		type: "Fairy"
-    },
+	},
 	wish: {
 		inherit: true,
 		type: "Fairy"
-    },
+	},
 	doublehit: {
 		inherit: true,
 		type: "Dark"
@@ -444,9 +444,9 @@ exports.BattleMovedex = {
 		type: "Ghost"
 	},
 	wrap: {
-        inherit: true,
-        type: "Poison"
-    },
+		inherit: true,
+		type: "Poison"
+	},
 	scratch: {
 		inherit: true,
 		type: "Bug"
@@ -594,5 +594,33 @@ exports.BattleMovedex = {
 	safeguard: {
 		inherit: true,
 		type: "Psychic"
+	},
+	constrict: {
+		inherit: true,
+		type: "Water"
+	},
+	doubleslap: {
+		inherit: true,
+		type: "Fairy"
+	},
+	cut: {
+		inherit: true,
+		type: "Steel"
+	},
+	captivate: {
+		inherit: true,
+		type: "Fairy"
+	},
+	celebrate: {
+		inherit: true,
+		type: "Fairy"
+	},
+	confide: {
+		inherit: true,
+		type: "Dark"
+	},
+	defensecurl: {
+		inherit: true,
+		type: "Rock"
 	},
 }

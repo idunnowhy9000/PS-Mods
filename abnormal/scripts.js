@@ -195,5 +195,23 @@ exports.BattleScripts = {
 		this.modData('Learnsets','machamp').learnset.cometpunch= ['6L1'];
 		this.modData('Learnsets','medicham').learnset.cometpunch= ['6L1'];
 		this.modData('Learnsets','heracross').learnset.cometpunch= ['6L1'];
+		this.modData('Learnsets','archen').learnset.furyattack= ['6L1'];
+		this.modData('Learnsets','swellow').learnset.furyattack= ['6L1'];
+		this.modData('Learnsets','pidove').learnset.furyattack= ['6L1'];
+		this.modData('Learnsets','absol').learnset.furyattack= ['6L1'];
+		this.modData('Learnsets','scyther').learnset.furyswipes= ['6L1'];
+		this.modData('Learnsets','heracross').learnset.furyswipes= ['6L1'];
+		this.modData('Learnsets','honedge').learnset.furyswipes= ['6L1'];
+		this.modData('Learnsets','kricketune').learnset.furyswipes= ['6L1'];
+		this.modData('Learnsets','zoroark').learnset.furyswipes= ['6L1'];
+		this.modData('Learnsets','turtwig').learnset.shellsmash= ['6L1'];
+		this.modData('Learnsets','golem').learnset.shellsmash= ['6L1'];
+		this.modData('Learnsets','lapras').learnset.shellsmash= ['6L1'];
+		this.modData('Learnsets','kabutops').learnset.shellsmash= ['6L1'];
+		this.modData('Learnsets','armaldo').learnset.shellsmash= ['6L1'];
+		this.modData('Learnsets','kingler').learnset.shellsmash= ['6L1'];
+		this.modData('Learnsets','clawitzer').learnset.shellsmash= ['6L1'];
+		this.modData('Learnsets','shelmet').learnset.shellsmash= ['6L1'];
+		this.modData('Learnsets','escavalier').learnset.shellsmash= ['6L1'];
 	}
 }
