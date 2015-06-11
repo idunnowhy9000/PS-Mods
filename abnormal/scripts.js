@@ -214,4 +214,4 @@ exports.BattleScripts = {
 		this.modData('Learnsets','shelmet').learnset.shellsmash= ['6L1'];
 		this.modData('Learnsets','escavalier').learnset.shellsmash= ['6L1'];
 	}
-}
+};
